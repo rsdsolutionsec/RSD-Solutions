@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSD Solutions - Desarrollo de Software a Medida</title>
+    <meta name="description" content="Desarrollo de software a medida, aplicaciones web y móviles en Ecuador. Automatiza tu empresa con RSD Solutions." />
+    <meta property="og:title" content="RSD Solutions - Desarrollo de Software" />
+    <meta property="og:description" content="Sistemas, plataformas y aplicaciones diseñadas específicamente para tu negocio." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-indigo-500/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 relative">
+                <div class="flex items-center gap-2 z-20">
+                    <div class="p-2 bg-indigo-600 rounded-lg">
+                        <span class="material-symbols-outlined text-white">developer_mode</span>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900">RSD <span class="text-indigo-600">Solutions</span></span>
+                </div>
+                
+                <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg md:static md:w-auto md:bg-transparent md:border-none md:shadow-none md:flex space-y-4 md:space-y-0 p-6 md:p-0 flex-col md:flex-row md:items-center md:space-x-8 z-10">
+                    <a class="block text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors" href="#servicios">Servicios</a>
+                    <a class="block text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors" href="#portafolio">Portafolio</a>
+                    <a class="block text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors" href="#proceso">Cómo Trabajamos</a>
+                    <a class="block text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors" href="#testimonios">Testimonios</a>
+                    <button class="w-full md:w-auto bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-600/25 hover:bg-indigo-700 transition-all cta-btn">
+                        Contactar ahora
+                    </button>
+                </nav>
+                
+                <button id="menu-toggle" class="md:hidden p-2 text-slate-900 focus:outline-none z-20">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32 fade-in-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                    <div>
+                        <span class="inline-block py-1 px-3 rounded-full bg-indigo-600/10 text-indigo-600 text-xs font-bold uppercase tracking-wider mb-4">Software de Elite en Ecuador</span>
+                        <h1 class="text-5xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-6 tracking-tight">
+                            Desarrollo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">Software a Medida</span>
+                        </h1>
+                        <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl">
+                            En RSD Solutions desarrollamos sistemas, plataformas y aplicaciones diseñadas específicamente para tu negocio. Creamos soluciones tecnológicas modernas que automatizan procesos, aumentan la productividad y ayudan a escalar empresas.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-indigo-600/30 hover:-translate-y-1 transition-all cta-btn">
+                                Solicitar Cotización
+                            </button>
+                            <button class="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all portfolio-btn">
+                                Ver Portafolio
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-12 lg:mt-0 relative">
+                        <div class="absolute -top-10 -left-10 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-violet-400/20 rounded-full blur-3xl"></div>
+                        <div class="relative bg-white p-2 rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+                            <img alt="Developer working" class="rounded-xl w-full h-[400px] object-cover" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWl5Tf6Y2QLUzgRtZ5B0yFy5yCmeaX5AJxZ1lXXaioJ07PjZtRafc3bmLcWR5gvi2YQhK7wCPYwfvbLvoN6XxwJaWoVArJMqaGfCOqno1Ypn_mLxMtbPWEkM0gvRz4ww-uQJIYFjG3dIYdHENq71WEQVl0mpbt85SwfNtgyttxhxp4sHkcqTMXsLZxoFyHjnDATq2Jg1q03mwtg6hoESdyN6rdu3IQ5zxcy9z_RZFnOFW-_3ynsfd57TmntJ3wYXNwPc_QeGcBn5E"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="py-12 border-y border-slate-200 bg-white fade-in-section">
+            <div class="max-w-7xl mx-auto px-4">
+                <p class="text-center text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-10">Empresas que confían en nuestras soluciones tecnológicas</p>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+                    <div class="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+                    <div class="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+                    <div class="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+                    <div class="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-24 bg-slate-50" id="servicios">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-4xl font-black text-slate-900 mb-4 tracking-tight">Soluciones Tecnológicas para Automatizar tu Empresa</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">Sistemas, aplicaciones y plataformas diseñadas para mejorar la eficiencia y el crecimiento de tu negocio.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-section">
+                        <div class="w-12 h-12 bg-indigo-600/10 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">web</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Landing Page Empresarial</h3>
+                        <div class="text-3xl font-black text-indigo-600 mb-4">$120</div>
+                        <ul class="space-y-3 mb-8 text-slate-600 flex-grow">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Página enfocada en generar clientes</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Diseño moderno y profesional</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Integración con WhatsApp</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Formularios de contacto optimizados</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Optimización SEO básica</li>
+                        </ul>
+                        <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-indigo-600 transition-colors cta-btn">Solicitar Cotización</button>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl border-2 border-indigo-600 shadow-xl relative flex flex-col lg:scale-105 z-10 fade-in-section" style="transition-delay: 100ms;">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest">Más Popular</div>
+                        <div class="w-12 h-12 bg-indigo-600/10 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">corporate_fare</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Página Web Corporativa</h3>
+                        <div class="text-3xl font-black text-indigo-600 mb-4">$220</div>
+                        <ul class="space-y-3 mb-8 text-slate-600 flex-grow">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Sitio web profesional para tu empresa</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Hasta 5 secciones personalizadas</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Panel de administración básico</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Optimización SEO</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Integración con herramientas externas</li>
+                        </ul>
+                        <button class="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-lg shadow-indigo-600/20 transition-all cta-btn">Solicitar Cotización</button>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-section" style="transition-delay: 200ms;">
+                        <div class="w-12 h-12 bg-indigo-600/10 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">data_object</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Aplicación Web Empresarial</h3>
+                        <div class="text-2xl font-black text-indigo-600 mb-4">desde $490</div>
+                        <ul class="space-y-3 mb-8 text-slate-600 flex-grow">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Sistema web completamente personalizado</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Panel administrativo avanzado</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Base de datos empresarial</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Automatización de procesos internos</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Escalable para crecimiento empresarial</li>
+                        </ul>
+                        <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-indigo-600 transition-colors cta-btn">Solicitar Cotización</button>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-section">
+                        <div class="w-12 h-12 bg-indigo-600/10 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">smartphone</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">App Móvil Empresarial</h3>
+                        <div class="text-2xl font-black text-indigo-600 mb-4">desde $880</div>
+                        <ul class="space-y-3 mb-8 text-slate-600 flex-grow">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Aplicación móvil para Android / iOS</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Conexión con sistemas web o bases de datos</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Interfaz moderna y optimizada</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Ideal para empresas con operaciones móviles</li>
+                        </ul>
+                        <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-indigo-600 transition-colors cta-btn">Solicitar Cotización</button>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-section" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 bg-indigo-600/10 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">settings_suggest</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Automatización de Procesos</h3>
+                        <div class="text-2xl font-black text-indigo-600 mb-4">desde $250</div>
+                        <ul class="space-y-3 mb-8 text-slate-600 flex-grow">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Automatización de tareas repetitivas</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Integración con APIs y plataformas externas</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Sistemas internos para empresas</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Reducción de trabajo manual</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Mejora de eficiencia operativa</li>
+                        </ul>
+                        <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-indigo-600 transition-colors cta-btn">Solicitar Cotización</button>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-section" style="transition-delay: 200ms;">
+                        <div class="w-12 h-12 bg-indigo-600/10 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">support_agent</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Soporte y Mantenimiento</h3>
+                        <div class="text-2xl font-black text-indigo-600 mb-4">$7.50 / hora</div>
+                        <ul class="space-y-3 mb-8 text-slate-600 flex-grow">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Soporte técnico especializado</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Optimización de sistemas existentes</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Corrección de errores</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span> Actualizaciones y mejoras continuas</li>
+                        </ul>
+                        <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-indigo-600 transition-colors cta-btn">Solicitar Cotización</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="py-24 bg-white" id="portafolio">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-in-section">
+                    <div class="mb-6 md:mb-0">
+                        <h2 class="text-4xl font-black text-slate-900 mb-4 tracking-tight">Soluciones Tecnológicas que Hemos Desarrollado</h2>
+                        <p class="text-slate-600">Algunos ejemplos de sistemas y plataformas creados para nuestros clientes.</p>
+                    </div>
+                    <button class="text-indigo-600 font-bold hover:underline">Ver todos los proyectos</button>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="group cursor-pointer fade-in-section">
+                        <div class="overflow-hidden rounded-2xl mb-4 shadow-sm group-hover:shadow-xl transition-all duration-500">
+                            <img alt="Sistema de Gestión para Restaurantes" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2t7eud_TaeTRqbZUeIHPdBmbJzgzR4_dcCiOW0bKcvkIT2KhK39Uf2qmzIXqDiK10VU8VZpxO3R9MaYMEvqdLybENodu-M4gdEF-7AIPam1wyxWX88nopDtOcm2bz362ld58EZA5GduBoWAc07vXv5NSTTz19iqiRNc3VPWn6I66rFPDq1XCDKY2WLyx1woQtha7iOXfu_Iu-zAdFEFjpVZ_0F96F5A-R0gMNMR1tKRoJppp4QiluFzLU94JIp2wXJqdvcPKD3V0"/>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-600 transition-colors">Sistema de Gestión para Restaurantes</h3>
+                        <p class="text-slate-500 text-sm mb-4">Optimización de pedidos y control de inventarios en tiempo real.</p>
+                        <button class="flex items-center gap-2 text-indigo-600 font-bold text-sm ver-proyecto-btn" data-index="0">Ver Proyecto <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></button>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="group cursor-pointer fade-in-section" style="transition-delay: 100ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 shadow-sm group-hover:shadow-xl transition-all duration-500">
+                            <img alt="Plataforma de Automatización de Ventas" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT1BPjK70Qfdglb2VXu_p9WwMgquXEPpcvNl4HN_0kGtt0xOHPxvbF3oonuDgViu5xGt6roooFCmVd_115yfgnaR-WlXfgTQzsldtZf-58AE_dJ2EWfGWxw-8vAgJha-fY2OInTUXV_inCUpGVygsdhWqdYCL875NjpjqnrrC6cdm4aQDrWkryeokPK5k2JRI9m2yGgmLzzQnbNC9qrp808g4T5doHpDsFOx2WbICrfnZwDBvbWYlADdtcZlNRIMQo3ZAukmwlgCg"/>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-600 transition-colors">Plataforma de Automatización de Ventas</h3>
+                        <p class="text-slate-500 text-sm mb-4">Integración de CRM y flujos de trabajo automáticos para equipos comerciales.</p>
+                        <button class="flex items-center gap-2 text-indigo-600 font-bold text-sm ver-proyecto-btn" data-index="1">Ver Proyecto <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></button>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="group cursor-pointer fade-in-section" style="transition-delay: 200ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 shadow-sm group-hover:shadow-xl transition-all duration-500">
+                            <img alt="Software de Gestión Empresarial" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArVXVQhM6MXEqQUwvioxUdN6Uq_bGLf6LvwAcL0PMiDsfdtutOeixhusRhPXs-R-Uoy74jT8bYq2gjqatUYVpCqZDj0f8kzw9ojqKtAgXNfGGTMRA53bTbNDQsyhpvSFBo4QGMkNwzCq2YLeOGKFzTzyJCaf_7q0KbiWQ98C3EF9313um4QSgyertMy9JUfPFSbjYvMAXegVnekgv6KgtGhncKofNvDT-bqpiwkBNgNL86fDNOoE-r8ObjLp7vV1QL3ZK3gb7vG1k"/>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-600 transition-colors">Software de Gestión Empresarial</h3>
+                        <p class="text-slate-500 text-sm mb-4">ERP personalizado para el control financiero y operativo de PYMES.</p>
+                        <button class="flex items-center gap-2 text-indigo-600 font-bold text-sm ver-proyecto-btn" data-index="2">Ver Proyecto <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-24 bg-slate-900 text-white overflow-hidden relative" id="proceso">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/20 blur-[120px] rounded-full"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-20 fade-in-section">
+                    <h2 class="text-4xl font-black mb-4">Cómo Desarrollamos tu Software</h2>
+                    <p class="text-slate-400">Un proceso claro y transparente para garantizar resultados.</p>
+                </div>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="relative text-center fade-in-section">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-xl shadow-indigo-600/20">1</div>
+                        <h4 class="text-xl font-bold mb-2">Análisis</h4>
+                        <p class="text-sm text-slate-400">Entendemos el problema de tu empresa y diseñamos la solución tecnológica adecuada.</p>
+                    </div>
+                    <div class="relative text-center fade-in-section" style="transition-delay: 100ms;">
+                        <div class="w-16 h-16 bg-indigo-600/20 border border-indigo-500/50 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black">2</div>
+                        <h4 class="text-xl font-bold mb-2">Diseño UX/UI</h4>
+                        <p class="text-sm text-slate-400">Creamos interfaces modernas, intuitivas y enfocadas en productividad.</p>
+                    </div>
+                    <div class="relative text-center fade-in-section" style="transition-delay: 200ms;">
+                        <div class="w-16 h-16 bg-indigo-600/20 border border-indigo-500/50 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black">3</div>
+                        <h4 class="text-xl font-bold mb-2">Desarrollo</h4>
+                        <p class="text-sm text-slate-400">Construimos el sistema usando tecnologías modernas y escalables.</p>
+                    </div>
+                    <div class="relative text-center fade-in-section" style="transition-delay: 300ms;">
+                        <div class="w-16 h-16 bg-indigo-600/20 border border-indigo-500/50 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black">4</div>
+                        <h4 class="text-xl font-bold mb-2">Lanzamiento</h4>
+                        <p class="text-sm text-slate-400">Implementamos la solución y te acompañamos con soporte técnico.</p>
+                    </div>
+                </div>
+                <!-- Agile Timeline -->
+                <div class="mt-24 p-8 bg-white/5 border border-white/10 rounded-2xl fade-in-section">
+                    <div class="flex flex-wrap justify-center gap-6 md:gap-10 items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-indigo-500">bolt</span>
+                            <span class="font-bold md:text-lg">Metodología Agile</span>
+                        </div>
+                        <div class="hidden md:block h-1 w-12 bg-white/10 rounded-full"></div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-indigo-500">update</span>
+                            <span class="font-bold md:text-lg">Entregas progresivas</span>
+                        </div>
+                        <div class="hidden md:block h-1 w-12 bg-white/10 rounded-full"></div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-indigo-500">chat</span>
+                            <span class="font-bold md:text-lg">Comunicación constante</span>
+                        </div>
+                        <div class="hidden md:block h-1 w-12 bg-white/10 rounded-full"></div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-indigo-500">trending_up</span>
+                            <span class="font-bold md:text-lg">Escalabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-24 bg-slate-50" id="testimonios">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-black text-slate-900 mb-16 text-center tracking-tight fade-in-section">Empresas que ya trabajan con nuestras soluciones</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section">
+                        <div class="flex text-yellow-400 mb-4">
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"RSD Solutions transformó nuestra forma de trabajar. Su sistema de gestión nos ahorra 10 horas semanales en procesos administrativos."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center text-slate-500 font-bold">CM</div>
+                            <div>
+                                <p class="font-bold text-slate-900">Carlos Méndez</p>
+                                <p class="text-xs text-slate-500">CEO, TechLogistics Ecuador</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section" style="transition-delay: 100ms;">
+                        <div class="flex text-yellow-400 mb-4">
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"El desarrollo de nuestra app móvil fue impecable. Entregaron a tiempo y con una calidad visual superior a lo esperado."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center text-slate-500 font-bold">AL</div>
+                            <div>
+                                <p class="font-bold text-slate-900">Ana Lucía Pazos</p>
+                                <p class="text-xs text-slate-500">Directora de Marketing, Alimentos S.A.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-section" style="transition-delay: 200ms;">
+                        <div class="flex text-yellow-400 mb-4">
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                            <span class="material-symbols-outlined fill-1">star</span>
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"Excelente soporte post-venta. Siempre están disponibles para resolver dudas y mejorar el sistema."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center text-slate-500 font-bold">RV</div>
+                            <div>
+                                <p class="font-bold text-slate-900">Roberto Vega</p>
+                                <p class="text-xs text-slate-500">Fundador, Vega Constructora</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA & Contact Form -->
+        <section class="py-20 px-4 fade-in-section" id="contacto">
+            <div class="max-w-6xl mx-auto rounded-[2.5rem] bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+                <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-black text-white mb-6">¿Listo para Automatizar tu Empresa?</h2>
+                        <p class="text-indigo-100 text-lg mb-8">Agenda una asesoría gratuita y descubre cómo un sistema a medida puede mejorar la productividad de tu negocio.</p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-4 text-white">
+                                <span class="material-symbols-outlined">call</span>
+                                <span class="font-bold">+593 9 000 0000</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-white">
+                                <span class="material-symbols-outlined">mail</span>
+                                <span class="font-bold">contacto@rsdsolutions.com</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-white">
+                                <span class="material-symbols-outlined">chat</span>
+                                <span class="font-bold">WhatsApp Business</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <input type="text" id="name" placeholder="Nombre completo" class="form-input" required>
+                            </div>
+                            <div>
+                                <input type="email" id="email" placeholder="Correo electrónico" class="form-input" required>
+                            </div>
+                            <div>
+                                <input type="tel" id="phone" placeholder="Teléfono" class="form-input" required>
+                            </div>
+                            <div>
+                                <textarea id="message" rows="4" placeholder="¿En qué podemos ayudarte?" class="form-input resize-none" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-white text-indigo-600 px-8 py-4 rounded-xl font-black text-lg hover:bg-indigo-50 transition-colors shadow-lg">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                        <div id="form-success" class="hidden text-center py-8">
+                            <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="material-symbols-outlined text-white text-3xl">check</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">¡Mensaje Enviado!</h3>
+                            <p class="text-indigo-100">Tu solicitud ha sido enviada. Nos pondremos en contacto contigo pronto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-16 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="p-2 bg-indigo-600 rounded-lg">
+                            <span class="material-symbols-outlined text-white text-sm">developer_mode</span>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900">RSD Solutions</span>
+                    </div>
+                    <p class="text-slate-500 max-w-sm mb-6">En RSD Solutions desarrollamos sistemas, plataformas y aplicaciones que ayudan a las empresas a digitalizar procesos, automatizar operaciones y crecer con tecnología.</p>
+                    <div class="flex gap-4">
+                        <a class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all" href="#" aria-label="LinkedIn"><span class="material-symbols-outlined text-lg">work</span></a>
+                        <a class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all" href="#" aria-label="Facebook"><span class="material-symbols-outlined text-lg">facebook</span></a>
+                        <a class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all" href="#" aria-label="Instagram"><span class="material-symbols-outlined text-lg">photo_camera</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 text-slate-900">Navegación</h5>
+                    <ul class="space-y-4 text-slate-500 text-sm font-medium">
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#servicios">Servicios</a></li>
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#portafolio">Portafolio</a></li>
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#proceso">Cómo Trabajamos</a></li>
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#testimonios">Testimonios</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 text-slate-900">Legal</h5>
+                    <ul class="space-y-4 text-slate-500 text-sm font-medium">
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#">Términos de Servicio</a></li>
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#">Privacidad</a></li>
+                        <li><a class="hover:text-indigo-600 transition-colors" href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+                <p>© 2024 RSD Solutions. Todos los derechos reservados. Desarrollado en Ecuador.</p>
+                <div class="flex gap-6">
+                    <span>Quito, Ecuador</span>
+                    <span>Guayaquil, Ecuador</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="modal-content modal-enter relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-slate-100">
+                    <div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
+                        <button type="button" id="modal-close" class="rounded-md bg-white text-slate-400 hover:text-slate-500 focus:outline-none">
+                            <span class="sr-only">Cerrar</span>
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600/10 sm:mx-0 sm:h-10 sm:w-10">
+                                <span class="material-symbols-outlined text-indigo-600">web</span>
+                            </div>
+                            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                <h3 class="text-xl font-bold leading-6 text-slate-900" id="modal-title">Project Title</h3>
+                                <div class="mt-4">
+                                    <p class="text-sm text-slate-500 mb-4" id="modal-desc">Project description goes here.</p>
+                                    <div class="mb-4">
+                                        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Tecnologías</h4>
+                                        <p class="text-sm text-indigo-600 font-medium bg-indigo-600/5 inline-block px-3 py-1 rounded-lg" id="modal-tech">React, Node.js</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <a href="#" id="modal-demo" target="_blank" class="inline-flex w-full justify-center rounded-xl bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 sm:ml-3 sm:w-auto">Ver Demo</a>
+                        <button type="button" onclick="document.getElementById('modal-close').click()" class="mt-3 inline-flex w-full justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-auto">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/59390000000?text=Hola,%20quiero%20información%20sobre%20desarrollo%20de%20software." target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl" aria-label="Contactar por WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top-btn" class="fixed bottom-24 right-6 z-40 w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-indigo-600" aria-label="Volver arriba">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <script type="module" src="/src/script.js"></script>
+</body>
+</html>
