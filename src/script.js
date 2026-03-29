@@ -146,15 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSuccess = document.getElementById('form-success');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Basic validation
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
-            
+
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             if (!name || !email || !phone || !message) {
@@ -167,19 +166,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate API call
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                contactForm.reset();
-                contactForm.classList.add('hidden');
-                formSuccess.classList.remove('hidden');
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, message }),
+                });
+
+                if (response.ok) {
+                    contactForm.reset();
+                    contactForm.classList.add('hidden');
+                    formSuccess.classList.remove('hidden');
+                } else {
+                    const data = await response.json();
+                    alert(data.error || 'Hubo un error al enviar el mensaje. Intenta de nuevo.');
+                }
+            } catch (error) {
+                alert('Hubo un error al enviar el mensaje. Intenta de nuevo.');
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+            }
         });
     }
 
