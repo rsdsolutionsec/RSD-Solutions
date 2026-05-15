@@ -19,14 +19,14 @@
       --bg-primary: #0c0c0e;
       --bg-secondary: #141416;
       --bg-card: #18181c;
-      --accent: #d4f04c;
-      --accent-dim: rgba(212,240,76,0.12);
-      --accent-demo: #4cd4f0;
-      --accent-demo-dim: rgba(76,212,240,0.12);
+      --accent: #a855f7;
+      --accent-dim: rgba(168,85,247,0.12);
+      --accent-demo: #c084fc;
+      --accent-demo-dim: rgba(192,132,252,0.12);
       --text-primary: #f0ede6;
       --text-secondary: #9f9c94;
       --border: rgba(240,237,230,0.08);
-      --border-accent: rgba(212,240,76,0.25);
+      --border-accent: rgba(168,85,247,0.25);
       --radius-card: 16px;
       --radius-btn: 10px;
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
@@ -64,7 +64,7 @@
       }
       #cursor-ring {
         width: 32px; height: 32px;
-        border: 1.5px solid rgba(212,240,76,0.5);
+        border: 1.5px solid rgba(168,85,247,0.5);
         transition: transform 0.12s ease, opacity 0.3s, width 0.2s, height 0.2s, border-color 0.2s;
       }
       a:hover ~ #cursor-ring,
@@ -119,7 +119,7 @@
     .nav-links a:hover { color: var(--text-primary); }
     .nav-cta {
       background: var(--accent);
-      color: #0c0c0e;
+      color: #fff;
       padding: 0.55rem 1.25rem;
       border-radius: var(--radius-btn);
       font-size: 0.875rem; font-weight: 700;
@@ -127,9 +127,9 @@
       transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
     }
     .nav-cta:hover {
-      background: #c8e840;
+      background: #9333ea;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(212,240,76,0.3);
+      box-shadow: 0 6px 20px rgba(168,85,247,0.3);
     }
     /* Mobile menu toggle */
     .nav-toggle {
@@ -179,12 +179,12 @@
     }
     .hero-blob-1 {
       width: 500px; height: 500px;
-      background: rgba(212,240,76,0.08);
+      background: rgba(168,85,247,0.08);
       top: -100px; right: -100px;
     }
     .hero-blob-2 {
       width: 400px; height: 400px;
-      background: rgba(76,212,240,0.06);
+      background: rgba(192,132,252,0.06);
       bottom: -50px; left: -80px;
     }
     .hero-inner {
@@ -228,7 +228,7 @@
       animation: heroFadeIn 0.6s 0.45s ease both;
     }
     .btn-primary {
-      background: var(--accent); color: #0c0c0e;
+      background: var(--accent); color: #fff;
       padding: 0.85rem 2rem;
       border-radius: var(--radius-btn);
       font-weight: 700; font-family: 'Syne', sans-serif;
@@ -238,8 +238,8 @@
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(212,240,76,0.35);
-      background: #c8e840;
+      box-shadow: 0 10px 30px rgba(168,85,247,0.35);
+      background: #9333ea;
     }
     .btn-secondary {
       background: transparent;
@@ -322,8 +322,8 @@
     .mock-card-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-dim); border: 1px solid var(--border-accent); margin-bottom: 0.5rem; }
     .mock-tag {
       display: inline-block;
-      background: rgba(212,240,76,0.15);
-      border: 1px solid rgba(212,240,76,0.25);
+      background: rgba(168,85,247,0.15);
+      border: 1px solid rgba(168,85,247,0.25);
       color: var(--accent);
       font-size: 0.6rem; font-weight: 700;
       padding: 0.15rem 0.4rem; border-radius: 4px;
@@ -512,7 +512,7 @@
     .service-card:hover::after { transform: scaleX(1); }
     .service-card.featured {
       border-color: var(--border-accent);
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(212,240,76,0.04) 100%);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(168,85,247,0.04) 100%);
     }
     .service-card.featured::after { transform: scaleX(1); }
     .service-popular {
@@ -560,15 +560,15 @@
     .service-features li svg { width: 16px; height: 16px; color: #34d399; flex-shrink: 0; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
     .service-btn {
       display: block; text-align: center;
-      background: var(--accent); color: #0c0c0e;
+      background: var(--accent); color: #fff;
       padding: 0.8rem; border-radius: var(--radius-btn);
       font-weight: 700; font-family: 'Syne', sans-serif;
       font-size: 0.9rem;
       transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
     }
     .service-btn:hover {
-      background: #c8e840; transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(212,240,76,0.25);
+      background: #9333ea; transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.25);
     }
     .service-btn.ghost {
       background: transparent;
@@ -750,7 +750,7 @@
     /* ===================== CONTACT CTA ===================== */
     #contacto { background: var(--bg-secondary); }
     .cta-box {
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(212,240,76,0.05) 100%);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(168,85,247,0.05) 100%);
       border: 1px solid var(--border-accent);
       border-radius: 24px;
       padding: 4rem;
@@ -761,7 +761,7 @@
     .cta-blob {
       position: absolute; width: 400px; height: 400px;
       border-radius: 50%;
-      background: rgba(212,240,76,0.05);
+      background: rgba(168,85,247,0.05);
       filter: blur(80px);
       top: -100px; right: -100px;
       pointer-events: none;
@@ -804,13 +804,13 @@
     }
     .form-input::placeholder { color: var(--text-secondary); }
     .form-input:focus {
-      border-color: rgba(212,240,76,0.4);
-      box-shadow: 0 0 0 3px rgba(212,240,76,0.08);
+      border-color: rgba(168,85,247,0.4);
+      box-shadow: 0 0 0 3px rgba(168,85,247,0.08);
     }
     textarea.form-input { resize: none; min-height: 100px; }
     .form-submit {
       width: 100%; padding: 0.9rem;
-      background: var(--accent); color: #0c0c0e;
+      background: var(--accent); color: #fff;
       border-radius: 10px;
       font-family: 'Syne', sans-serif; font-weight: 700;
       font-size: 0.95rem; cursor: pointer;
@@ -818,8 +818,8 @@
       border: none;
     }
     .form-submit:hover {
-      background: #c8e840; transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(212,240,76,0.25);
+      background: #9333ea; transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.25);
     }
     .form-success {
       display: none; text-align: center; padding: 2rem;
@@ -1035,7 +1035,7 @@
             <div class="mock-card" style="background: var(--accent-dim); border-color: var(--border-accent);">
               <div class="mock-card-dot" style="background: var(--accent); border-color: transparent;"></div>
               <div class="mock-line" style="height:7px; background: var(--accent); width:70%;"></div>
-              <div class="mock-line w-40" style="height:6px; margin-top:5px; background: rgba(212,240,76,0.3);"></div>
+              <div class="mock-line w-40" style="height:6px; margin-top:5px; background: rgba(168,85,247,0.3);"></div>
             </div>
           </div>
         </div>
@@ -1522,7 +1522,7 @@
       });
       el.addEventListener('mouseleave', function() {
         ring.style.width = '32px'; ring.style.height = '32px';
-        ring.style.borderColor = 'rgba(212,240,76,0.5)';
+        ring.style.borderColor = 'rgba(168,85,247,0.5)';
       });
     });
   }
