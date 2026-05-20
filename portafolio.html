@@ -103,7 +103,7 @@
     }
     .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
     .nav-cta {
-      background: var(--accent); color: #fff;
+      background: var(--accent); color: #000;
       padding: 0.55rem 1.25rem; border-radius: var(--radius-btn);
       font-size: 0.875rem; font-weight: 700;
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -270,8 +270,8 @@
       margin: 0;
     }
 
-    /* ---- DEMOS SECTION ---- */
-    #demos { background: var(--bg-secondary); }
+    /* ---- PÁGINAS WEB SECTION ---- */
+    #paginas-web { background: var(--bg-secondary); }
     .demo-section-intro {
       background: var(--accent-demo-dim);
       border: 1px solid var(--border-demo);
@@ -440,7 +440,7 @@
 <header id="navbar">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="RSD Solutions - Inicio">
-      <img src="/img/RSD-Logo.png" alt="RSD Solutions">
+      <img src="/img/Logo-RSD-SOLUTIONS-fondo-blanco.png" alt="RSD Solutions">
     </a>
     <nav id="nav-links" class="nav-links" aria-label="Navegación principal">
       <a href="/#demo">Cómo Funciona</a>
@@ -460,107 +460,31 @@
   <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
   <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
   <div class="portfolio-hero-inner">
-    <span class="section-label">Proyectos reales · Demos disponibles</span>
+    <span class="section-label">Software · Páginas Web · Landing Pages</span>
     <h1>Lo que construimos para nuestros clientes</h1>
     <p>Sitios en vivo, sistemas funcionales y demos listas para personalizar en tu industria.</p>
     <div class="filters" role="group" aria-label="Filtrar proyectos">
       <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="activos">Proyectos activos</button>
-      <button class="filter-btn demo-filter" data-filter="demos">Demos disponibles</button>
+      <button class="filter-btn" data-filter="software">Software</button>
+      <button class="filter-btn" data-filter="paginas-web">Páginas Web</button>
+      <button class="filter-btn" data-filter="landing-pages">Landing Pages</button>
     </div>
   </div>
 </section>
 
-<!-- ==================== PROYECTOS ACTIVOS ==================== -->
-<section id="activos" class="section">
+<!-- ==================== SOFTWARE ==================== -->
+<section id="software" class="section">
   <div class="section-inner">
     <div class="section-heading reveal">
-      <span class="section-label">En vivo</span>
-      <h2>Proyectos activos</h2>
-      <p>Sitios web y sistemas que desarrollamos y que hoy están publicados y en operación.</p>
+      <span class="section-label">Sistemas en vivo</span>
+      <h2>Software & Plataformas</h2>
+      <p>Sistemas y plataformas a medida que desarrollamos y que hoy están en operación activa.</p>
     </div>
 
-    <div class="projects-grid" id="activos-grid">
-
-      <a href="https://clasicars.site/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="activos">
-        <img src="/img/Clasic-car.png" alt="Clasic Car Reparaciones — landing page automotriz" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Automotriz · Landing Page</span>
-          <h3 class="project-card-title">Clasic Car Reparaciones</h3>
-          <p class="project-card-desc">Restauración fina, detallado premium y mantenimiento especializado para vehículos clásicos y de colección.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://costurenova.shop/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="activos">
-        <img src="/img/CostureNova.png" alt="CostureNova — tienda moda artesanal" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Moda · E-commerce</span>
-          <h3 class="project-card-title">CostureNova</h3>
-          <p class="project-card-desc">Alta costura artesanal: prendas únicas confeccionadas a mano con precisión y estilo que realzan tu esencia.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://tecnosfera.space/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-3" data-category="activos">
-        <img src="/img/Tecnosfera.png" alt="Tecnosfera — portal tecnológico" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Tecnología · Portal</span>
-          <h3 class="project-card-title">Tecnosfera</h3>
-          <p class="project-card-desc">Portal de noticias y reviews tecnológicas: smartphones, laptops, gaming y gadgets con análisis honestos.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://deepskyblue-octopus-835272.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="activos">
-        <img src="/img/Travel.png" alt="TravelNexus — turismo Ecuador" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Turismo · Landing Page</span>
-          <h3 class="project-card-title">TravelNexus</h3>
-          <p class="project-card-desc">Guía turística del Ecuador: los lugares más emblemáticos del país con una experiencia de viaje digital inolvidable.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://azure-goose-523127.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="activos">
-        <img src="/img/Clap.png" alt="Clap Music — sello discográfico" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Música · Web Corporativa</span>
-          <h3 class="project-card-title">Clap Music</h3>
-          <p class="project-card-desc">Presencia digital profesional para sello discográfico, artistas y proyectos musicales independientes.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://lawngreen-mosquito-611839.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-3" data-category="activos">
-        <img src="/img/Musiclin.png" alt="Musiclin — tienda de instrumentos" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Música · E-commerce</span>
-          <h3 class="project-card-title">Musiclin</h3>
-          <p class="project-card-desc">Tienda online de instrumentos musicales con catálogo completo para músicos de todos los niveles y estilos.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://greenyellow-swallow-829353.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="activos">
-        <img src="/img/Cosmetic.png" alt="Cosmetic — tienda de belleza" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Belleza · E-commerce</span>
-          <h3 class="project-card-title">Cosmetic</h3>
-          <p class="project-card-desc">Tienda online de cosméticos y productos de belleza con experiencia de compra moderna y atractiva.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
+    <div class="projects-grid" id="software-grid">
 
       <a href="https://restogestion.site/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="activos">
+         class="project-card reveal reveal-delay-1" data-category="software">
         <img src="/img/restogestion-1.png" alt="RestoGestión — sistema para restaurantes" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <span class="tag tag-accent">Gastronomía · Software</span>
@@ -571,8 +495,8 @@
       </a>
 
       <a href="https://control-style.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-3" data-category="activos">
-        <img src="/img/CRM.png" alt="Plataforma CRM automatización de ventas" class="project-card-img" loading="lazy">
+         class="project-card reveal reveal-delay-2" data-category="software">
+        <img src="/img/PlatVentas.png" alt="Plataforma CRM automatización de ventas" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <span class="tag tag-accent">Ventas · Plataforma</span>
           <h3 class="project-card-title">Plataforma de Ventas</h3>
@@ -582,26 +506,13 @@
       </a>
 
       <a href="https://control-rest-v1-0.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="activos">
-        <img src="/img/ERP.png" alt="Software de gestión empresarial ERP" class="project-card-img" loading="lazy">
+         class="project-card reveal reveal-delay-3" data-category="software">
+        <img src="/img/SoftEmpresarial.png" alt="Software de gestión empresarial ERP" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <span class="tag tag-accent">Empresarial · ERP</span>
           <h3 class="project-card-title">Software de Gestión Empresarial</h3>
           <p class="project-card-desc">ERP personalizado para el control financiero y operativo de PYMES. Reportes, inventario y facturación.</p>
           <span class="project-card-link">Ver software <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://don-pepe-bussines-club.vercel.app/" target="_blank"
-         rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="activos">
-        <img src="/img/DonPepe.png" alt="Don Pepe Business Club — club empresarial"
-             class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Empresarial · Club</span>
-          <h3 class="project-card-title">Don Pepe Business Club</h3>
-          <p class="project-card-desc">Presencia digital para club de negocios con membresías, eventos y comunidad empresarial de alto impacto.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
 
@@ -611,45 +522,85 @@
 
 <hr class="section-divider">
 
-<!-- ==================== DEMOS DISPONIBLES ==================== -->
-<section id="demos" class="section">
+<!-- ==================== PÁGINAS WEB ==================== -->
+<section id="paginas-web" class="section">
   <div class="section-inner">
     <div class="section-heading reveal">
-      <span class="section-label" style="color: var(--accent-demo);">Disponibles ahora</span>
-      <h2>Demos disponibles</h2>
-      <p>Diseños propios ya construidos, listos para personalizar con tu marca y lanzar en 48 horas.</p>
+      <span class="section-label">En vivo · Demos disponibles</span>
+      <h2>Páginas Web</h2>
+      <p>Sitios web completos publicados para nuestros clientes, más demos listas para personalizar con tu marca.</p>
     </div>
 
-    <div class="demo-section-intro reveal">
-      <div class="demo-section-intro-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
-      <div class="demo-section-intro-text">
-        <strong>¿Qué es una demo disponible?</strong>
-        <span>Son páginas web que ya diseñamos, funcionales y listas para usar. Las personalizamos con tu marca, contenido y colores en 48 horas. Si la adquieres, pagas solo la personalización y hosting — sin costo de diseño base.</span>
-      </div>
-    </div>
+    <div class="projects-grid" id="paginas-web-grid">
 
-    <div class="projects-grid" id="demos-grid">
-
-      <a href="https://paw-lux-studio.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-1" data-category="demos">
-        <img src="/img/PawLux.png" alt="PawLux Studio — demo peluquería canina y felina" class="project-card-img" loading="lazy">
+      <a href="https://costurenova.shop/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-1" data-category="paginas-web">
+        <img src="/img/CostureNova.png" alt="CostureNova — tienda moda artesanal" class="project-card-img" loading="lazy">
         <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Mascotas · Peluquería</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">PawLux Studio</h3>
-          <p class="project-card-desc">Demo lista para peluquerías y spas de mascotas. Landing profesional con servicios, galería y reservas por WhatsApp.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
+          <span class="tag tag-accent">Moda · E-commerce</span>
+          <h3 class="project-card-title">CostureNova</h3>
+          <p class="project-card-desc">Alta costura artesanal: prendas únicas confeccionadas a mano con precisión y estilo que realzan tu esencia.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://tecnosfera.space/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-2" data-category="paginas-web">
+        <img src="/img/Tecnosfera.png" alt="Tecnosfera — portal tecnológico" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Tecnología · Portal</span>
+          <h3 class="project-card-title">Tecnosfera</h3>
+          <p class="project-card-desc">Portal de noticias y reviews tecnológicas: smartphones, laptops, gaming y gadgets con análisis honestos.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://azure-goose-523127.hostingersite.com/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-3" data-category="paginas-web">
+        <img src="/img/Clap.png" alt="Clap Music — sello discográfico" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Música · Web Corporativa</span>
+          <h3 class="project-card-title">Clap Music</h3>
+          <p class="project-card-desc">Presencia digital profesional para sello discográfico, artistas y proyectos musicales independientes.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://lawngreen-mosquito-611839.hostingersite.com/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-1" data-category="paginas-web">
+        <img src="/img/Musiclin.png" alt="Musiclin — tienda de instrumentos" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Música · E-commerce</span>
+          <h3 class="project-card-title">Musiclin</h3>
+          <p class="project-card-desc">Tienda online de instrumentos musicales con catálogo completo para músicos de todos los niveles y estilos.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://greenyellow-swallow-829353.hostingersite.com/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-2" data-category="paginas-web">
+        <img src="/img/Cosmetic.png" alt="Cosmetic — tienda de belleza" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Belleza · E-commerce</span>
+          <h3 class="project-card-title">Cosmetic</h3>
+          <p class="project-card-desc">Tienda online de cosméticos y productos de belleza con experiencia de compra moderna y atractiva.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://don-pepe-bussines-club.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-3" data-category="paginas-web">
+        <img src="/img/DonPepe.png" alt="Don Pepe Business Club — club empresarial" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Empresarial · Club</span>
+          <h3 class="project-card-title">Don Pepe Business Club</h3>
+          <p class="project-card-desc">Presencia digital para club de negocios con membresías, eventos y comunidad empresarial de alto impacto.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
 
       <a href="https://premier-estates.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-2" data-category="demos">
+         class="demo-card reveal reveal-delay-1" data-category="paginas-web">
         <img src="/img/PremierEstates.png" alt="Premier Estates — demo inmobiliaria de lujo" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
@@ -665,7 +616,7 @@
       </a>
 
       <a href="https://drop-print-store.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-3" data-category="demos">
+         class="demo-card reveal reveal-delay-2" data-category="paginas-web">
         <img src="/img/DropPrint.png" alt="DropPrint Store — demo tienda de posters musicales" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
@@ -680,7 +631,7 @@
         </div>
       </a>
 
-      <div class="demo-card reveal reveal-delay-1" data-category="demos">
+      <div class="demo-card reveal reveal-delay-3" data-category="paginas-web">
         <img src="/img/EliteField.png" alt="EliteField Agency — demo agencia deportiva" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
@@ -702,24 +653,8 @@
         </div>
       </div>
 
-      <a href="https://autoparts-beige.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-2" data-category="demos">
-        <img src="/img/AutoPartsDemo.png" alt="AutoParts Store — demo tienda de repuestos automotrices" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Automotriz · Repuestos</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">AutoParts Store</h3>
-          <p class="project-card-desc">Demo para tiendas de repuestos y talleres mecánicos. Catálogo por marca, contacto express y asesoría técnica.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
       <a href="https://enfocame.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-3" data-category="demos">
+         class="demo-card reveal reveal-delay-1" data-category="paginas-web">
         <img src="/img/LensFrame.png" alt="LensFrame Portfolio — demo portafolio para fotógrafos" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
@@ -735,7 +670,7 @@
       </a>
 
       <a href="https://study-bridge-agency.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-1" data-category="demos">
+         class="demo-card reveal reveal-delay-2" data-category="paginas-web">
         <img src="/img/StudyBridge.png" alt="StudyBridge Agency — demo agencia de asesoría estudiantil" class="project-card-img" loading="lazy">
         <div class="project-card-body">
           <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
@@ -744,6 +679,77 @@
           </div>
           <h3 class="project-card-title">StudyBridge Agency</h3>
           <p class="project-card-desc">Demo para agencias de movilidad estudiantil internacional. Servicios, proceso paso a paso y planes de asesoría.</p>
+          <span class="project-card-link" style="color:var(--accent-demo);">
+            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ==================== LANDING PAGES ==================== -->
+<section id="landing-pages" class="section">
+  <div class="section-inner">
+    <div class="section-heading reveal">
+      <span class="section-label">En vivo · Demos disponibles</span>
+      <h2>Landing Pages</h2>
+      <p>Páginas de aterrizaje diseñadas para convertir visitas en clientes, en vivo y listas para personalizar.</p>
+    </div>
+
+    <div class="projects-grid" id="landing-pages-grid">
+
+      <a href="https://clasicars.site/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-1" data-category="landing-pages">
+        <img src="/img/Clasic-car.png" alt="Clasic Car Reparaciones — landing page automotriz" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Automotriz · Landing Page</span>
+          <h3 class="project-card-title">Clasic Car Reparaciones</h3>
+          <p class="project-card-desc">Restauración fina, detallado premium y mantenimiento especializado para vehículos clásicos y de colección.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://deepskyblue-octopus-835272.hostingersite.com/" target="_blank" rel="noopener noreferrer"
+         class="project-card reveal reveal-delay-2" data-category="landing-pages">
+        <img src="/img/Travel.png" alt="TravelNexus — turismo Ecuador" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <span class="tag tag-accent">Turismo · Landing Page</span>
+          <h3 class="project-card-title">TravelNexus</h3>
+          <p class="project-card-desc">Guía turística del Ecuador: los lugares más emblemáticos del país con una experiencia de viaje digital inolvidable.</p>
+          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://paw-lux-studio.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="demo-card reveal reveal-delay-3" data-category="landing-pages">
+        <img src="/img/PawLux.png" alt="PawLux Studio — demo peluquería canina y felina" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
+            <span class="tag tag-demo">Mascotas · Peluquería</span>
+            <span class="tag tag-available">● Disponible</span>
+          </div>
+          <h3 class="project-card-title">PawLux Studio</h3>
+          <p class="project-card-desc">Demo lista para peluquerías y spas de mascotas. Landing profesional con servicios, galería y reservas por WhatsApp.</p>
+          <span class="project-card-link" style="color:var(--accent-demo);">
+            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://autoparts-beige.vercel.app/" target="_blank" rel="noopener noreferrer"
+         class="demo-card reveal reveal-delay-1" data-category="landing-pages">
+        <img src="/img/AutoPartsDemo.png" alt="AutoParts Store — demo tienda de repuestos automotrices" class="project-card-img" loading="lazy">
+        <div class="project-card-body">
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
+            <span class="tag tag-demo">Automotriz · Repuestos</span>
+            <span class="tag tag-available">● Disponible</span>
+          </div>
+          <h3 class="project-card-title">AutoParts Store</h3>
+          <p class="project-card-desc">Demo para tiendas de repuestos y talleres mecánicos. Catálogo por marca, contacto express y asesoría técnica.</p>
           <span class="project-card-link" style="color:var(--accent-demo);">
             Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </span>
@@ -777,7 +783,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/img/RSD-Logo.png" alt="RSD Solutions">
+        <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
         <p>Diseñamos páginas web profesionales para negocios de toda industria. Quito, Ecuador — con clientes en todo el país.</p>
       </div>
       <div class="footer-col">
@@ -887,15 +893,18 @@
         }
       });
 
-      /* Show/hide section headers based on active filter */
-      var activosSection = document.getElementById('activos');
-      var demosSection = document.getElementById('demos');
-      if (filter === 'activos') {
-        activosSection.style.display = ''; demosSection.style.display = 'none';
-      } else if (filter === 'demos') {
-        activosSection.style.display = 'none'; demosSection.style.display = '';
+      /* Show/hide sections based on active filter */
+      var softwareSection = document.getElementById('software');
+      var paginasWebSection = document.getElementById('paginas-web');
+      var landingPagesSection = document.getElementById('landing-pages');
+      if (filter === 'software') {
+        softwareSection.style.display = ''; paginasWebSection.style.display = 'none'; landingPagesSection.style.display = 'none';
+      } else if (filter === 'paginas-web') {
+        softwareSection.style.display = 'none'; paginasWebSection.style.display = ''; landingPagesSection.style.display = 'none';
+      } else if (filter === 'landing-pages') {
+        softwareSection.style.display = 'none'; paginasWebSection.style.display = 'none'; landingPagesSection.style.display = '';
       } else {
-        activosSection.style.display = ''; demosSection.style.display = '';
+        softwareSection.style.display = ''; paginasWebSection.style.display = ''; landingPagesSection.style.display = '';
       }
     });
   });
