@@ -2,17 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="google-site-verification" content="tZBjwB5w1PXDhHIWUtkzz6ZuzQnyp1RCJUJdrmKzJqM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSD Solutions — Diseño Web Profesional en Ecuador</title>
-  <meta name="description" content="Diseñamos tu página web antes de que inviertas un solo dólar. Demo gratuita y funcional, sin compromiso. Landing pages desde $50. Quito, Ecuador.">
-  <meta property="og:title" content="RSD Solutions — Diseño Web Profesional en Ecuador">
-  <meta property="og:description" content="Primero ves la demo completa, luego decides si pagas. Landing pages desde $50.">
+  <title>RSD Solutions | Sistemas Web, SaaS y Aplicaciones a Medida</title>
+  <meta name="description" content="Desarrollo de Sistemas Web, SaaS y Aplicaciones a Medida. Soluciones de software corporativo con arquitectura escalable y código auditable. Desde $400.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="RSD Solutions | Sistemas Web, SaaS y Aplicaciones">
+  <meta property="og:description" content="Desarrollo de Sistemas Web, SaaS y Aplicaciones a Medida. Desde $400.">
+  <meta property="og:image" content="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6">
   <meta property="og:type" content="website">
-  <link rel="icon" href="/img/RSD-Logo.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- INSERTAR PIXEL AQUI -->
+  <!-- <script>...</script> -->
+  <!-- FIN PIXEL -->
+
+  <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles.css">
+
   <style>
     /* ===================== VARIABLES ===================== */
     :root {
@@ -21,14 +28,13 @@
       --bg-card: #18181c;
       --accent: #a855f7;
       --accent-dim: rgba(168,85,247,0.12);
-      --accent-demo: #c084fc;
-      --accent-demo-dim: rgba(192,132,252,0.12);
+      --accent-hover: #9333ea;
       --text-primary: #f0ede6;
       --text-secondary: #9f9c94;
-      --border: rgba(240,237,230,0.08);
+      --border: rgba(255,255,255,0.06);
       --border-accent: rgba(168,85,247,0.25);
-      --radius-card: 16px;
-      --radius-btn: 10px;
+      --radius-card: 20px;
+      --radius-btn: 12px;
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
 
@@ -43,1555 +49,552 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
+    img { max-width: 100%; display: block; }
 
-    /* ===================== CUSTOM CURSOR (desktop only) ===================== */
-    @media (pointer: fine) {
-      body { cursor: none; }
-      #cursor-dot, #cursor-ring {
-        position: fixed; top: 0; left: 0;
-        pointer-events: none; z-index: 9999;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: opacity 0.3s;
-      }
-      #cursor-dot {
-        width: 6px; height: 6px;
-        background: var(--accent);
-      }
-      #cursor-ring {
-        width: 32px; height: 32px;
-        border: 1.5px solid rgba(168,85,247,0.5);
-        transition: transform 0.12s ease, opacity 0.3s, width 0.2s, height 0.2s, border-color 0.2s;
-      }
-      a:hover ~ #cursor-ring,
-      button:hover ~ #cursor-ring { width: 44px; height: 44px; border-color: var(--accent); }
-    }
-
-    /* ===================== TYPOGRAPHY ===================== */
-    .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
-    h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.15; }
-
-    /* ===================== FADE IN SCROLL ===================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    /* ===================== TYPOGRAPHY & UTILS ===================== */
+    .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.125rem; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .text-accent { color: var(--accent); }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 6rem 0; }
 
     /* ===================== NAVBAR ===================== */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 0 1.5rem;
-      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-      border-bottom: 1px solid transparent;
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 80px;
+      background: rgba(12, 12, 14, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: var(--transition);
     }
-    #navbar.scrolled {
-      background: rgba(12,12,14,0.85);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-color: var(--border);
-      box-shadow: 0 1px 40px rgba(0,0,0,0.4);
+    .navbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
     }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo img { height: 38px; width: auto; }
-    .nav-links {
-      display: flex; align-items: center; gap: 2rem;
-    }
-    .nav-links a {
-      font-size: 0.875rem; font-weight: 500;
-      color: var(--text-secondary);
-      transition: color var(--transition);
-    }
-    .nav-links a:hover { color: var(--text-primary); }
-    .nav-cta {
+    .nav-brand img { height: 32px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-link { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; transition: color var(--transition); }
+    .nav-link:hover { color: #fff; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
       background: var(--accent);
-      color: #000;
-      padding: 0.55rem 1.25rem;
+      color: #fff;
+      font-weight: 600;
       border-radius: var(--radius-btn);
-      font-size: 0.875rem; font-weight: 700;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      border: none;
+      cursor: pointer;
     }
-    .nav-cta:hover {
-      background: #9333ea;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(168,85,247,0.3);
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(168,85,247,0.3);
     }
-    /* Mobile menu toggle */
-    .nav-toggle {
-      display: none;
-      flex-direction: column; gap: 5px;
-      padding: 6px; cursor: pointer;
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-weight: 600;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--border);
+      transition: background var(--transition), transform var(--transition);
     }
-    .nav-toggle span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text-primary);
-      transition: transform 0.3s, opacity 0.3s;
-      border-radius: 2px;
-    }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 768px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        position: fixed; top: 72px; left: 0; right: 0;
-        background: rgba(20,20,22,0.97);
-        backdrop-filter: blur(20px);
-        flex-direction: column; align-items: stretch;
-        gap: 0; padding: 1.5rem;
-        border-bottom: 1px solid var(--border);
-        transform: translateY(-110%);
-        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-        pointer-events: none;
-      }
-      .nav-links.open { transform: translateY(0); pointer-events: all; }
-      .nav-links a { padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; }
-      .nav-links a:last-of-type { border-bottom: none; }
-      .nav-cta { margin-top: 1rem; text-align: center; padding: 0.85rem; font-size: 1rem; }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
     }
 
     /* ===================== HERO ===================== */
-    #inicio {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 7rem 1.5rem 5rem;
-      position: relative; overflow: hidden;
-    }
-    .hero-blob-1, .hero-blob-2 {
-      position: absolute; border-radius: 50%;
-      filter: blur(100px); pointer-events: none;
-    }
-    .hero-blob-1 {
-      width: 500px; height: 500px;
-      background: rgba(168,85,247,0.08);
-      top: -100px; right: -100px;
-    }
-    .hero-blob-2 {
-      width: 400px; height: 400px;
-      background: rgba(192,132,252,0.06);
-      bottom: -50px; left: -80px;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-      position: relative; z-index: 1;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      color: var(--accent);
-      padding: 0.35rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
-      margin-bottom: 1.5rem;
-      animation: heroFadeIn 0.6s ease both;
-    }
-    .hero-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    .hero-title {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      font-weight: 800; line-height: 1.1;
-      color: var(--text-primary);
-      margin-bottom: 1.5rem;
-      animation: heroFadeIn 0.6s 0.15s ease both;
-    }
-    .hero-title .accent { color: var(--accent); }
-    .hero-subtitle {
-      font-size: 1.125rem;
-      color: var(--text-secondary); line-height: 1.7;
-      max-width: 520px; margin-bottom: 2.5rem;
-      animation: heroFadeIn 0.6s 0.3s ease both;
-    }
-    .hero-actions {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-      animation: heroFadeIn 0.6s 0.45s ease both;
-    }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius-btn);
-      font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.95rem;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(168,85,247,0.35);
-      background: #9333ea;
-    }
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-primary);
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius-btn);
-      font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color var(--transition), background var(--transition), transform var(--transition);
-    }
-    .btn-secondary:hover {
-      border-color: var(--text-secondary);
-      background: rgba(255,255,255,0.04);
-      transform: translateY(-1px);
-    }
-
-    /* Hero visual: browser mockup */
-    .hero-visual {
-      animation: heroFadeIn 0.6s 0.2s ease both;
-    }
-    .browser-mockup {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
-    }
-    .browser-bar {
-      background: var(--bg-secondary);
-      padding: 0.7rem 1rem;
-      display: flex; align-items: center; gap: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .browser-dot:nth-child(1) { background: #ff5f57; }
-    .browser-dot:nth-child(2) { background: #febc2e; }
-    .browser-dot:nth-child(3) { background: #28c840; }
-    .browser-url {
-      flex: 1; margin: 0 0.75rem;
-      background: var(--bg-primary);
-      border-radius: 6px;
-      padding: 0.3rem 0.75rem;
-      font-size: 0.72rem; color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-    .browser-body { padding: 1.5rem; }
-    .mock-hero-bar {
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1rem;
-    }
-    .mock-line {
-      height: 10px; border-radius: 4px;
-      background: var(--border);
-      margin-bottom: 0.5rem;
-    }
-    .mock-line.accent { background: var(--accent); width: 60%; }
-    .mock-line.w-80 { width: 80%; }
-    .mock-line.w-50 { width: 50%; }
-    .mock-line.w-40 { width: 40%; }
-    .mock-btn-row { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
-    .mock-btn {
-      height: 28px; border-radius: 6px;
-      background: var(--accent); width: 90px;
-    }
-    .mock-btn.ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      width: 80px;
-    }
-    .mock-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem; }
-    .mock-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.75rem;
-    }
-    .mock-card-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-dim); border: 1px solid var(--border-accent); margin-bottom: 0.5rem; }
-    .mock-tag {
-      display: inline-block;
-      background: rgba(168,85,247,0.15);
-      border: 1px solid rgba(168,85,247,0.25);
-      color: var(--accent);
-      font-size: 0.6rem; font-weight: 700;
-      padding: 0.15rem 0.4rem; border-radius: 4px;
-      margin-bottom: 0.4rem; letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    /* Stats strip below hero */
-    .hero-stats {
-      display: flex; gap: 2.5rem; flex-wrap: wrap;
-      margin-top: 3rem; padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-      animation: heroFadeIn 0.6s 0.6s ease both;
-    }
-    .hero-stat-value {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.8rem; font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1;
-    }
-    .hero-stat-value span { color: var(--accent); }
-    .hero-stat-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem; }
-
-    @keyframes heroFadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: none; }
-    }
-
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-    }
-    @media (max-width: 600px) {
-      .hero-stats { gap: 1.5rem; }
-      .hero-stat-value { font-size: 1.5rem; }
-    }
-
-    /* ===================== MARQUEE ===================== */
-    #clientes {
-      padding: 3rem 1.5rem;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-secondary);
-      overflow: hidden;
-    }
-    .marquee-label {
-      text-align: center;
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text-secondary); margin-bottom: 2rem;
-    }
-    .marquee-track {
-      display: flex; gap: 5rem;
-      animation: marquee 24s linear infinite;
-      width: max-content;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    .marquee-wrap { overflow: hidden; mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); }
-    .marquee-inner { display: flex; gap: 5rem; width: max-content; }
-    .marquee-logo {
-      height: 36px; width: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.45;
-      transition: opacity var(--transition);
-      flex-shrink: 0;
-    }
-    .marquee-logo:hover { opacity: 0.8; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ===================== SECTION COMMON ===================== */
-    .section { padding: 6rem 1.5rem; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      display: inline-block;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      font-weight: 800; color: var(--text-primary);
-      margin-bottom: 1rem; max-width: 680px;
-    }
-    .section-sub {
-      font-size: 1.05rem; color: var(--text-secondary);
-      max-width: 580px; line-height: 1.7;
-    }
-
-    /* ===================== DEMO SECTION ===================== */
-    #demo { background: var(--bg-secondary); }
-    .demo-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 3.5rem;
-    }
-    .demo-step {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-card);
-      padding: 2.25rem 2rem;
+    .hero {
       position: relative;
-      transition: border-color var(--transition), transform var(--transition);
+      padding: 12rem 0 8rem;
+      text-align: center;
+      overflow: hidden;
     }
-    .demo-step:hover {
-      border-color: var(--border-accent);
-      transform: translateY(-3px);
+    .hero::before {
+      content: ''; position: absolute;
+      top: -20%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: rgba(168,85,247,0.15);
+      filter: blur(120px);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
     }
-    .demo-step-number {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 4rem; font-weight: 800;
-      color: var(--accent-dim);
-      line-height: 1; margin-bottom: 1.25rem;
-      user-select: none;
+    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; background: var(--accent-dim);
+      border: 1px solid var(--border-accent); border-radius: 100px;
+      color: var(--accent); font-weight: 600; font-size: 0.85rem;
+      margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;
     }
-    .demo-step-icon {
-      width: 44px; height: 44px;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
+    .hero-title { font-size: 4rem; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+    .hero-desc { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 650px; margin-inline: auto; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem; }
+    
+    .hero-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      padding-top: 3rem; border-top: 1px solid var(--border);
     }
-    .demo-step-icon svg { width: 20px; height: 20px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .demo-step h3 {
-      font-size: 1.15rem; font-weight: 700;
-      margin-bottom: 0.75rem; color: var(--text-primary);
-    }
-    .demo-step p { font-size: 0.925rem; color: var(--text-secondary); line-height: 1.65; }
-    .demo-step::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--accent);
-      border-radius: 0 0 var(--radius-card) var(--radius-card);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    .demo-step:hover::after { transform: scaleX(1); }
+    .metric-card { text-align: left; }
+    .metric-value { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .metric-value svg { color: var(--accent); width: 20px; height: 20px; }
+    .metric-label { font-size: 0.9rem; color: var(--text-secondary); }
 
-    .demo-cta-box {
-      margin-top: 2.5rem;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      border-radius: var(--radius-card);
-      padding: 2rem 2.5rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .demo-cta-text strong {
-      display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 0.35rem;
-    }
-    .demo-cta-text span { font-size: 0.9rem; color: var(--text-secondary); }
+    /* ===================== LOGOS ===================== */
+    .logos-section { padding: 3rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-secondary); }
+    .logos-title { text-align: center; font-size: 0.85rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 2px; margin-bottom: 2rem; }
+    .logos-grid { display: flex; justify-content: center; gap: 4rem; align-items: center; flex-wrap: wrap; opacity: 0.5; }
+    .logos-grid img { max-height: 32px; filter: grayscale(100%) brightness(200%); }
 
-    @media (max-width: 768px) {
-      .demo-grid { grid-template-columns: 1fr; }
-      .demo-cta-box { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ===================== SERVICES ===================== */
-    #servicios { background: var(--bg-primary); }
-    .services-featured {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem; margin-top: 3rem;
-    }
+    /* ===================== SERVICES / PRICING ===================== */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
     .service-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-card);
-      padding: 2rem;
-      display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
-      transition: border-color var(--transition), transform var(--transition);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-color 0.4s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
     .service-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: transparent; transition: background 0.4s;
     }
-    .service-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-card.featured {
-      border-color: var(--border-accent);
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(168,85,247,0.04) 100%);
-    }
-    .service-card.featured::after { transform: scaleX(1); }
-    .service-popular {
-      position: absolute; top: 1.25rem; right: 1.25rem;
-      background: var(--accent); color: #0c0c0e;
-      font-size: 0.65rem; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.25rem 0.65rem; border-radius: 100px;
-    }
-    .service-icon {
-      width: 46px; height: 46px;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
-    }
-    .service-icon svg { width: 22px; height: 22px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .service-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .service-price {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.2rem; font-weight: 800;
-      color: var(--accent); margin-bottom: 1.25rem;
-      line-height: 1;
-    }
-    .service-price .old {
-      font-size: 1rem; font-weight: 400;
-      color: var(--text-secondary);
-      text-decoration: line-through;
-      margin-left: 0.5rem;
-    }
-    .service-price .badge {
-      font-size: 0.7rem; font-weight: 700;
-      background: rgba(52,211,153,0.15);
-      color: #34d399;
-      padding: 0.2rem 0.5rem; border-radius: 6px;
-      margin-left: 0.5rem; vertical-align: middle;
-    }
-    .service-features { list-style: none; flex: 1; margin-bottom: 1.75rem; }
-    .service-features li {
-      display: flex; align-items: flex-start; gap: 0.65rem;
-      font-size: 0.875rem; color: var(--text-secondary);
-      margin-bottom: 0.6rem; line-height: 1.5;
-    }
-    .service-features li svg { width: 16px; height: 16px; color: #34d399; flex-shrink: 0; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-    .service-btn {
-      display: block; text-align: center;
-      background: var(--accent); color: #fff;
-      padding: 0.8rem; border-radius: var(--radius-btn);
-      font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.9rem;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-    .service-btn:hover {
-      background: #9333ea; transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(168,85,247,0.25);
-    }
-    .service-btn.ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-primary);
-    }
-    .service-btn.ghost:hover {
-      border-color: var(--accent);
-      background: var(--accent-dim);
-      color: var(--text-primary);
-      box-shadow: none;
-    }
+    .service-card:hover::after { background: var(--accent); }
+    
+    .service-header { margin-bottom: 2rem; }
+    .service-title { font-size: 2rem; margin-bottom: 0.5rem; }
+    .service-price { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    .service-desc { color: var(--text-secondary); font-size: 1rem; }
+    
+    .service-features { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .feature-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .feature-icon { color: var(--accent); margin-top: 2px; }
+    .feature-text { color: #fff; font-size: 0.95rem; }
+    .feature-subtext { color: var(--text-secondary); font-size: 0.85rem; display: block; margin-top: 0.25rem; }
 
-    /* Secondary services */
-    .services-secondary-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--text-secondary);
-      margin-top: 3.5rem; margin-bottom: 1.25rem;
-      text-transform: uppercase; letter-spacing: 0.1em;
+    /* ===================== HOW IT WORKS ===================== */
+    .process-section { background: var(--bg-secondary); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
+    .process-grid::before {
+      content: ''; position: absolute; top: 32px; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0;
     }
-    .services-secondary {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+    .process-step { position: relative; z-index: 1; }
+    .step-number {
+      width: 64px; height: 64px; background: var(--bg-card); border: 1px solid var(--border-accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(168,85,247,0.1);
     }
-    .service-mini {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-card);
-      padding: 1.5rem;
-      transition: border-color var(--transition), transform var(--transition);
-      position: relative; overflow: hidden;
-    }
-    .service-mini::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    .service-mini:hover { border-color: var(--border-accent); transform: translateY(-2px); }
-    .service-mini:hover::after { transform: scaleX(1); }
-    .service-mini-icon {
-      width: 38px; height: 38px;
-      background: var(--accent-dim); border: 1px solid var(--border-accent);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .service-mini-icon svg { width: 18px; height: 18px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .service-mini h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .service-mini .price { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
-    .service-mini .desc { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.5; }
-
-    @media (max-width: 900px) {
-      .services-featured { grid-template-columns: 1fr; }
-      .services-secondary { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .services-secondary { grid-template-columns: 1fr; }
-    }
-
-    /* ===================== PORTFOLIO ===================== */
-    #portafolio { background: var(--bg-secondary); }
-    .portfolio-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;
-    }
-    .portfolio-ver-todos {
-      color: var(--accent); font-weight: 600; font-size: 0.875rem;
-      display: flex; align-items: center; gap: 0.4rem;
-      transition: gap var(--transition);
-      white-space: nowrap;
-    }
-    .portfolio-ver-todos:hover { gap: 0.7rem; }
-    .portfolio-ver-todos svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .portfolio-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .portfolio-card {
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-      display: block; position: relative;
-    }
-    .portfolio-card:hover {
-      border-color: var(--border-accent);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    }
-    .portfolio-card-img {
-      width: 100%; height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .portfolio-card:hover .portfolio-card-img { transform: scale(1.05); }
-    .portfolio-card-body { padding: 1.25rem; }
-    .portfolio-card-tag {
-      font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      padding: 0.2rem 0.55rem; border-radius: 4px;
-      display: inline-block; margin-bottom: 0.65rem;
-    }
-    .portfolio-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
-    .portfolio-card-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 0.9rem; }
-    .portfolio-card-link {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.8rem; font-weight: 600; color: var(--accent);
-      transition: gap var(--transition);
-    }
-    .portfolio-card-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; }
-    .portfolio-card:hover .portfolio-card-link { gap: 0.55rem; }
-
-    /* Accent line per card on hover */
-    .portfolio-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    .portfolio-card:hover::after { transform: scaleX(1); }
-
-    .portfolio-more {
-      text-align: center; margin-top: 3rem;
-    }
-
-    @media (max-width: 900px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
-    }
+    .step-title { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .step-desc { color: var(--text-secondary); font-size: 0.95rem; }
 
     /* ===================== TESTIMONIALS ===================== */
-    #testimonios { background: var(--bg-primary); }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 3rem;
-    }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     .testimonial-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-card);
-      padding: 2rem;
-      transition: border-color var(--transition), transform var(--transition);
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card);
+      padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
     }
-    .testimonial-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
-    .stars { display: flex; gap: 2px; margin-bottom: 1.25rem; }
-    .stars svg { width: 16px; height: 16px; fill: #f59e0b; color: #f59e0b; }
-    .stars svg.half { fill: url(#half-star); }
-    .testimonial-text {
-      font-size: 0.9rem; color: var(--text-secondary);
-      line-height: 1.7; font-style: italic; margin-bottom: 1.5rem;
-    }
-    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-    .testimonial-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-      font-size: 0.8rem; color: var(--accent);
-      flex-shrink: 0;
-    }
-    .testimonial-name { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
-    .testimonial-role { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.15rem; }
+    .testimonial-text { font-size: 1.125rem; font-style: italic; color: #fff; margin-bottom: 2rem; line-height: 1.7; }
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+    .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: #333; }
+    .author-info h4 { font-size: 1rem; margin-bottom: 0.1rem; }
+    .author-info p { font-size: 0.85rem; color: var(--text-secondary); }
 
-    @media (max-width: 900px) {
-      .testimonials-grid { grid-template-columns: 1fr; }
-    }
+    /* ===================== CTA / CONTACT ===================== */
+    .cta-section { background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%); }
+    .cta-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .cta-content h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+    .cta-content p { font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; }
+    .cta-bullets { display: flex; flex-direction: column; gap: 1rem; }
+    .cta-bullet { display: flex; align-items: center; gap: 0.75rem; color: #fff; }
+    .cta-bullet svg { color: var(--accent); }
 
-    /* ===================== CONTACT CTA ===================== */
-    #contacto { background: var(--bg-secondary); }
-    .cta-box {
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(168,85,247,0.05) 100%);
-      border: 1px solid var(--border-accent);
-      border-radius: 24px;
-      padding: 4rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; align-items: start;
-      position: relative; overflow: hidden;
+    .form-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
-    .cta-blob {
-      position: absolute; width: 400px; height: 400px;
-      border-radius: 50%;
-      background: rgba(168,85,247,0.05);
-      filter: blur(80px);
-      top: -100px; right: -100px;
-      pointer-events: none;
-    }
-    .cta-content { position: relative; z-index: 1; }
-    .cta-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 800; margin-bottom: 1rem;
-    }
-    .cta-sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; }
-    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-item {
-      display: flex; align-items: center; gap: 0.85rem;
-      font-size: 0.9rem;
-    }
-    .contact-item-icon {
-      width: 38px; height: 38px;
-      background: var(--accent-dim); border: 1px solid var(--border-accent);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .contact-item-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .contact-item a { color: var(--text-secondary); transition: color var(--transition); }
-    .contact-item a:hover { color: var(--accent); }
-
-    /* Contact form */
-    .contact-form { position: relative; z-index: 1; }
-    .form-group { margin-bottom: 1rem; }
-    .form-input {
-      width: 100%;
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.85rem 1.1rem;
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      transition: border-color var(--transition), box-shadow var(--transition);
-      outline: none;
-    }
-    .form-input::placeholder { color: var(--text-secondary); }
-    .form-input:focus {
-      border-color: rgba(168,85,247,0.4);
-      box-shadow: 0 0 0 3px rgba(168,85,247,0.08);
-    }
-    textarea.form-input { resize: none; min-height: 100px; }
-    .form-submit {
-      width: 100%; padding: 0.9rem;
-      background: var(--accent); color: #fff;
-      border-radius: 10px;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-      font-size: 0.95rem; cursor: pointer;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      border: none;
-    }
-    .form-submit:hover {
-      background: #9333ea; transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(168,85,247,0.25);
-    }
-    .form-success {
-      display: none; text-align: center; padding: 2rem;
-    }
-    .form-success-icon {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1rem;
-    }
-    .form-success-icon svg { width: 24px; height: 24px; fill: none; stroke: #34d399; stroke-width: 2.5; }
-    .form-success h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .form-success p { color: var(--text-secondary); font-size: 0.9rem; }
-
-    @media (max-width: 900px) {
-      .cta-box { grid-template-columns: 1fr; padding: 2.5rem; gap: 2rem; }
-    }
-    @media (max-width: 600px) {
-      .cta-box { padding: 1.75rem; }
-    }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; color: #fff; }
+    
+    .form-success { display: none; text-align: center; padding: 2rem 0; }
+    .form-success-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(34,197,94,0.1); color: #22c55e; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+    .form-success-icon svg { width: 32px; height: 32px; stroke: currentColor; stroke-width: 2; fill: none; }
+    .form-success h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .form-success p { color: var(--text-secondary); }
 
     /* ===================== FOOTER ===================== */
-    footer {
-      background: var(--bg-primary);
-      border-top: 1px solid var(--border);
-      padding: 4rem 1.5rem 2rem;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-    }
-    .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem; margin-bottom: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .footer-brand img { height: 36px; width: auto; margin-bottom: 1.25rem; filter: brightness(10); }
-    .footer-brand p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; max-width: 300px; }
-    .footer-col h5 {
-      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-primary); margin-bottom: 1.25rem;
-    }
-    .footer-col ul { display: flex; flex-direction: column; gap: 0.75rem; }
-    .footer-col a {
-      font-size: 0.875rem; color: var(--text-secondary);
-      transition: color var(--transition);
-    }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; flex-wrap: wrap;
-      font-size: 0.8rem; color: var(--text-secondary);
-    }
+    .footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border); background: var(--bg-primary); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand p { color: var(--text-secondary); margin-top: 1rem; max-width: 300px; }
+    .footer-title { font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-links a { color: var(--text-secondary); transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem; }
 
+    /* ===================== WHATSAPP BUTTON ===================== */
+    .whatsapp-btn {
+      position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+      background: #25D366; color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 20px rgba(37,211,102,0.3); z-index: 1000;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(37,211,102,0.4); }
+    .whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-title { font-size: 3rem; }
+      .services-grid, .testimonials-grid, .cta-container, .footer-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .process-grid::before { display: none; }
+    }
     @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 480px) {
-      .footer-top { grid-template-columns: 1fr; }
-    }
-
-    /* ===================== WHATSAPP FLOAT ===================== */
-    .whatsapp-float {
-      position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 90;
-      width: 58px; height: 58px;
-      background: #25D366; color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .whatsapp-float::before {
-      content: '';
-      position: absolute; inset: -4px;
-      border-radius: 50%; border: 2px solid rgba(37,211,102,0.35);
-      animation: waPulse 2.5s ease-in-out infinite;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
-    .whatsapp-float svg { width: 28px; height: 28px; }
-    @keyframes waPulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.35); opacity: 0; }
-    }
-
-    /* ===================== SCROLL TOP ===================== */
-    #scroll-top {
-      position: fixed; bottom: 5.75rem; right: 1.75rem; z-index: 90;
-      width: 44px; height: 44px;
-      background: var(--bg-card); color: var(--text-secondary);
-      border: 1px solid var(--border); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity var(--transition), transform var(--transition), background var(--transition), color var(--transition);
-      cursor: pointer;
-    }
-    #scroll-top.visible { opacity: 1; pointer-events: all; }
-    #scroll-top:hover { background: var(--accent-dim); border-color: var(--border-accent); color: var(--accent); transform: translateY(-2px); }
-    #scroll-top svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ===================== PULSE DOT ===================== */
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.7); }
+      .hero-metrics { grid-template-columns: 1fr; gap: 1.5rem; }
+      .process-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero { padding: 8rem 0 4rem; }
+      .hero-title { font-size: 2.5rem; }
+      .service-card, .form-card { padding: 2rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Custom cursor (desktop) -->
-<div id="cursor-dot" aria-hidden="true"></div>
-<div id="cursor-ring" aria-hidden="true"></div>
-
-<!-- ==================== NAVBAR ==================== -->
-<header id="navbar">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo" aria-label="RSD Solutions - Inicio">
-      <img src="/img/Logo-RSD-SOLUTIONS-fondo-blanco.png" alt="RSD Solutions">
-    </a>
-    <nav id="nav-links" class="nav-links" aria-label="Navegación principal">
-      <a href="#demo">Cómo Funciona</a>
-      <a href="#servicios">Servicios</a>
-      <a href="portafolio.html">Portafolio</a>
-      <a href="#testimonios">Testimonios</a>
-      <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="nav-cta">Quiero mi demo gratis</a>
-    </nav>
-    <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<!-- ==================== HERO ==================== -->
-<section id="inicio">
-  <div class="hero-blob-1" aria-hidden="true"></div>
-  <div class="hero-blob-2" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="hero-badge">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Agencia de Diseño Web · Quito, Ecuador
-      </div>
-      <h1 class="hero-title">
-        Diseñamos tu página web <span class="accent">antes de que inviertas</span> un solo dólar
-      </h1>
-      <p class="hero-subtitle">
-        Nos cuentas tu negocio, construimos una demo real y completamente funcional de tu web — sin costo. Si te convence, la lanzamos. Si no, sin ningún compromiso.
-      </p>
-      <div class="hero-actions">
-        <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Quiero mi demo gratis
-        </a>
-        <a href="portafolio.html" class="btn-secondary">Ver portafolio</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-value"><span class="count" data-target="30">0</span>+</div>
-          <div class="hero-stat-label">Proyectos entregados</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value"><span class="count" data-target="48">0</span>h</div>
-          <div class="hero-stat-label">Para tu demo lista</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">$<span class="count" data-target="0">0</span></div>
-          <div class="hero-stat-label">Costo de la demo</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value"><span class="count" data-target="4">0</span></div>
-          <div class="hero-stat-label">Años de experiencia</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Browser mockup visual -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="browser-mockup">
-        <div class="browser-bar">
-          <div class="browser-dot"></div>
-          <div class="browser-dot"></div>
-          <div class="browser-dot"></div>
-          <div class="browser-url">rsdsolutions.ec / tu-negocio.com</div>
-        </div>
-        <div class="browser-body">
-          <div class="mock-hero-bar">
-            <div class="mock-tag">Tu negocio</div>
-            <div class="mock-line accent"></div>
-            <div class="mock-line w-80"></div>
-            <div class="mock-line w-50"></div>
-            <div class="mock-btn-row">
-              <div class="mock-btn"></div>
-              <div class="mock-btn ghost"></div>
-            </div>
-          </div>
-          <div class="mock-cards">
-            <div class="mock-card">
-              <div class="mock-card-dot"></div>
-              <div class="mock-line w-80" style="height:7px;"></div>
-              <div class="mock-line w-50" style="height:6px; margin-top:5px;"></div>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-dot"></div>
-              <div class="mock-line w-80" style="height:7px;"></div>
-              <div class="mock-line w-40" style="height:6px; margin-top:5px;"></div>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-dot"></div>
-              <div class="mock-line w-80" style="height:7px;"></div>
-              <div class="mock-line w-50" style="height:6px; margin-top:5px;"></div>
-            </div>
-            <div class="mock-card" style="background: var(--accent-dim); border-color: var(--border-accent);">
-              <div class="mock-card-dot" style="background: var(--accent); border-color: transparent;"></div>
-              <div class="mock-line" style="height:7px; background: var(--accent); width:70%;"></div>
-              <div class="mock-line w-40" style="height:6px; margin-top:5px; background: rgba(168,85,247,0.3);"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== LOGOS MARQUEE ==================== -->
-<section id="clientes" aria-label="Clientes que confían en RSD Solutions">
-  <p class="marquee-label">Empresas que confían en nuestro trabajo</p>
-  <div class="marquee-wrap">
-    <div class="marquee-inner">
-      <div class="marquee-track" aria-hidden="true">
-        <img src="/img/Netlife-logo.png" alt="Netlife" class="marquee-logo" loading="lazy">
-        <img src="/img/clasic-logo.png" alt="Clasic Car" class="marquee-logo" loading="lazy">
-        <img src="/img/Carsuit-Logo.png" alt="Carsuit" class="marquee-logo" loading="lazy">
-        <img src="/img/Netlife-logo.png" alt="Netlife" class="marquee-logo" loading="lazy">
-        <img src="/img/clasic-logo.png" alt="Clasic Car" class="marquee-logo" loading="lazy">
-        <img src="/img/Carsuit-Logo.png" alt="Carsuit" class="marquee-logo" loading="lazy">
-        <img src="/img/Netlife-logo.png" alt="Netlife" class="marquee-logo" loading="lazy">
-        <img src="/img/clasic-logo.png" alt="Clasic Car" class="marquee-logo" loading="lazy">
-        <img src="/img/Carsuit-Logo.png" alt="Carsuit" class="marquee-logo" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== DEMO PROCESS ==================== -->
-<section id="demo" class="section">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-label">Sin riesgo · Sin compromiso</span>
-      <h2 class="section-title">Primero ves, luego decides</h2>
-      <p class="section-sub">Antes de que pagues un solo dólar, tienes en tus manos una demo real y funcional de tu página web. Sin maquetas ni capturas de pantalla — una web completa.</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-step reveal reveal-delay-1">
-        <div class="demo-step-number">01</div>
-        <div class="demo-step-icon">
-          <!-- Chat icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        </div>
-        <h3>Nos cuentas tu negocio</h3>
-        <p>Una llamada rápida o mensaje de WhatsApp. Cuéntanos qué hace tu empresa, qué necesitas y cómo quieres que te vean tus clientes.</p>
-      </div>
-      <div class="demo-step reveal reveal-delay-2">
-        <div class="demo-step-number">02</div>
-        <div class="demo-step-icon">
-          <!-- Code/design icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-        </div>
-        <h3>Construimos tu demo real</h3>
-        <p>En 48 horas diseñamos y desarrollamos una demo completamente funcional de tu página web — con tu contenido, tu identidad y lista para mostrarte.</p>
-      </div>
-      <div class="demo-step reveal reveal-delay-3">
-        <div class="demo-step-number">03</div>
-        <div class="demo-step-icon">
-          <!-- Rocket/launch icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
-        </div>
-        <h3>Si te convence, la lanzamos</h3>
-        <p>Revisas la demo con calma. Si te encanta, la publicamos y tu web está en vivo. Si no te convence, sin costo y sin presión. Así de simple.</p>
-      </div>
-    </div>
-    <div class="demo-cta-box reveal">
-      <div class="demo-cta-text">
-        <strong>¿Listo para ver tu web antes de pagar?</strong>
-        <span>Escríbenos hoy — tu demo puede estar lista en menos de 48 horas.</span>
-      </div>
-      <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        Pedir mi demo gratis
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SERVICES ==================== -->
-<section id="servicios" class="section">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-label">Servicios y precios</span>
-      <h2 class="section-title">Páginas web que venden, desde el primer día</h2>
-      <p class="section-sub">Diseño profesional, código limpio y entrega en tiempo récord. Precios fijos y transparentes, sin sorpresas.</p>
-    </div>
-
-    <!-- Featured services -->
-    <div class="services-featured">
-      <!-- Landing Page -->
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-        </div>
-        <h3 class="service-title">Landing Page Empresarial</h3>
-        <div class="service-price">$50</div>
-        <ul class="service-features">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Página enfocada en generar clientes</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Diseño moderno y 100% personalizado</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Integración con WhatsApp Business</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Formularios de contacto optimizados</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Optimización SEO básica</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Demo gratuita antes de pagar</li>
-        </ul>
-        <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="service-btn ghost">Solicitar demo gratis</a>
-      </div>
-
-      <!-- Web Corporativa -->
-      <div class="service-card featured reveal reveal-delay-2">
-        <div class="service-popular">Más popular</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-        </div>
-        <h3 class="service-title">Página Web Corporativa</h3>
-        <div class="service-price">$120</div>
-        <ul class="service-features">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Sitio web profesional multi-sección</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Hasta 6 secciones personalizadas</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Panel de administración básico</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Optimización SEO completa</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Integración con herramientas externas</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Demo gratuita antes de pagar</li>
-        </ul>
-        <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="service-btn">Solicitar demo gratis</a>
-      </div>
-    </div>
-
-    <!-- Secondary services -->
-    <p class="services-secondary-title">También desarrollamos</p>
-    <div class="services-secondary">
-      <div class="service-mini reveal reveal-delay-1">
-        <div class="service-mini-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none"></path><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-        </div>
-        <h4>App Web Empresarial</h4>
-        <div class="price">desde $490</div>
-        <div class="desc">Sistema web a medida con panel administrativo, base de datos y flujos personalizados.</div>
-      </div>
-      <div class="service-mini reveal reveal-delay-2">
-        <div class="service-mini-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-        </div>
-        <h4>App Móvil</h4>
-        <div class="price">desde $880</div>
-        <div class="desc">Aplicación Android / iOS conectada a tu sistema web o base de datos existente.</div>
-      </div>
-      <div class="service-mini reveal reveal-delay-3">
-        <div class="service-mini-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-        </div>
-        <h4>Automatización</h4>
-        <div class="price">desde $250</div>
-        <div class="desc">Integración de APIs, flujos automáticos y eliminación de tareas repetitivas.</div>
-      </div>
-      <div class="service-mini reveal reveal-delay-4">
-        <div class="service-mini-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-        </div>
-        <h4>Soporte y Mantenimiento</h4>
-        <div class="price">$10 / hora</div>
-        <div class="desc">Actualizaciones, correcciones y mejoras continuas en tu sitio o sistema existente.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== PORTFOLIO PREVIEW ==================== -->
-<section id="portafolio" class="section">
-  <div class="section-inner">
-    <div class="portfolio-header reveal">
-      <div>
-        <span class="section-label">Proyectos en vivo</span>
-        <h2 class="section-title" style="margin-bottom:0;">Lo que hemos construido</h2>
-      </div>
-      <a href="portafolio.html" class="portfolio-ver-todos">
-        Ver todos los proyectos
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
-    <div class="portfolio-grid">
-
-      <a href="https://clasicars.site/" target="_blank" rel="noopener noreferrer" class="portfolio-card reveal reveal-delay-1">
-        <img src="/img/Clasic-car.png" alt="Clasic Car Reparaciones — Restauración de vehículos clásicos" class="portfolio-card-img" loading="lazy">
-        <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Automotriz</span>
-          <h3 class="portfolio-card-title">Clasic Car Reparaciones</h3>
-          <p class="portfolio-card-desc">Restauración fina y detallado premium para vehículos clásicos y de colección.</p>
-          <span class="portfolio-card-link">
-            Ver proyecto
-            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://tecnosfera.space/" target="_blank" rel="noopener noreferrer" class="portfolio-card reveal reveal-delay-3">
-        <img src="/img/Tecnosfera.png" alt="Tecnosfera — Portal tecnológico" class="portfolio-card-img" loading="lazy">
-        <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Tecnología</span>
-          <h3 class="portfolio-card-title">Tecnosfera</h3>
-          <p class="portfolio-card-desc">Portal de noticias y reviews tecnológicas: smartphones, laptops, gaming y gadgets.</p>
-          <span class="portfolio-card-link">
-            Ver proyecto
-            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://deepskyblue-octopus-835272.hostingersite.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card reveal reveal-delay-1">
-        <img src="/img/Travel.png" alt="TravelNexus — Turismo Ecuador" class="portfolio-card-img" loading="lazy">
-        <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Turismo</span>
-          <h3 class="portfolio-card-title">TravelNexus</h3>
-          <p class="portfolio-card-desc">Guía turística del Ecuador: lugares emblemáticos con experiencia de viaje digital.</p>
-          <span class="portfolio-card-link">
-            Ver proyecto
-            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://azure-goose-523127.hostingersite.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card reveal reveal-delay-2">
-        <img src="/img/Clap.png" alt="Clap Music — Sello discográfico" class="portfolio-card-img" loading="lazy">
-        <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Música</span>
-          <h3 class="portfolio-card-title">Clap Music</h3>
-          <p class="portfolio-card-desc">Presencia digital profesional para sello discográfico y proyectos musicales.</p>
-          <span class="portfolio-card-link">
-            Ver proyecto
-            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://restogestion.site/" target="_blank" rel="noopener noreferrer" class="portfolio-card reveal reveal-delay-3">
-        <img src="/img/restogestion-1.png" alt="Sistema de Gestión para Restaurantes" class="portfolio-card-img" loading="lazy">
-        <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Software</span>
-          <h3 class="portfolio-card-title">RestoGestión</h3>
-          <p class="portfolio-card-desc">Sistema de gestión integral para restaurantes: pedidos, inventario y caja en tiempo real.</p>
-          <span class="portfolio-card-link">
-            Ver proyecto
-            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </div>
-      </a>
-
-    </div>
-    <div class="portfolio-more reveal">
-      <a href="portafolio.html" class="btn-secondary" style="display:inline-flex; align-items:center; gap:0.5rem;">
-        Ver portafolio completo
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== TESTIMONIALS ==================== -->
-<section id="testimonios" class="section">
-  <div class="section-inner">
-    <div class="reveal" style="text-align:center; margin-bottom:3rem;">
-      <span class="section-label">Testimonios</span>
-      <h2 class="section-title" style="margin: 0 auto;">Empresas que ya confían en nuestro trabajo</h2>
-    </div>
-    <!-- SVG defs for half-star (accessible, hidden) -->
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-      <defs>
-        <linearGradient id="half-star" x1="0" x2="100%" y1="0" y2="0">
-          <stop offset="50%" stop-color="#f59e0b"/>
-          <stop offset="50%" stop-color="var(--bg-card)"/>
-        </linearGradient>
-      </defs>
-    </svg>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="stars" aria-label="5 estrellas">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"Nuestra tienda ahora tiene control de ventas, stock y caja en un solo lugar. El equipo de RSD fue muy profesional y entregó todo en el tiempo acordado. La demo nos convencio desde el primer momento."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">SV</div>
-          <div>
-            <div class="testimonial-name">Sofía Vargas</div>
-            <div class="testimonial-role">Gerente, Carsuit</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-3">
-        <div class="stars" aria-label="5 estrellas">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial-text">"Desde que implementamos el sistema de gestión, los pedidos y el inventario fluyen solos. Ya no perdemos tiempo en hojas de cálculo y los errores bajaron a cero. Muy recomendados."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">MA</div>
-          <div>
-            <div class="testimonial-name">Miguel Andrade</div>
-            <div class="testimonial-role">Propietario, Restaurante El Fogón</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CONTACT CTA ==================== -->
-<section id="contacto" class="section">
-  <div class="section-inner">
-    <div class="cta-box reveal">
-      <div class="cta-blob" aria-hidden="true"></div>
-      <div class="cta-content">
-        <span class="section-label">Hablemos</span>
-        <h2 class="cta-title">¿Tu negocio necesita una página web que convierta?</h2>
-        <p class="cta-sub">Escríbenos hoy. En menos de 48 horas tienes una demo completa y funcional de tu web — sin costo, sin compromiso.</p>
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-item-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"></path></svg>
-            </div>
-            <a href="tel:+593984918811">+593 984 918 811</a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </div>
-            <a href="mailto:rsdsolutions.ec@gmail.com">rsdsolutions.ec@gmail.com</a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </div>
-            <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer">WhatsApp Business</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact form -->
-      <div class="contact-form">
-        <form id="contact-form">
-          <div class="form-group">
-            <input type="text" id="name" name="name" placeholder="Nombre completo" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <input type="email" id="email" name="email" placeholder="Correo electrónico" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" id="phone" name="phone" placeholder="Teléfono / WhatsApp" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu negocio y qué tipo de web necesitas" class="form-input" required></textarea>
-          </div>
-          <button type="submit" class="form-submit">Enviar mensaje</button>
-        </form>
-        <div id="form-success" class="form-success">
-          <div class="form-success-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <h3>¡Mensaje enviado!</h3>
-          <p>Nos pondremos en contacto contigo muy pronto. Normalmente respondemos en menos de 2 horas.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-brand">
         <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
-        <p>Diseñamos páginas web profesionales para negocios de toda industria. Quito, Ecuador — con clientes en todo el país.</p>
+      </a>
+      <div class="nav-links">
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#proceso" class="nav-link">Proceso</a>
+        <a href="#clientes" class="nav-link">Casos de Éxito</a>
       </div>
-      <div class="footer-col">
-        <h5>Navegación</h5>
-        <ul>
-          <li><a href="#demo">Cómo Funciona</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="portafolio.html">Portafolio</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="/terminos.html">Términos de Servicio</a></li>
-          <li><a href="/privacidad.html">Política de Privacidad</a></li>
-        </ul>
+      <a href="#contacto" class="btn-primary">Agendar Consultoría</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content fade-in-section">
+        <div class="badge">Consultoría de Software B2B</div>
+        <h1 class="hero-title">Sistemas Web y SaaS a Medida para Escalar tu Negocio</h1>
+        <p class="hero-desc">Automatiza procesos y digitaliza tu operación con software corporativo de alta calidad. Desde aplicaciones robustas hasta plataformas SaaS complejas.</p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn-primary">Cotizar Proyecto</a>
+          <a href="/portafolio.html" class="btn-secondary">Ver Portafolio</a>
+        </div>
+        
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <div class="metric-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              100% Código Auditable
+            </div>
+            <div class="metric-label">Propiedad intelectual a tu nombre</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+              Arquitectura Escalable
+            </div>
+            <div class="metric-label">Listos para miles de usuarios</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              3 Meses de Soporte
+            </div>
+            <div class="metric-label">Mantenimiento y estabilización</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 RSD Solutions. Todos los derechos reservados. Quito, Ecuador.</p>
-      <p>Diseño web profesional con demo gratuita · <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">WhatsApp</a></p>
+  </section>
+
+  <!-- SERVICIOS / PRICING -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <h2 class="section-title">Soluciones de Software</h2>
+      <p class="section-subtitle">Desarrollamos tecnología a medida alineada a los objetivos de tu empresa.</p>
+      
+      <div class="services-grid">
+        <!-- Tier 1 -->
+        <div class="service-card fade-in-section">
+          <div class="service-header">
+            <h3 class="service-title">Sistemas Web y Apps</h3>
+            <p class="service-desc">Ideal para negocios que buscan digitalizarse con herramientas propias.</p>
+          </div>
+          <div class="service-price">Desde $400</div>
+          
+          <div class="service-features">
+            <div class="feature-item">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="feature-text">Aplicación Web Funcional</span>
+                <span class="feature-subtext">Diseño UX/UI y Frontend moderno</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="feature-text">Base de Datos Propia</span>
+                <span class="feature-subtext">Arquitectura relacional segura (PostgreSQL/MySQL)</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="feature-text">Soporte Técnico Especializado</span>
+                <span class="feature-subtext">3 meses de soporte y estabilización post-lanzamiento</span>
+              </div>
+            </div>
+          </div>
+          <a href="#contacto" class="btn-primary" style="width: 100%;">Solicitar Cotización</a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="service-card fade-in-section" style="border-color: var(--border-accent); background: linear-gradient(180deg, var(--bg-card) 0%, rgba(168,85,247,0.03) 100%);">
+          <div class="service-header">
+            <h3 class="service-title">Plataformas Complejas (SaaS / POS)</h3>
+            <p class="service-desc">Soluciones empresariales profundas y arquitecturas escalables.</p>
+          </div>
+          <div class="service-price">A Medida</div>
+          
+          <div class="service-features">
+            <div class="feature-item">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="feature-text">Arquitectura Multi-tenant</span>
+                <span class="feature-subtext">Sistemas para miles de usuarios concurrentes</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="feature-text">Roles y Permisos Avanzados</span>
+                <span class="feature-subtext">Paneles de administración y seguridad empresarial</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="feature-text">Integraciones y Facturación</span>
+                <span class="feature-subtext">APIs de pago, facturación electrónica y ERPs</span>
+              </div>
+            </div>
+          </div>
+          <a href="#contacto" class="btn-primary" style="width: 100%;">Agendar Reunión Técnica</a>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- ==================== WHATSAPP FLOAT ==================== -->
-<a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+  <!-- COMO FUNCIONA (PROCESO) -->
+  <section id="proceso" class="section process-section">
+    <div class="container">
+      <h2 class="section-title">El Ciclo de Desarrollo</h2>
+      <p class="section-subtitle">Implementamos metodologías ágiles para asegurar que el software resuelva tus necesidades reales.</p>
+      
+      <div class="process-grid">
+        <div class="process-step fade-in-section">
+          <div class="step-number">01</div>
+          <h4 class="step-title">Auditoría de Procesos</h4>
+          <p class="step-desc">Analizamos la operativa de tu negocio para entender qué procesos pueden automatizarse con software.</p>
+        </div>
+        <div class="process-step fade-in-section" style="transition-delay: 0.1s;">
+          <div class="step-number">02</div>
+          <h4 class="step-title">Diseño de Arquitectura</h4>
+          <p class="step-desc">Proyectamos la base de datos, los flujos de usuario (UI/UX) y creamos un prototipo funcional.</p>
+        </div>
+        <div class="process-step fade-in-section" style="transition-delay: 0.2s;">
+          <div class="step-number">03</div>
+          <h4 class="step-title">Desarrollo e Implementación</h4>
+          <p class="step-desc">Codificamos el frontend y backend bajo estándares limpios, integrando pasarelas de pago o facturación.</p>
+        </div>
+        <div class="process-step fade-in-section" style="transition-delay: 0.3s;">
+          <div class="step-number">04</div>
+          <h4 class="step-title">Soporte y Estabilización</h4>
+          <p class="step-desc">Desplegamos el sistema en servidores seguros y brindamos 3 meses de soporte técnico para el equipo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ==================== SCROLL TO TOP ==================== -->
-<button id="scroll-top" aria-label="Volver arriba">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-</button>
+  <!-- TESTIMONIALS / CASOS DE ÉXITO -->
+  <section id="clientes" class="section">
+    <div class="container">
+      <h2 class="section-title">Confianza Corporativa</h2>
+      <p class="section-subtitle">Soluciones tecnológicas que impulsan empresas reales.</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in-section">
+          <p class="testimonial-text">"Necesitábamos un sistema de gestión y POS (Punto de Venta) para nuestra cadena de restaurantes. RSD Solutions estructuró una plataforma a medida que controla inventario y facturación en tiempo real."</p>
+          <div class="testimonial-author">
+            <img src="/img/cliente1.jpg" alt="Cliente" class="author-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/></svg>'">
+            <div class="author-info">
+              <h4>Grupo Gastronómico</h4>
+              <p>Sistema POS Multi-sucursal</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in-section" style="transition-delay: 0.1s;">
+          <p class="testimonial-text">"El desarrollo de nuestro CRM inmobiliario nos permitió gestionar propiedades y agentes desde una sola aplicación web. La arquitectura es robusta y el código nos pertenece 100%."</p>
+          <div class="testimonial-author">
+            <img src="/img/cliente2.jpg" alt="Cliente" class="author-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/></svg>'">
+            <div class="author-info">
+              <h4>Agencia Inmobiliaria</h4>
+              <p>Plataforma CRM Custom</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ==================== JAVASCRIPT ==================== -->
-<script>
-(function() {
-  'use strict';
+  <!-- CTA / CONTACTO -->
+  <section id="contacto" class="section cta-section">
+    <div class="container cta-container">
+      <div class="cta-content fade-in-section">
+        <h2>Impulsa tu negocio con tecnología propia</h2>
+        <p>Hablemos sobre tus procesos manuales y cómo un software a medida puede escalar tu facturación.</p>
+        
+        <div class="cta-bullets">
+          <div class="cta-bullet">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Reunión de descubrimiento sin costo
+          </div>
+          <div class="cta-bullet">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Propuesta técnica detallada
+          </div>
+          <div class="cta-bullet">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Garantía de calidad de código
+          </div>
+        </div>
+      </div>
 
-  /* ---- Custom cursor ---- */
-  const dot = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-    document.addEventListener('mousemove', function(e) {
-      mouseX = e.clientX; mouseY = e.clientY;
-      dot.style.left = mouseX + 'px';
-      dot.style.top = mouseY + 'px';
-    });
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-    document.addEventListener('mouseleave', function() {
-      dot.style.opacity = '0'; ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', function() {
-      dot.style.opacity = '1'; ring.style.opacity = '1';
-    });
-    document.querySelectorAll('a, button').forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        ring.style.width = '44px'; ring.style.height = '44px';
-        ring.style.borderColor = 'var(--accent)';
-      });
-      el.addEventListener('mouseleave', function() {
-        ring.style.width = '32px'; ring.style.height = '32px';
-        ring.style.borderColor = 'rgba(168,85,247,0.5)';
-      });
-    });
-  }
+      <div class="form-card fade-in-section">
+        <div class="contact-form">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Nombre Completo</label>
+              <input type="text" id="name" name="name" placeholder="Ej. Juan Pérez" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo Corporativo</label>
+              <input type="email" id="email" name="email" placeholder="juan@empresa.com" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono / WhatsApp</label>
+              <input type="tel" id="phone" name="phone" placeholder="+593 99 999 9999" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Sobre el Proyecto</label>
+              <textarea id="message" name="message" rows="4" placeholder="Cuéntanos qué procesos te gustaría automatizar o sistematizar..." class="form-input" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;">Solicitar Consultoría</button>
+          </form>
+          <div id="form-success" class="form-success">
+            <div class="form-success-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3>¡Solicitud recibida!</h3>
+            <p>Un ingeniero de nuestro equipo te contactará pronto para agendar la auditoría inicial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  /* ---- Navbar scroll ---- */
-  var navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  }, { passive: true });
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions" style="height: 40px; filter: brightness(0) invert(1);">
+          <p>Consultoría tecnológica y desarrollo de sistemas empresariales. Construimos el código que escala tu negocio.</p>
+        </div>
+        <div>
+          <h5 class="footer-title">Servicios</h5>
+          <div class="footer-links">
+            <a href="#">Sistemas Web</a>
+            <a href="#">Aplicaciones SaaS</a>
+            <a href="#">Sistemas POS</a>
+            <a href="#">Integraciones API</a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer-title">Empresa</h5>
+          <div class="footer-links">
+            <a href="/portafolio.html">Casos de Éxito</a>
+            <a href="/terminos.html">Términos y Condiciones</a>
+            <a href="/privacidad.html">Privacidad</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 RSD Solutions. Todos los derechos reservados.</p>
+        <p>Quito, Ecuador</p>
+      </div>
+    </div>
+  </footer>
 
-  /* ---- Mobile menu ---- */
-  var toggle = document.getElementById('nav-toggle');
-  var navLinks = document.getElementById('nav-links');
-  toggle.addEventListener('click', function() {
-    var isOpen = navLinks.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-  navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      navLinks.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+  <!-- WhatsApp CTA -->
+  <a href="https://wa.me/593990000000" class="whatsapp-btn" target="_blank" aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
-  /* ---- Intersection Observer — reveal on scroll ---- */
-  var revealEls = document.querySelectorAll('.reveal');
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(function(el) { observer.observe(el); });
-
-  /* ---- Animated counters ---- */
-  var counters = document.querySelectorAll('.count');
-  var countObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var target = parseInt(el.getAttribute('data-target'), 10);
-        if (target === 0) { countObserver.unobserve(el); return; }
-        var start = 0;
-        var duration = 1400;
-        var startTime = null;
-        function step(timestamp) {
-          if (!startTime) startTime = timestamp;
-          var progress = Math.min((timestamp - startTime) / duration, 1);
-          var eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target);
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            el.textContent = target;
+  <!-- Scripts -->
+  <script src="/src/script.js"></script>
+  <script>
+    // Intersection Observer for fade-in animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
           }
-        }
-        requestAnimationFrame(step);
-        countObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(function(c) { countObserver.observe(c); });
+        });
+      }, { threshold: 0.1 });
 
-  /* ---- Scroll to top ---- */
-  var scrollTopBtn = document.getElementById('scroll-top');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
-    }
-  }, { passive: true });
-  scrollTopBtn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  /* ---- Contact form ---- */
-  var form = document.getElementById('contact-form');
-  var formSuccess = document.getElementById('form-success');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      form.style.display = 'none';
-      formSuccess.style.display = 'block';
+      document.querySelectorAll('.fade-in-section').forEach((el) => {
+        observer.observe(el);
+      });
     });
-  }
-
-  /* ---- Portfolio btn in nav (smooth scroll fallback) ---- */
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-})();
-</script>
+  </script>
 </body>
 </html>
