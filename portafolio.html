@@ -3,908 +3,921 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio — RSD Solutions</title>
-  <meta name="description" content="Proyectos reales en vivo y demos disponibles para tu industria. Diseño web profesional en Ecuador — RSD Solutions.">
-  <meta property="og:title" content="Portafolio — RSD Solutions">
-  <meta property="og:description" content="Sitios web en vivo, sistemas y demos disponibles para personalizar en 48h.">
+  <title>Portafolio de Sistemas Web, SaaS y Software B2B — RSD Solutions</title>
+  <meta name="description" content="Casos de éxito reales, arquitecturas en producción y sistemas a medida desarrollados por RSD Solutions. Plataformas SaaS, POS, ERPs y aplicaciones web corporativas desde $400.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Portafolio de Software B2B — RSD Solutions">
+  <meta property="og:description" content="Conoce las plataformas SaaS, sistemas de gestión y aplicaciones corporativas desarrolladas con código propio y bases de datos seguras.">
+  <meta property="og:image" content="/img/RSD-Logo.png">
   <meta property="og:type" content="website">
+
   <link rel="icon" href="/img/RSD-Logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles.css">
+
   <style>
+    /* ===================== VARIABLES ===================== */
     :root {
-      --bg-primary: #0c0c0e;
-      --bg-secondary: #141416;
-      --bg-card: #18181c;
+      --bg-primary: #09090c;
+      --bg-secondary: #0f0f14;
+      --bg-card: #15151c;
+      --bg-card-hover: #1b1b24;
       --accent: #a855f7;
-      --accent-dim: rgba(168,85,247,0.12);
-      --accent-demo: #c084fc;
-      --accent-demo-dim: rgba(192,132,252,0.12);
-      --text-primary: #f0ede6;
-      --text-secondary: #9f9c94;
-      --border: rgba(240,237,230,0.08);
-      --border-accent: rgba(168,85,247,0.25);
-      --border-demo: rgba(192,132,252,0.25);
-      --radius-card: 16px;
-      --radius-btn: 10px;
-      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+      --accent-light: #c084fc;
+      --accent-hover: #9333ea;
+      --accent-dim: rgba(168, 85, 247, 0.12);
+      --accent-glow: rgba(168, 85, 247, 0.3);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(168, 85, 247, 0.35);
+      --radius-card: 20px;
+      --radius-btn: 12px;
+      --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
       background: var(--bg-primary);
       color: var(--text-primary);
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
-    ul { list-style: none; }
-
-    /* Custom cursor */
-    @media (pointer: fine) {
-      body { cursor: none; }
-      #cursor-dot, #cursor-ring {
-        position: fixed; top: 0; left: 0;
-        pointer-events: none; z-index: 9999;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-      }
-      #cursor-dot { width: 6px; height: 6px; background: var(--accent); }
-      #cursor-ring {
-        width: 32px; height: 32px;
-        border: 1.5px solid rgba(168,85,247,0.5);
-        transition: width 0.2s, height 0.2s, border-color 0.2s;
-      }
-    }
-
-    h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.15; }
-
-    /* Reveal */
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
-    /* ---- NAVBAR ---- */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 1.5rem;
-      transition: background var(--transition), border-color var(--transition);
-      border-bottom: 1px solid transparent;
-    }
-    #navbar.scrolled {
-      background: rgba(12,12,14,0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-color: var(--border);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo img { height: 38px; width: auto; }
-    .nav-links {
-      display: flex; align-items: center; gap: 2rem;
-    }
-    .nav-links a {
-      font-size: 0.875rem; font-weight: 500;
-      color: var(--text-secondary); transition: color var(--transition);
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
-    .nav-cta {
-      background: var(--accent); color: #000;
-      padding: 0.55rem 1.25rem; border-radius: var(--radius-btn);
-      font-size: 0.875rem; font-weight: 700;
+    h1, h2, h3, h4, h5, h6 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.2;
     }
-    .nav-cta:hover { background: #9333ea; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,85,247,0.3); }
-    .nav-toggle {
-      display: none; flex-direction: column; gap: 5px;
-      padding: 6px; cursor: pointer;
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 5rem 0; position: relative; }
+
+    /* ===================== NAVBAR ===================== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; height: 78px;
+      background: rgba(9, 9, 12, 0.75); backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid transparent;
+      z-index: 1000; transition: all var(--transition);
     }
-    .nav-toggle span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text-primary); border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
+    .navbar.scrolled {
+      background: rgba(9, 9, 12, 0.92); border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    @media (max-width: 768px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        position: fixed; top: 72px; left: 0; right: 0;
-        background: rgba(20,20,22,0.97); backdrop-filter: blur(20px);
-        flex-direction: column; align-items: stretch; gap: 0;
-        padding: 1.5rem; border-bottom: 1px solid var(--border);
-        transform: translateY(-110%);
-        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-        pointer-events: none;
-      }
-      .nav-links.open { transform: translateY(0); pointer-events: all; }
-      .nav-links a { padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; }
-      .nav-cta { margin-top: 1rem; text-align: center; padding: 0.85rem; font-size: 1rem; }
+    .navbar-inner {
+      display: flex; justify-content: space-between; align-items: center; height: 100%;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-brand img { height: 38px; width: auto; }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-link {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.92rem;
+      transition: color var(--transition); position: relative;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link.active::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 2px;
+      background: var(--accent); border-radius: 2px;
+    }
+    .nav-cta-group { display: flex; align-items: center; gap: 1rem; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.85rem 1.75rem; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      color: #fff; font-weight: 700; font-size: 0.95rem; border-radius: var(--radius-btn);
+      box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.45);
+      transition: all var(--transition); border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #b366ff 0%, #9d3bf0 100%);
+      transform: translateY(-2px); box-shadow: 0 15px 35px -5px rgba(168, 85, 247, 0.6);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.85rem 1.75rem; background: rgba(255, 255, 255, 0.04);
+      color: #fff; font-weight: 600; font-size: 0.95rem; border-radius: var(--radius-btn);
+      border: 1px solid var(--border); transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
-    /* ---- PORTFOLIO HERO ---- */
+    /* Hamburger & Mobile Drawer */
+    .nav-toggle-btn {
+      display: none; flex-direction: column; justify-content: center; gap: 6px;
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+      align-items: center; cursor: pointer;
+    }
+    .nav-toggle-btn span {
+      display: block; width: 22px; height: 2px; background: #fff;
+      border-radius: 2px; transition: all 0.3s ease;
+    }
+    .nav-toggle-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    #mobile-menu {
+      display: none; position: fixed; top: 78px; left: 0; right: 0;
+      background: rgba(13, 13, 18, 0.98); backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border); padding: 2rem 1.5rem;
+      flex-direction: column; gap: 1.25rem; z-index: 999;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #mobile-menu.open { display: flex; }
+    .mobile-link {
+      font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    /* ===================== HERO PORTAFOLIO ===================== */
     .portfolio-hero {
-      padding: 9rem 1.5rem 5rem;
-      text-align: center;
-      position: relative; overflow: hidden;
+      padding: 10.5rem 0 4.5rem; position: relative; text-align: center; overflow: hidden;
     }
-    .hero-blob {
-      position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+    .hero-glow {
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 450px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 70%);
+      filter: blur(90px); pointer-events: none; z-index: 0;
     }
-    .hero-blob-1 { width: 500px; height: 500px; background: rgba(168,85,247,0.06); top: -100px; left: 50%; transform: translateX(-50%); }
-    .hero-blob-2 { width: 300px; height: 300px; background: rgba(192,132,252,0.05); bottom: 0; right: 0; }
-    .portfolio-hero-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
-    .section-label {
-      display: inline-block;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    .portfolio-hero-inner { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-light);
+      padding: 0.35rem 0.85rem; border-radius: 100px;
+      background: var(--accent-dim); border: 1px solid var(--border-accent);
+      margin-bottom: 1.25rem;
     }
     .portfolio-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 800; margin-bottom: 1.25rem;
+      font-size: clamp(2.4rem, 4.8vw, 4rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.25rem;
+    }
+    .portfolio-hero h1 span {
+      background: linear-gradient(135deg, #fff 40%, #c084fc 80%, #38bdf8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .portfolio-hero p {
-      font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; max-width: 560px; margin: 0 auto 2.5rem;
+      font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7;
+      max-width: 680px; margin: 0 auto 2.5rem;
     }
 
-    /* Filters */
-    .filters {
-      display: flex; justify-content: center; gap: 0.5rem;
-      flex-wrap: wrap; margin-top: 0.5rem;
+    /* Trust Stats Strip */
+    .trust-strip {
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+      padding: 1.25rem 2rem; background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border); border-radius: 100px;
+      margin: 0 auto 3rem; max-width: 780px;
+    }
+    .trust-stat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: #e2e8f0; font-weight: 600; }
+    .trust-stat-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+
+    /* ===================== FILTROS ===================== */
+    .filters-wrap {
+      display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 3.5rem;
     }
     .filter-btn {
-      padding: 0.55rem 1.25rem;
-      border-radius: 100px;
-      border: 1px solid var(--border);
-      font-size: 0.85rem; font-weight: 600;
-      color: var(--text-secondary);
-      background: transparent;
-      transition: background var(--transition), border-color var(--transition), color var(--transition);
-      cursor: pointer;
+      padding: 0.65rem 1.4rem; border-radius: 100px; border: 1px solid var(--border);
+      font-size: 0.88rem; font-weight: 600; color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.02); transition: all var(--transition);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;
     }
-    .filter-btn:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+    .filter-btn:hover {
+      border-color: rgba(255, 255, 255, 0.25); color: #fff; background: rgba(255, 255, 255, 0.05);
+    }
     .filter-btn.active {
       background: var(--accent-dim); border-color: var(--border-accent);
-      color: var(--accent);
-    }
-    .filter-btn.demo-filter.active {
-      background: var(--accent-demo-dim); border-color: var(--border-demo);
-      color: var(--accent-demo);
+      color: #fff; box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
     }
 
-    /* ---- SECTION COMMONS ---- */
-    .section { padding: 5rem 1.5rem; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-heading { margin-bottom: 3rem; }
-    .section-heading h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 800; margin-bottom: 0.5rem;
-    }
-    .section-heading p { font-size: 0.95rem; color: var(--text-secondary); }
-
-    /* ---- PROJECTS GRID ---- */
+    /* ===================== PROJECTS GRID ===================== */
     .projects-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
     }
     .project-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius-card); overflow: hidden;
-      display: block;
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-      position: relative;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: all var(--transition); position: relative;
     }
-    .project-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
+    .project-card.is-hidden { display: none; }
+    .project-card:hover {
+      border-color: var(--border-accent); transform: translateY(-6px);
+      box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(168, 85, 247, 0.2);
     }
-    .project-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
-    .project-card:hover::after { transform: scaleX(1); }
-    .project-card-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.6s ease; }
-    .project-card:hover .project-card-img { transform: scale(1.04); }
-    .project-card-body { padding: 1.25rem; }
-    .tag {
-      display: inline-block;
-      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.2rem 0.55rem; border-radius: 4px;
-      margin-bottom: 0.65rem;
+    .project-thumb-box {
+      position: relative; width: 100%; height: 210px; overflow: hidden;
+      background: #111116; border-bottom: 1px solid var(--border);
     }
-    .tag-accent { background: var(--accent-dim); border: 1px solid var(--border-accent); color: var(--accent); }
-    .tag-demo { background: var(--accent-demo-dim); border: 1px solid var(--border-demo); color: var(--accent-demo); }
-    .tag-available {
-      background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.25);
-      color: #34d399;
+    .project-thumb {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .project-card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
-    .project-card-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 0.9rem; }
-    .project-card-link {
+    .project-card:hover .project-thumb { transform: scale(1.05); }
+    
+    .project-status-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(12, 12, 16, 0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15); color: #fff;
+      font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 100px;
+      display: flex; align-items: center; gap: 0.4rem; z-index: 2;
+    }
+    .project-status-badge.live { color: #4ade80; border-color: rgba(74, 222, 128, 0.3); }
+
+    .project-body { padding: 1.75rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-category {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--accent-light); margin-bottom: 0.4rem;
+    }
+    .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.65rem; line-height: 1.3; }
+    .project-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
+    
+    /* Metrics Pill */
+    .project-metric-pill {
+      background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.78rem;
+      color: #e9d5ff; font-weight: 600; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.45rem;
+    }
+
+    .project-tech-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .project-actions {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+      padding-top: 1.25rem; border-top: 1px solid var(--border);
+    }
+    .btn-card-link {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.85rem; font-weight: 700; color: #fff;
+      transition: color var(--transition), gap var(--transition);
+    }
+    .btn-card-link:hover { color: var(--accent-light); gap: 0.65rem; }
+    .btn-spec-trigger {
       display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.8rem; font-weight: 600; color: var(--accent);
-      transition: gap var(--transition);
+      font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+      padding: 0.35rem 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); transition: all var(--transition);
     }
-    .project-card:hover .project-card-link { gap: 0.55rem; }
-    .project-card-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* Demo card variant */
-    .demo-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-demo);
-      border-radius: var(--radius-card); overflow: hidden;
-      display: block;
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-      position: relative;
-    }
-    .demo-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--accent-demo);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    .demo-card:hover { border-color: rgba(192,132,252,0.5); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
-    .demo-card:hover::after { transform: scaleX(1); }
-    .demo-card .project-card-link { color: var(--accent-demo); }
-
-    /* Separator between sections */
-    .section-divider {
-      border: none; border-top: 1px solid var(--border);
-      margin: 0;
+    .btn-spec-trigger:hover {
+      color: #fff; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);
     }
 
-    /* ---- PÁGINAS WEB SECTION ---- */
-    #paginas-web { background: var(--bg-secondary); }
-    .demo-section-intro {
-      background: var(--accent-demo-dim);
-      border: 1px solid var(--border-demo);
-      border-radius: var(--radius-card);
-      padding: 1.75rem 2rem;
-      margin-bottom: 2.5rem;
-      display: flex; align-items: center; gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .demo-section-intro-icon {
-      width: 48px; height: 48px; border-radius: 10px;
-      background: rgba(192,132,252,0.2); border: 1px solid var(--border-demo);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .demo-section-intro-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--accent-demo); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .demo-section-intro-text strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; margin-bottom: 0.25rem; color: var(--text-primary); }
-    .demo-section-intro-text span { font-size: 0.875rem; color: var(--text-secondary); }
-
-    /* ---- DEMO PLACEHOLDER ---- */
-    .demo-placeholder {
-      border: 1.5px dashed rgba(192,132,252,0.25);
-      border-radius: var(--radius-card);
-      padding: 2rem;
-      background: rgba(192,132,252,0.03);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; gap: 0.75rem;
-      min-height: 200px;
-    }
-    .demo-placeholder-icon { font-size: 2rem; opacity: 0.4; }
-    .demo-placeholder p { font-size: 0.82rem; color: var(--text-secondary); }
-    .demo-placeholder code {
-      font-size: 0.72rem; background: var(--bg-card);
-      border: 1px solid var(--border); padding: 0.2rem 0.5rem;
-      border-radius: 4px; color: var(--accent-demo);
-      display: block; margin-top: 0.25rem;
-    }
-
-    /* ---- CTA BOTTOM ---- */
-    #cta-final { background: var(--bg-primary); }
-    .cta-final-box {
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(168,85,247,0.04) 100%);
-      border: 1px solid var(--border-accent);
-      border-radius: 24px; padding: 4rem;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-final-box::before {
-      content: '';
-      position: absolute; width: 400px; height: 400px;
-      border-radius: 50%; background: rgba(168,85,247,0.05);
-      filter: blur(80px); top: -100px; left: 50%; transform: translateX(-50%);
-      pointer-events: none;
-    }
-    .cta-final-box h2 {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 800; margin-bottom: 1rem; position: relative;
-    }
-    .cta-final-box p {
-      font-size: 1rem; color: var(--text-secondary);
-      max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative;
-    }
-    .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-      padding: 0.85rem 2rem; border-radius: var(--radius-btn);
-      font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(168,85,247,0.35); background: #9333ea; }
-    .btn-secondary {
-      background: transparent; border: 1px solid var(--border); color: var(--text-primary);
-      padding: 0.85rem 2rem; border-radius: var(--radius-btn);
-      font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem;
-      transition: border-color var(--transition), background var(--transition), transform var(--transition);
-    }
-    .btn-secondary:hover { border-color: var(--text-secondary); background: rgba(255,255,255,0.04); transform: translateY(-1px); }
-
-    /* ---- FOOTER ---- */
-    footer {
-      background: var(--bg-primary); border-top: 1px solid var(--border);
-      padding: 4rem 1.5rem 2rem;
-    }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem; margin-bottom: 3rem;
-      padding-bottom: 3rem; border-bottom: 1px solid var(--border);
-    }
-    .footer-brand img { height: 36px; width: auto; margin-bottom: 1.25rem; filter: brightness(10); }
-    .footer-brand p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; max-width: 300px; }
-    .footer-col h5 {
-      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-primary); margin-bottom: 1.25rem;
-    }
-    .footer-col ul { display: flex; flex-direction: column; gap: 0.75rem; }
-    .footer-col a { font-size: 0.875rem; color: var(--text-secondary); transition: color var(--transition); }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-secondary);
-    }
-    @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 480px) {
-      .footer-top { grid-template-columns: 1fr; }
-    }
-
-    /* ---- WHATSAPP FLOAT ---- */
-    .whatsapp-float {
-      position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 90;
-      width: 58px; height: 58px; background: #25D366; color: #fff;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .whatsapp-float::before {
-      content: ''; position: absolute; inset: -4px; border-radius: 50%;
-      border: 2px solid rgba(37,211,102,0.35);
-      animation: waPulse 2.5s ease-in-out infinite;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
-    .whatsapp-float svg { width: 28px; height: 28px; }
-    @keyframes waPulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.35); opacity: 0; } }
-
-    /* ---- SCROLL TOP ---- */
-    #scroll-top {
-      position: fixed; bottom: 5.75rem; right: 1.75rem; z-index: 90;
-      width: 44px; height: 44px;
-      background: var(--bg-card); color: var(--text-secondary);
-      border: 1px solid var(--border); border-radius: 50%;
+    /* ===================== MODAL DE ARQUITECTURA TÉCNICA ===================== */
+    #portfolio-modal {
+      position: fixed; inset: 0; z-index: 10000;
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity var(--transition), transform var(--transition), background var(--transition), color var(--transition);
-      cursor: pointer;
+      padding: 1.5rem;
     }
-    #scroll-top.visible { opacity: 1; pointer-events: all; }
-    #scroll-top:hover { background: var(--accent-dim); border-color: var(--border-accent); color: var(--accent); transform: translateY(-2px); }
-    #scroll-top svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    #portfolio-modal.hidden { display: none; }
+    .modal-backdrop {
+      position: absolute; inset: 0; background: rgba(5, 5, 8, 0.85);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .modal-content {
+      position: relative; z-index: 1; width: 100%; max-width: 680px;
+      background: var(--bg-card); border: 1px solid var(--border-accent);
+      border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      max-height: 90vh; overflow-y: auto;
+    }
+    .modal-close-btn {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition);
+    }
+    .modal-close-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.05); }
+    
+    .modal-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-light);
+      margin-bottom: 0.5rem;
+    }
+    .modal-title { font-size: 1.7rem; margin-bottom: 1rem; line-height: 1.25; }
+    .modal-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.75rem; }
+    
+    .modal-spec-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem;
+    }
+    .modal-spec-box {
+      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+    }
+    .modal-spec-box h5 {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--accent-light); margin-bottom: 0.4rem;
+    }
+    .modal-spec-box p { font-size: 0.9rem; color: #fff; }
 
-    /* ---- RESPONSIVE GRID ---- */
-    @media (max-width: 900px) {
+    /* ===================== CTA FINAL ===================== */
+    .cta-box-portafolio {
+      background: linear-gradient(135deg, #14141d 0%, #1c152a 100%);
+      border: 1px solid var(--border-accent); border-radius: 28px;
+      padding: 4.5rem 2rem; text-align: center; position: relative; overflow: hidden;
+      margin-top: 5rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .cta-box-portafolio h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1rem;
+    }
+    .cta-box-portafolio p {
+      font-size: 1.1rem; color: var(--text-secondary); max-width: 620px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .cta-buttons { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      padding: 4.5rem 0 2rem; border-top: 1px solid var(--border);
+      background: var(--bg-primary); margin-top: 4rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3.5rem; margin-bottom: 3.5rem;
+    }
+    .footer-brand img { height: 38px; margin-bottom: 1.25rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+    .footer-heading {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #fff; margin-bottom: 1.25rem;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--accent-light); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-widget {
+      position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .whatsapp-btn {
+      width: 62px; height: 62px; background: #25D366; color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      transition: all var(--transition); position: relative;
+    }
+    .whatsapp-btn:hover { transform: scale(1.08) translateY(-2px); }
+    .whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
+
+    #scroll-top {
+      position: fixed; bottom: 100px; right: 35px; width: 44px; height: 44px;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 50%;
+      color: var(--text-secondary); display: flex; align-items: center; justify-content: center;
+      z-index: 990; transition: all var(--transition); cursor: pointer;
+    }
+    #scroll-top:hover {
+      background: var(--accent-dim); border-color: var(--border-accent);
+      color: var(--accent-light); transform: translateY(-3px);
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 580px) {
+    @media (max-width: 860px) {
+      .nav-links, .nav-cta-group .btn-primary { display: none; }
+      .nav-toggle-btn { display: flex; }
+      .portfolio-hero { padding: 8.5rem 0 3rem; }
+      .trust-strip { flex-direction: column; gap: 0.75rem; border-radius: 16px; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
       .projects-grid { grid-template-columns: 1fr; }
-      .section { padding: 3.5rem 1rem; }
-      .cta-final-box { padding: 2.5rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .cta-box-portafolio { padding: 3rem 1.5rem; }
+      .cta-buttons { flex-direction: column; width: 100%; }
+      .cta-buttons .btn-primary, .cta-buttons .btn-secondary { width: 100%; }
     }
-
-    /* ---- HIDDEN (filter) ---- */
-    .project-card[data-category],
-    .demo-card[data-category] { transition: opacity 0.35s, transform 0.35s; }
-    .project-card.hidden,
-    .demo-card.hidden { display: none; }
   </style>
 </head>
 <body>
 
-<div id="cursor-dot" aria-hidden="true"></div>
-<div id="cursor-ring" aria-hidden="true"></div>
+  <!-- Barra de progreso de lectura -->
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-<!-- ==================== NAVBAR ==================== -->
-<header id="navbar">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo" aria-label="RSD Solutions - Inicio">
-      <img src="/img/Logo-RSD-SOLUTIONS-fondo-blanco.png" alt="RSD Solutions">
-    </a>
-    <nav id="nav-links" class="nav-links" aria-label="Navegación principal">
-      <a href="/#demo">Cómo Funciona</a>
-      <a href="/#servicios">Servicios</a>
-      <a href="portafolio.html" class="active">Portafolio</a>
-      <a href="/#testimonios">Testimonios</a>
-      <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="nav-cta">Quiero mi demo gratis</a>
-    </nav>
-    <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<!-- ==================== HERO ==================== -->
-<section class="portfolio-hero">
-  <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
-  <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
-  <div class="portfolio-hero-inner">
-    <span class="section-label">Software · Páginas Web · Landing Pages</span>
-    <h1>Lo que construimos para nuestros clientes</h1>
-    <p>Sitios en vivo, sistemas funcionales y demos listas para personalizar en tu industria.</p>
-    <div class="filters" role="group" aria-label="Filtrar proyectos">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="software">Software</button>
-      <button class="filter-btn" data-filter="paginas-web">Páginas Web</button>
-      <button class="filter-btn" data-filter="landing-pages">Landing Pages</button>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SOFTWARE ==================== -->
-<section id="software" class="section">
-  <div class="section-inner">
-    <div class="section-heading reveal">
-      <span class="section-label">Sistemas en vivo</span>
-      <h2>Software & Plataformas</h2>
-      <p>Sistemas y plataformas a medida que desarrollamos y que hoy están en operación activa.</p>
-    </div>
-
-    <div class="projects-grid" id="software-grid">
-
-      <a href="https://restogestion.site/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="software">
-        <img src="/img/restogestion-1.png" alt="RestoGestión — sistema para restaurantes" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Gastronomía · Software</span>
-          <h3 class="project-card-title">RestoGestión</h3>
-          <p class="project-card-desc">Sistema de gestión integral para restaurantes: pedidos, inventario y caja en tiempo real.</p>
-          <span class="project-card-link">Ver sistema en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://control-style.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="software">
-        <img src="/img/PlatVentas.png" alt="Plataforma CRM automatización de ventas" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Ventas · Plataforma</span>
-          <h3 class="project-card-title">Plataforma de Ventas</h3>
-          <p class="project-card-desc">Automatización de CRM y flujos de trabajo para equipos comerciales. Seguimiento de clientes en tiempo real.</p>
-          <span class="project-card-link">Ver plataforma <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://control-rest-v1-0.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-3" data-category="software">
-        <img src="/img/SoftEmpresarial.png" alt="Software de gestión empresarial ERP" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Empresarial · ERP</span>
-          <h3 class="project-card-title">Software de Gestión Empresarial</h3>
-          <p class="project-card-desc">ERP personalizado para el control financiero y operativo de PYMES. Reportes, inventario y facturación.</p>
-          <span class="project-card-link">Ver software <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ==================== PÁGINAS WEB ==================== -->
-<section id="paginas-web" class="section">
-  <div class="section-inner">
-    <div class="section-heading reveal">
-      <span class="section-label">En vivo · Demos disponibles</span>
-      <h2>Páginas Web</h2>
-      <p>Sitios web completos publicados para nuestros clientes, más demos listas para personalizar con tu marca.</p>
-    </div>
-
-    <div class="projects-grid" id="paginas-web-grid">
-
-      <a href="https://tecnosfera.space/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="paginas-web">
-        <img src="/img/Tecnosfera.png" alt="Tecnosfera — portal tecnológico" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Tecnología · Portal</span>
-          <h3 class="project-card-title">Tecnosfera</h3>
-          <p class="project-card-desc">Portal de noticias y reviews tecnológicas: smartphones, laptops, gaming y gadgets con análisis honestos.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://azure-goose-523127.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-3" data-category="paginas-web">
-        <img src="/img/Clap.png" alt="Clap Music — sello discográfico" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Música · Web Corporativa</span>
-          <h3 class="project-card-title">Clap Music</h3>
-          <p class="project-card-desc">Presencia digital profesional para sello discográfico, artistas y proyectos musicales independientes.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://lawngreen-mosquito-611839.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="paginas-web">
-        <img src="/img/Musiclin.png" alt="Musiclin — tienda de instrumentos" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Música · E-commerce</span>
-          <h3 class="project-card-title">Musiclin</h3>
-          <p class="project-card-desc">Tienda online de instrumentos musicales con catálogo completo para músicos de todos los niveles y estilos.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://greenyellow-swallow-829353.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="paginas-web">
-        <img src="/img/Cosmetic.png" alt="Cosmetic — tienda de belleza" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Belleza · E-commerce</span>
-          <h3 class="project-card-title">Cosmetic</h3>
-          <p class="project-card-desc">Tienda online de cosméticos y productos de belleza con experiencia de compra moderna y atractiva.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://don-pepe-bussines-club.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-3" data-category="paginas-web">
-        <img src="/img/DonPepe.png" alt="Don Pepe Business Club — club empresarial" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Empresarial · Club</span>
-          <h3 class="project-card-title">Don Pepe Business Club</h3>
-          <p class="project-card-desc">Presencia digital para club de negocios con membresías, eventos y comunidad empresarial de alto impacto.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://premier-estates.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-1" data-category="paginas-web">
-        <img src="/img/PremierEstates.png" alt="Premier Estates — demo inmobiliaria de lujo" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Inmobiliaria · Lujo</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">Premier Estates</h3>
-          <p class="project-card-desc">Demo para inmobiliarias y agentes de bienes raíces. Catálogo de propiedades con filtros, galería y contacto directo.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://drop-print-store.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-2" data-category="paginas-web">
-        <img src="/img/DropPrint.png" alt="DropPrint Store — demo tienda de posters musicales" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Música · E-commerce</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">DropPrint Store</h3>
-          <p class="project-card-desc">Demo para tiendas de productos digitales y posters. Catálogo visual, descarga instantánea y checkout optimizado.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <div class="demo-card reveal reveal-delay-3" data-category="paginas-web">
-        <img src="/img/EliteField.png" alt="EliteField Agency — demo agencia deportiva" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Deportes · Fútbol</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">EliteField Agency</h3>
-          <p class="project-card-desc">Demo para agencias de representación deportiva. Disponible en versión clara y oscura — misma estructura, dos identidades.</p>
-          <a href="https://elite-field-agency.vercel.app/" target="_blank"
-             rel="noopener noreferrer"
-             class="project-card-link" style="color:var(--accent-demo); display:inline-flex; align-items:center; gap:0.35rem; font-size:0.8rem; font-weight:600;">
-            Ver demo (clara) <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <a href="https://elite-field-agency-black.vercel.app/" target="_blank"
-             rel="noopener noreferrer"
-             class="project-card-link" style="color:var(--accent-demo); display:inline-flex; align-items:center; gap:0.35rem; font-size:0.8rem; font-weight:600; margin-top:0.4rem;">
-            Ver demo (oscura) <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <a href="https://enfocame.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-1" data-category="paginas-web">
-        <img src="/img/LensFrame.png" alt="LensFrame Portfolio — demo portafolio para fotógrafos" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Fotografía · Portafolio</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">LensFrame Portfolio</h3>
-          <p class="project-card-desc">Demo para fotógrafos y creativos visuales. Galería inmersiva, sesiones disponibles y contacto para clientes.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://study-bridge-agency.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-2" data-category="paginas-web">
-        <img src="/img/StudyBridge.png" alt="StudyBridge Agency — demo agencia de asesoría estudiantil" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Educación · Asesoría</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">StudyBridge Agency</h3>
-          <p class="project-card-desc">Demo para agencias de movilidad estudiantil internacional. Servicios, proceso paso a paso y planes de asesoría.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ==================== LANDING PAGES ==================== -->
-<section id="landing-pages" class="section">
-  <div class="section-inner">
-    <div class="section-heading reveal">
-      <span class="section-label">En vivo · Demos disponibles</span>
-      <h2>Landing Pages</h2>
-      <p>Páginas de aterrizaje diseñadas para convertir visitas en clientes, en vivo y listas para personalizar.</p>
-    </div>
-
-    <div class="projects-grid" id="landing-pages-grid">
-
-      <a href="https://clasicars.site/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-1" data-category="landing-pages">
-        <img src="/img/Clasic-car.png" alt="Clasic Car Reparaciones — landing page automotriz" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Automotriz · Landing Page</span>
-          <h3 class="project-card-title">Clasic Car Reparaciones</h3>
-          <p class="project-card-desc">Restauración fina, detallado premium y mantenimiento especializado para vehículos clásicos y de colección.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://deepskyblue-octopus-835272.hostingersite.com/" target="_blank" rel="noopener noreferrer"
-         class="project-card reveal reveal-delay-2" data-category="landing-pages">
-        <img src="/img/Travel.png" alt="TravelNexus — turismo Ecuador" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <span class="tag tag-accent">Turismo · Landing Page</span>
-          <h3 class="project-card-title">TravelNexus</h3>
-          <p class="project-card-desc">Guía turística del Ecuador: los lugares más emblemáticos del país con una experiencia de viaje digital inolvidable.</p>
-          <span class="project-card-link">Ver sitio en vivo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-
-      <a href="https://paw-lux-studio.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-3" data-category="landing-pages">
-        <img src="/img/PawLux.png" alt="PawLux Studio — demo peluquería canina y felina" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Mascotas · Peluquería</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">PawLux Studio</h3>
-          <p class="project-card-desc">Demo lista para peluquerías y spas de mascotas. Landing profesional con servicios, galería y reservas por WhatsApp.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://autoparts-beige.vercel.app/" target="_blank" rel="noopener noreferrer"
-         class="demo-card reveal reveal-delay-1" data-category="landing-pages">
-        <img src="/img/AutoPartsDemo.png" alt="AutoParts Store — demo tienda de repuestos automotrices" class="project-card-img" loading="lazy">
-        <div class="project-card-body">
-          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem;">
-            <span class="tag tag-demo">Automotriz · Repuestos</span>
-            <span class="tag tag-available">● Disponible</span>
-          </div>
-          <h3 class="project-card-title">AutoParts Store</h3>
-          <p class="project-card-desc">Demo para tiendas de repuestos y talleres mecánicos. Catálogo por marca, contacto express y asesoría técnica.</p>
-          <span class="project-card-link" style="color:var(--accent-demo);">
-            Ver demo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CTA FINAL ==================== -->
-<section id="cta-final" class="section">
-  <div class="section-inner">
-    <div class="cta-final-box reveal">
-      <span class="section-label">¿No encontraste tu industria?</span>
-      <h2>Pídenos una demo personalizada para tu negocio</h2>
-      <p>Si tu industria no aparece en las demos disponibles, cuéntanos y construimos una desde cero — sin costo previo, sin compromiso.</p>
-      <div class="cta-buttons">
-        <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Pedir demo por WhatsApp
-        </a>
-        <a href="mailto:rsdsolutions.ec@gmail.com" class="btn-secondary">Enviar email</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-brand" aria-label="RSD Solutions - Inicio">
         <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
-        <p>Diseñamos páginas web profesionales para negocios de toda industria. Quito, Ecuador — con clientes en todo el país.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Navegación</h5>
-        <ul>
-          <li><a href="/#demo">Cómo Funciona</a></li>
-          <li><a href="/#servicios">Servicios</a></li>
-          <li><a href="portafolio.html">Portafolio</a></li>
-          <li><a href="/#testimonios">Testimonios</a></li>
-          <li><a href="/#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="/terminos.html">Términos de Servicio</a></li>
-          <li><a href="/privacidad.html">Política de Privacidad</a></li>
-        </ul>
+      </a>
+      
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="/#servicios" class="nav-link">Servicios & Pricing</a>
+        <a href="/#proceso" class="nav-link">Metodología</a>
+        <a href="/#casos" class="nav-link">Casos de Éxito</a>
+        <a href="/portafolio.html" class="nav-link active">Portafolio B2B</a>
+      </nav>
+
+      <div class="nav-cta-group">
+        <a href="/#contacto" class="btn-primary">Cotizar Sistema</a>
+        <button class="nav-toggle-btn" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 RSD Solutions. Todos los derechos reservados. Quito, Ecuador.</p>
-      <p>Diseño web profesional con demo gratuita · <a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">WhatsApp</a></p>
+  </header>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div id="mobile-menu" aria-hidden="true">
+    <a href="/" class="mobile-link">Inicio <span>→</span></a>
+    <a href="/#servicios" class="mobile-link">Servicios & Precios <span>→</span></a>
+    <a href="/#proceso" class="mobile-link">Metodología Ágil <span>→</span></a>
+    <a href="/portafolio.html" class="mobile-link" style="color: var(--accent-light);">Portafolio B2B <span>✓</span></a>
+    <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20web%20o%20SaaS" 
+       target="_blank" rel="noopener noreferrer" class="btn-secondary" style="border-color: #25D366; color: #25D366; justify-content: center;">
+      WhatsApp Oficial: 0999340807
+    </a>
+    <a href="/#contacto" class="btn-primary" style="justify-content: center;">Iniciar Consultoría Técnica</a>
+  </div>
+
+  <!-- HERO PORTAFOLIO -->
+  <section class="portfolio-hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="portfolio-hero-inner reveal">
+        <span class="section-tag">Ingeniería en Producción</span>
+        <h1>Sistemas Web, Plataformas SaaS y <span>Software Corporativo</span></h1>
+        <p>Soluciones a medida diseñadas con arquitecturas escalables, bases de datos optimizadas y código 100% auditable para clientes en Ecuador y Latinoamérica.</p>
+
+        <!-- Trust Stats -->
+        <div class="trust-strip">
+          <div class="trust-stat">
+            <span class="trust-stat-dot"></span>
+            <span>8+ Sistemas y Plataformas en Producción</span>
+          </div>
+          <div class="trust-stat">
+            <span class="trust-stat-dot"></span>
+            <span>Código Propio sin Licencias Ocultas</span>
+          </div>
+          <div class="trust-stat">
+            <span class="trust-stat-dot"></span>
+            <span>Desde $400 con 3 Meses de Soporte</span>
+          </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters-wrap" role="group" aria-label="Filtrar por categoría de software">
+          <button class="filter-btn active" data-filter="all">Todos los Sistemas</button>
+          <button class="filter-btn" data-filter="saas">SaaS & Plataformas Cloud</button>
+          <button class="filter-btn" data-filter="pos">Sistemas POS & Retail</button>
+          <button class="filter-btn" data-filter="erp">ERP & Control Financiero</button>
+          <button class="filter-btn" data-filter="portales">Portales Web Corporativos</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE PROYECTOS -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="projects-grid" id="portfolio-grid">
+
+        <!-- PROYECTO 1: RestoGestión -->
+        <div class="project-card glow-card reveal delay-1" data-category="pos saas">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● En Producción Activa</div>
+            <img src="/img/restogestion-1.png" alt="RestoGestión — Sistema POS para restaurantes" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Gastronomía · POS Cloud · Facturación SRI</div>
+              <h3 class="project-title">RestoGestión — Plataforma para Restaurantes</h3>
+              <p class="project-desc">Sistema integral para operaciones gastronómicas: comandas digitales, control de stock de insumos por receta, multi-caja y facturación electrónica autorizada por el SRI.</p>
+              
+              <div class="project-metric-pill">
+                <span>⚡ +45% agilidad en cocina | 0 pérdidas de inventario</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">WebSockets</span>
+                <span class="tech-badge">SRI XML/Firma</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://restogestion.site/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Sistema en Vivo</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button class="btn-spec-trigger open-spec-btn" data-spec="restogestion">
+                <span>Ficha Técnica</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 2: CRM Ventas -->
+        <div class="project-card glow-card reveal delay-2" data-category="saas">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● En Operación</div>
+            <img src="/img/PlatVentas.png" alt="Plataforma comercial y CRM de ventas" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Comercial · CRM · Automatización</div>
+              <h3 class="project-title">Plataforma Comercial & Pipeline de Ventas</h3>
+              <p class="project-desc">CRM personalizado con embudos comerciales Kanban, asignación inteligente de prospectos a ejecutivos, recordatorios de seguimiento y reportes de conversión en tiempo real.</p>
+              
+              <div class="project-metric-pill">
+                <span>📈 3.2x más prospectos contactados en el primer contacto</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">Vue.js</span>
+                <span class="tech-badge">Python / Django</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">APIs REST</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://control-style.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Plataforma</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button class="btn-spec-trigger open-spec-btn" data-spec="ventas-crm">
+                <span>Ficha Técnica</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 3: ERP Empresarial -->
+        <div class="project-card glow-card reveal delay-3" data-category="erp">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● Arquitectura Propia</div>
+            <img src="/img/SoftEmpresarial.png" alt="Software de gestión empresarial ERP" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Empresarial · ERP · Logística</div>
+              <h3 class="project-title">Software de Gestión Empresarial ERP</h3>
+              <p class="project-desc">ERP modular para PYMES: módulo de compras, control financiero de tesorería, cuentas por pagar y matriz de permisos por rol de empleado para auditorías.</p>
+              
+              <div class="project-metric-pill">
+                <span>📦 100% trazabilidad de inventarios y flujo de caja</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">Angular / React</span>
+                <span class="tech-badge">Spring Boot / Node</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Docker</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://control-rest-v1-0.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Software</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button class="btn-spec-trigger open-spec-btn" data-spec="erp-empresarial">
+                <span>Ficha Técnica</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 4: Don Pepe Business Club -->
+        <div class="project-card glow-card reveal delay-1" data-category="portales">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● En Vivo</div>
+            <img src="/img/DonPepe.png" alt="Don Pepe Business Club" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Membresías · Club B2B · Eventos</div>
+              <h3 class="project-title">Don Pepe Business Club — Portal Privado</h3>
+              <p class="project-desc">Plataforma digital para club empresarial: gestión de membresías, directorio privado de empresas afiliadas y calendario de eventos de networking de alto impacto.</p>
+              
+              <div class="project-metric-pill">
+                <span>💎 100% automatización en afiliaciones y accesos</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">Next.js</span>
+                <span class="tech-badge">Tailwind CSS</span>
+                <span class="tech-badge">Cloud DB</span>
+                <span class="tech-badge">Vercel Edge</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://don-pepe-bussines-club.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Portal en Vivo</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button class="btn-spec-trigger open-spec-btn" data-spec="don-pepe">
+                <span>Ficha Técnica</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 5: Premier Estates -->
+        <div class="project-card glow-card reveal delay-2" data-category="portales">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● Alto Ticket</div>
+            <img src="/img/PremierEstates.png" alt="Premier Estates portal inmobiliario" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Inmobiliaria · Propiedades de Lujo</div>
+              <h3 class="project-title">Premier Estates — Portal Inmobiliario VIP</h3>
+              <p class="project-desc">Portal dinámico para firmas de bienes raíces de lujo con filtros geográficos avanzados, recorridos fotográficos HD y captación automatizada de inversionistas por WhatsApp.</p>
+              
+              <div class="project-metric-pill">
+                <span>🏡 Carga ultrarrápida &lt; 0.9s | Experiencia para inversores</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Tailwind</span>
+                <span class="tech-badge">Geo-Search</span>
+                <span class="tech-badge">Cloud Storage</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://premier-estates.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Portal Inmobiliario</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button class="btn-spec-trigger open-spec-btn" data-spec="premier-estates">
+                <span>Ficha Técnica</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 6: Tecnosfera -->
+        <div class="project-card glow-card reveal delay-3" data-category="portales">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● Alta Concurrencia</div>
+            <img src="/img/Tecnosfera.png" alt="Tecnosfera portal tecnológico" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Medios · Tráfico Masivo · SEO</div>
+              <h3 class="project-title">Tecnosfera — Portal Tecnológico & Reviews</h3>
+              <p class="project-desc">Portal de divulgación tecnológica con arquitectura headless ultra-optimizada para Google Core Web Vitals, caching perimetral y soporte para miles de lectores concurrentes.</p>
+              
+              <div class="project-metric-pill">
+                <span>🚀 99 en Google PageSpeed | Cero latencia en visitas pico</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Cloudflare CDN</span>
+                <span class="tech-badge">Redis</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://tecnosfera.space/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Portal en Vivo</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button class="btn-spec-trigger open-spec-btn" data-spec="tecnosfera">
+                <span>Ficha Técnica</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 7: DropPrint -->
+        <div class="project-card glow-card reveal delay-1" data-category="saas portales">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● En Operación</div>
+            <img src="/img/DropPrint.png" alt="DropPrint Store" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">E-Commerce · Productos Digitales</div>
+              <h3 class="project-title">DropPrint Store — Pasarela Digital</h3>
+              <p class="project-desc">Plataforma e-commerce con checkout instantáneo, generación automatizada de enlaces de descarga seguros con caducidad y panel de métricas de ingresos.</p>
+              
+              <div class="project-metric-pill">
+                <span>⚡ Checkout en 2 clics | Entrega automatizada de archivos</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Stripe API</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">AWS S3</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://drop-print-store.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Tienda</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 8: Clasic Car -->
+        <div class="project-card glow-card reveal delay-2" data-category="portales">
+          <div class="project-thumb-box">
+            <div class="project-status-badge live">● En Vivo</div>
+            <img src="/img/Clasic-car.png" alt="Clasic Car Reparaciones" class="project-thumb" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-category">Automotriz · Landing Corporativa</div>
+              <h3 class="project-title">Clasic Car — Mantenimiento Especializado</h3>
+              <p class="project-desc">Plataforma institucional para taller de restauración y mantenimiento fino de vehículos clásicos con cotizador integrado y catálogo visual de restauraciones.</p>
+              
+              <div class="project-metric-pill">
+                <span>🚗 Captación directa de coleccionistas y clientes de alto ticket</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">Vanilla CSS</span>
+                <span class="tech-badge">Vite</span>
+                <span class="tech-badge">Cloudflare</span>
+              </div>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://clasicars.site/" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                <span>Ver Sitio en Vivo</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA FINAL PORTAFOLIO -->
+      <div class="cta-box-portafolio reveal">
+        <span class="section-tag" style="background: rgba(168,85,247,0.25);">Proyectos a Medida</span>
+        <h2>¿Tu Empresa Necesita un Software Específico?</h2>
+        <p>Diseñamos la arquitectura de base de datos, los flujos operativos y el código completo con propiedad intelectual 100% para tu empresa. Proyectos desde $400 con 3 meses de soporte técnico garantizado.</p>
+        
+        <div class="cta-buttons">
+          <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20web%20o%20SaaS%20para%20mi%20empresa" 
+             target="_blank" rel="noopener noreferrer" class="btn-primary btn-shimmer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Consultar por WhatsApp (0999340807)</span>
+          </a>
+          <a href="/#contacto" class="btn-secondary">
+            <span>Agendar Consultoría en el Formulario</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL DE ESPECIFICACIONES TÉCNICAS -->
+  <div id="portfolio-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content modal-enter">
+      <button class="modal-close-btn" id="modal-close" aria-label="Cerrar modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <span class="modal-badge">Ficha de Arquitectura & Especificaciones</span>
+      <h3 class="modal-title" id="modal-title">Título del Sistema</h3>
+      <p class="modal-desc" id="modal-desc">Descripción técnica del sistema.</p>
+
+      <div class="modal-spec-grid">
+        <div class="modal-spec-box">
+          <h5>Stack Tecnológico & Dependencias</h5>
+          <p id="modal-tech">React, Node.js, PostgreSQL</p>
+        </div>
+        <div class="modal-spec-box">
+          <h5>Métricas & Rendimiento Operativo</h5>
+          <p id="modal-metrics">99.9% Uptime | Cero incidencias</p>
+        </div>
+        <div class="modal-spec-box">
+          <h5>Garantía de Código & Propiedad</h5>
+          <p>100% Código fuente propio · Modelo relacional normalizado · 3 meses de soporte técnico y estabilización.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <a href="#" id="modal-demo" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <span>Abrir Despliegue en Vivo</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+        <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20similar%20al%20de%20su%20portafolio" 
+           target="_blank" rel="noopener noreferrer" class="btn-secondary" style="color: #25D366; border-color: rgba(37,211,102,0.3);">
+          Cotizar arquitectura similar (0999340807) ↗
+        </a>
+      </div>
     </div>
   </div>
-</footer>
 
-<!-- ==================== WHATSAPP FLOAT ==================== -->
-<a href="https://wa.link/tdbu43" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
+          <p>Consultora tecnológica e ingeniería de software especializada en plataformas SaaS, ERPs, sistemas POS y desarrollo web corporativo de alto rendimiento.</p>
+          <div style="margin-top: 1rem; color: #fff; font-size: 0.9rem; font-weight: 600;">
+            WhatsApp Oficial: <a href="https://wa.me/593999340807" target="_blank" style="color: #25D366;">0999340807 (+593 999 340 807)</a>
+          </div>
+        </div>
 
-<button id="scroll-top" aria-label="Volver arriba">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-</button>
+        <div>
+          <h5 class="footer-heading">Navegación</h5>
+          <div class="footer-links">
+            <a href="/">Inicio</a>
+            <a href="/#servicios">Servicios B2B</a>
+            <a href="/#proceso">Metodología</a>
+            <a href="/portafolio.html">Portafolio</a>
+            <a href="/#contacto">Contacto</a>
+          </div>
+        </div>
 
-<!-- ==================== JS ==================== -->
-<script>
-(function() {
-  'use strict';
+        <div>
+          <h5 class="footer-heading">Legal</h5>
+          <div class="footer-links">
+            <a href="/terminos.html">Términos de Servicio</a>
+            <a href="/privacidad.html">Política de Privacidad</a>
+            <a href="mailto:rsdsolutions.ec@gmail.com">rsdsolutions.ec@gmail.com</a>
+            <a href="https://wa.me/593999340807" target="_blank" rel="noopener noreferrer">Atención WhatsApp 24/7</a>
+          </div>
+        </div>
+      </div>
 
-  /* ---- Custom cursor ---- */
-  var dot = document.getElementById('cursor-dot');
-  var ring = document.getElementById('cursor-ring');
-  if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
-    var mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-    document.addEventListener('mousemove', function(e) {
-      mouseX = e.clientX; mouseY = e.clientY;
-      dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
-    });
-    (function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    })();
-    document.querySelectorAll('a, button').forEach(function(el) {
-      el.addEventListener('mouseenter', function() { ring.style.width = '44px'; ring.style.height = '44px'; ring.style.borderColor = 'var(--accent)'; });
-      el.addEventListener('mouseleave', function() { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.borderColor = 'rgba(168,85,247,0.5)'; });
-    });
-  }
+      <div class="footer-bottom">
+        <p>&copy; 2026 RSD Solutions. Todos los derechos reservados. Quito, Ecuador.</p>
+        <p>WhatsApp: <a href="https://wa.me/593999340807" target="_blank" style="color:var(--accent-light);">+593 999 340 807 (0999340807)</a></p>
+      </div>
+    </div>
+  </footer>
 
-  /* ---- Navbar ---- */
-  var navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', function() {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
+  <!-- WHATSAPP FLOAT WIDGET -->
+  <div class="whatsapp-widget">
+    <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20web%20o%20SaaS%20para%20mi%20empresa" 
+       class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Escribir al WhatsApp de RSD Solutions (0999340807)">
+      <div class="wa-pulse-ring"></div>
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
 
-  /* ---- Mobile menu ---- */
-  var toggle = document.getElementById('nav-toggle');
-  var navLinks = document.getElementById('nav-links');
-  toggle.addEventListener('click', function() {
-    var open = navLinks.classList.toggle('open');
-    toggle.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  navLinks.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      navLinks.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+  <!-- SCROLL TOP -->
+  <button id="scroll-top" class="opacity-0 pointer-events-none" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
 
-  /* ---- Reveal on scroll ---- */
-  var revealEls = document.querySelectorAll('.reveal');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(function(el) { obs.observe(el); });
+  <!-- SCRIPTS -->
+  <script type="module" src="/src/script.js"></script>
+  <script>
+    // Filtros dinámicos de proyectos en el cliente
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.project-card');
 
-  /* ---- Filter buttons ---- */
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  var allCards = document.querySelectorAll('[data-category]');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-  filterBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var filter = btn.getAttribute('data-filter');
-      filterBtns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-
-      allCards.forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+          const filter = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            const categories = card.getAttribute('data-category') || '';
+            if (filter === 'all' || categories.split(' ').includes(filter)) {
+              card.style.display = '';
+              card.classList.add('reveal');
+              setTimeout(() => card.classList.add('visible'), 50);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
       });
-
-      /* Show/hide sections based on active filter */
-      var softwareSection = document.getElementById('software');
-      var paginasWebSection = document.getElementById('paginas-web');
-      var landingPagesSection = document.getElementById('landing-pages');
-      if (filter === 'software') {
-        softwareSection.style.display = ''; paginasWebSection.style.display = 'none'; landingPagesSection.style.display = 'none';
-      } else if (filter === 'paginas-web') {
-        softwareSection.style.display = 'none'; paginasWebSection.style.display = ''; landingPagesSection.style.display = 'none';
-      } else if (filter === 'landing-pages') {
-        softwareSection.style.display = 'none'; paginasWebSection.style.display = 'none'; landingPagesSection.style.display = '';
-      } else {
-        softwareSection.style.display = ''; paginasWebSection.style.display = ''; landingPagesSection.style.display = '';
-      }
     });
-  });
-
-  /* ---- Scroll to top ---- */
-  var scrollTopBtn = document.getElementById('scroll-top');
-  window.addEventListener('scroll', function() {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  scrollTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-})();
-</script>
+  </script>
 </body>
 </html>

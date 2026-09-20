@@ -3,483 +3,849 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSD Solutions | Sistemas Web, SaaS y Aplicaciones a Medida</title>
-  <meta name="description" content="Desarrollo de Sistemas Web, SaaS y Aplicaciones a Medida. Soluciones de software corporativo con arquitectura escalable y código auditable. Desde $400.">
+  <title>RSD Solutions | Sistemas Web, Plataformas SaaS y Software a Medida</title>
+  <meta name="description" content="Desarrollo de Sistemas Web, Plataformas SaaS, POS y Apps Empresariales a medida en Ecuador. Código 100% auditable, base de datos propia y soporte garantizado. Proyectos desde $400.">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="RSD Solutions | Sistemas Web, SaaS y Aplicaciones">
-  <meta property="og:description" content="Desarrollo de Sistemas Web, SaaS y Aplicaciones a Medida. Desde $400.">
-  <meta property="og:image" content="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6">
+  <meta property="og:title" content="RSD Solutions | Sistemas Web, SaaS y Aplicaciones Empresariales">
+  <meta property="og:description" content="Desarrollamos tecnología propia para automatizar y escalar tu empresa. Desde $400 con base de datos propia y soporte incluido.">
+  <meta property="og:image" content="/img/RSD-Logo.png">
   <meta property="og:type" content="website">
 
   <!-- INSERTAR PIXEL AQUI -->
   <!-- <script>...</script> -->
   <!-- FIN PIXEL -->
 
-  <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/img/RSD-Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/styles.css">
 
   <style>
-    /* ===================== VARIABLES ===================== */
+    /* ===================== VARIABLES & ESTILOS BASE ===================== */
     :root {
-      --bg-primary: #0c0c0e;
-      --bg-secondary: #141416;
-      --bg-card: #18181c;
+      --bg-primary: #09090c;
+      --bg-secondary: #0f0f14;
+      --bg-card: #15151c;
+      --bg-card-hover: #1b1b24;
       --accent: #a855f7;
-      --accent-dim: rgba(168,85,247,0.12);
+      --accent-light: #c084fc;
       --accent-hover: #9333ea;
-      --text-primary: #f0ede6;
-      --text-secondary: #9f9c94;
-      --border: rgba(255,255,255,0.06);
-      --border-accent: rgba(168,85,247,0.25);
+      --accent-dim: rgba(168, 85, 247, 0.12);
+      --accent-glow: rgba(168, 85, 247, 0.3);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-accent: rgba(168, 85, 247, 0.35);
       --radius-card: 20px;
       --radius-btn: 12px;
-      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+      --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ===================== RESET ===================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
       background: var(--bg-primary);
       color: var(--text-primary);
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
+    
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
       font-weight: 700;
       line-height: 1.2;
-      color: #fff;
     }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
     img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-    /* ===================== TYPOGRAPHY & UTILS ===================== */
-    .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
-    .section-subtitle { font-size: 1.125rem; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-    .text-accent { color: var(--accent); }
-    
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .section { padding: 6rem 0; }
+    /* Layout */
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 6.5rem 0; position: relative; }
+
+    /* Grid & Ambient Backgrounds */
+    .bg-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    }
+
+    /* Headings */
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-light);
+      padding: 0.35rem 0.85rem; border-radius: 100px;
+      background: var(--accent-dim); border: 1px solid var(--border-accent);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      text-align: center; margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.1rem; color: var(--text-secondary);
+      text-align: center; max-width: 650px; margin: 0 auto 3.5rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.85rem 1.75rem; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      color: #fff; font-weight: 700; font-size: 0.95rem; border-radius: var(--radius-btn);
+      box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.45);
+      transition: all var(--transition); border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #b366ff 0%, #9d3bf0 100%);
+      transform: translateY(-2px); box-shadow: 0 15px 35px -5px rgba(168, 85, 247, 0.6);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.85rem 1.75rem; background: rgba(255, 255, 255, 0.04);
+      color: #fff; font-weight: 600; font-size: 0.95rem; border-radius: var(--radius-btn);
+      border: 1px solid var(--border); transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
 
     /* ===================== NAVBAR ===================== */
     .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 80px;
-      background: rgba(12, 12, 14, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      transition: var(--transition);
+      position: fixed; top: 0; left: 0; right: 0; height: 78px;
+      background: rgba(9, 9, 12, 0.75); backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid transparent;
+      z-index: 1000; transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(9, 9, 12, 0.92); border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .navbar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
+      display: flex; justify-content: space-between; align-items: center; height: 100%;
     }
-    .nav-brand img { height: 32px; filter: brightness(0) invert(1); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-link { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; transition: color var(--transition); }
-    .nav-link:hover { color: #fff; }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      border-radius: var(--radius-btn);
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      border: none;
-      cursor: pointer;
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-brand img { height: 38px; width: auto; }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-link {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.92rem;
+      transition: color var(--transition); position: relative;
     }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(168,85,247,0.3);
+    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link:hover::after, .nav-link.active::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 2px;
+      background: var(--accent); border-radius: 2px;
     }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      font-weight: 600;
-      border-radius: var(--radius-btn);
-      border: 1px solid var(--border);
-      transition: background var(--transition), transform var(--transition);
+    .nav-cta-group { display: flex; align-items: center; gap: 1rem; }
+
+    /* Hamburger Toggle */
+    .nav-toggle-btn {
+      display: none; flex-direction: column; justify-content: center; gap: 6px;
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+      align-items: center; cursor: pointer; transition: background var(--transition);
     }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-2px);
+    .nav-toggle-btn span {
+      display: block; width: 22px; height: 2px; background: #fff;
+      border-radius: 2px; transition: all 0.3s ease;
     }
+    .nav-toggle-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile Drawer */
+    #mobile-menu {
+      display: none; position: fixed; top: 78px; left: 0; right: 0;
+      background: rgba(13, 13, 18, 0.98); backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem; flex-direction: column; gap: 1.25rem;
+      z-index: 999; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #mobile-menu.open { display: flex; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-link {
+      font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .mobile-link:hover { color: var(--accent-light); }
 
     /* ===================== HERO ===================== */
     .hero {
-      position: relative;
-      padding: 12rem 0 8rem;
-      text-align: center;
-      overflow: hidden;
+      padding: 11.5rem 0 6.5rem; position: relative; text-align: center; overflow: hidden;
     }
-    .hero::before {
-      content: ''; position: absolute;
-      top: -20%; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: rgba(168,85,247,0.15);
-      filter: blur(120px);
-      border-radius: 50%;
-      z-index: 0;
-      pointer-events: none;
+    .hero-glow-1 {
+      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 750px; height: 500px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+      filter: blur(90px); pointer-events: none; z-index: 0;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 1rem; background: var(--accent-dim);
-      border: 1px solid var(--border-accent); border-radius: 100px;
-      color: var(--accent); font-weight: 600; font-size: 0.85rem;
-      margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;
-    }
-    .hero-title { font-size: 4rem; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-    .hero-desc { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 650px; margin-inline: auto; }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem; }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
     
-    .hero-metrics {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-      padding-top: 3rem; border-top: 1px solid var(--border);
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      padding: 0.45rem 1.1rem; background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 100px;
+      color: #e9d5ff; font-weight: 600; font-size: 0.85rem; margin-bottom: 1.75rem;
+      letter-spacing: 0.03em;
     }
-    .metric-card { text-align: left; }
-    .metric-value { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem; }
-    .metric-value svg { color: var(--accent); width: 20px; height: 20px; }
-    .metric-label { font-size: 0.9rem; color: var(--text-secondary); }
+    .hero-title {
+      font-size: clamp(2.4rem, 5.2vw, 4.3rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #fff 30%, #c084fc 70%, #38bdf8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.2rem; color: var(--text-secondary); max-width: 700px;
+      margin: 0 auto 2.75rem; line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex; gap: 1.25rem; justify-content: center; align-items: center;
+      flex-wrap: wrap; margin-bottom: 4rem;
+    }
 
-    /* ===================== LOGOS ===================== */
-    .logos-section { padding: 3rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-secondary); }
-    .logos-title { text-align: center; font-size: 0.85rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 2px; margin-bottom: 2rem; }
-    .logos-grid { display: flex; justify-content: center; gap: 4rem; align-items: center; flex-wrap: wrap; opacity: 0.5; }
-    .logos-grid img { max-height: 32px; filter: grayscale(100%) brightness(200%); }
+    /* Tech Stack Strip */
+    .tech-stack-strip {
+      padding: 1.25rem 2rem; background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border); border-radius: 100px;
+      display: inline-flex; align-items: center; gap: 1.5rem;
+      flex-wrap: wrap; justify-content: center; margin-bottom: 4.5rem;
+    }
+    .tech-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .tech-items { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+
+    /* Hero Metrics Grid */
+    .hero-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
+      text-align: left;
+    }
+    .metric-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-card); padding: 1.75rem;
+      transition: all var(--transition);
+    }
+    .metric-card:hover {
+      border-color: var(--border-accent); transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+    .metric-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .metric-icon {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--accent-dim);
+      border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center;
+      color: var(--accent-light);
+    }
+    .metric-title { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .metric-sub { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
 
     /* ===================== SERVICES / PRICING ===================== */
-    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.25rem; margin-top: 1rem;
+    }
     .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-card);
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-color 0.4s;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 3.25rem; position: relative;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: all var(--transition);
     }
-    .service-card:hover {
-      transform: translateY(-8px);
+    .service-card.highlight {
       border-color: var(--border-accent);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      background: linear-gradient(180deg, rgba(26, 22, 38, 0.85) 0%, rgba(17, 17, 21, 0.95) 100%);
+      box-shadow: 0 20px 50px -15px rgba(168, 85, 247, 0.25);
     }
-    .service-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: transparent; transition: background 0.4s;
+    .service-badge-popular {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      color: #fff; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.35rem 0.85rem; border-radius: 100px;
     }
-    .service-card:hover::after { background: var(--accent); }
-    
     .service-header { margin-bottom: 2rem; }
-    .service-title { font-size: 2rem; margin-bottom: 0.5rem; }
-    .service-price { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
-    .service-desc { color: var(--text-secondary); font-size: 1rem; }
-    
-    .service-features { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    .feature-item { display: flex; align-items: flex-start; gap: 1rem; }
-    .feature-icon { color: var(--accent); margin-top: 2px; }
-    .feature-text { color: #fff; font-size: 0.95rem; }
-    .feature-subtext { color: var(--text-secondary); font-size: 0.85rem; display: block; margin-top: 0.25rem; }
+    .service-name { font-size: 1.85rem; margin-bottom: 0.65rem; }
+    .service-desc { color: var(--text-secondary); font-size: 0.98rem; min-height: 48px; }
+    .service-price-box {
+      margin: 1.75rem 0; padding: 1.25rem 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      display: flex; align-items: baseline; gap: 0.5rem;
+    }
+    .service-price { font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; }
+    .service-price-note { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
 
-    /* ===================== HOW IT WORKS ===================== */
+    .service-features-list { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 2.75rem; }
+    .feature-row { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .feature-check {
+      width: 22px; height: 22px; border-radius: 6px; background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.35); color: var(--accent-light);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+    }
+    .feature-info strong { display: block; font-size: 0.96rem; color: #fff; font-weight: 600; }
+    .feature-info span { font-size: 0.84rem; color: var(--text-secondary); }
+
+    /* ===================== PROCESS ===================== */
     .process-section { background: var(--bg-secondary); }
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
-    .process-grid::before {
-      content: ''; position: absolute; top: 32px; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0;
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative;
     }
-    .process-step { position: relative; z-index: 1; }
-    .step-number {
-      width: 64px; height: 64px; background: var(--bg-card); border: 1px solid var(--border-accent);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 1.5rem;
-      box-shadow: 0 0 20px rgba(168,85,247,0.1);
+    .process-line {
+      position: absolute; top: 35px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, rgba(168,85,247,0.1) 0%, rgba(168,85,247,0.6) 50%, rgba(168,85,247,0.1) 100%);
+      z-index: 0; pointer-events: none;
     }
-    .step-title { font-size: 1.25rem; margin-bottom: 0.75rem; }
-    .step-desc { color: var(--text-secondary); font-size: 0.95rem; }
+    .process-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-card); padding: 2.25rem 1.75rem;
+      position: relative; z-index: 1; transition: all var(--transition);
+    }
+    .process-item:hover {
+      border-color: var(--border-accent); transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+    .step-badge {
+      width: 54px; height: 54px; border-radius: 16px;
+      background: var(--bg-primary); border: 1px solid var(--border-accent);
+      color: var(--accent-light); font-size: 1.3rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+    }
+    .step-heading { font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 700; }
+    .step-text { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
 
-    /* ===================== TESTIMONIALS ===================== */
+    /* ===================== TESTIMONIOS ===================== */
     .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     .testimonial-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card);
-      padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-card); padding: 2.75rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: all var(--transition);
     }
-    .testimonial-text { font-size: 1.125rem; font-style: italic; color: #fff; margin-bottom: 2rem; line-height: 1.7; }
-    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
-    .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: #333; }
-    .author-info h4 { font-size: 1rem; margin-bottom: 0.1rem; }
-    .author-info p { font-size: 0.85rem; color: var(--text-secondary); }
+    .testimonial-card:hover {
+      border-color: var(--border-accent); transform: translateY(-4px);
+    }
+    .testimonial-stars { display: flex; gap: 4px; color: #f59e0b; margin-bottom: 1.25rem; }
+    .testimonial-quote {
+      font-size: 1.05rem; color: #e2e8f0; line-height: 1.7; margin-bottom: 2rem; font-style: italic;
+    }
+    .testimonial-author-box { display: flex; align-items: center; gap: 1rem; }
+    .author-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 2px solid var(--accent); background: #24242d;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: #fff; font-size: 1.1rem;
+    }
+    .author-name { font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 0.15rem; }
+    .author-role { font-size: 0.85rem; color: var(--accent-light); }
 
-    /* ===================== CTA / CONTACT ===================== */
-    .cta-section { background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%); }
-    .cta-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .cta-content h2 { font-size: 3rem; margin-bottom: 1.5rem; }
-    .cta-content p { font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; }
-    .cta-bullets { display: flex; flex-direction: column; gap: 1rem; }
-    .cta-bullet { display: flex; align-items: center; gap: 0.75rem; color: #fff; }
-    .cta-bullet svg { color: var(--accent); }
+    /* ===================== CTA / CONTACTO ===================== */
+    .cta-section { background: linear-gradient(180deg, var(--bg-primary) 0%, #0d0c14 100%); }
+    .cta-container {
+      display: grid; grid-template-columns: 1fr 1.15fr; gap: 4rem; align-items: center;
+    }
+    .cta-info h2 {
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem); margin-bottom: 1.25rem; line-height: 1.15;
+    }
+    .cta-info p {
+      font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7;
+    }
+    .cta-perks { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
+    .cta-perk { display: flex; align-items: center; gap: 0.85rem; color: #f1f5f9; font-weight: 500; }
+    .cta-perk-icon { color: #38bdf8; }
 
+    /* Direct Contact Card */
+    .direct-contact-card {
+      padding: 1.5rem; background: rgba(37, 211, 102, 0.08);
+      border: 1px solid rgba(37, 211, 102, 0.25); border-radius: 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .direct-contact-left strong { display: block; color: #fff; font-size: 0.95rem; }
+    .direct-contact-left span { font-size: 0.85rem; color: var(--text-secondary); }
+    .btn-wa-direct {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #25D366; color: #000; font-weight: 700; font-size: 0.88rem;
+      padding: 0.65rem 1.25rem; border-radius: 10px; transition: all var(--transition);
+    }
+    .btn-wa-direct:hover { background: #1ebd5a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
+
+    /* Form Card */
     .form-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 3rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 3rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
     }
     .form-group { margin-bottom: 1.5rem; }
-    .form-group label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; color: #fff; }
-    
-    .form-success { display: none; text-align: center; padding: 2rem 0; }
-    .form-success-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(34,197,94,0.1); color: #22c55e; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
-    .form-success-icon svg { width: 32px; height: 32px; stroke: currentColor; stroke-width: 2; fill: none; }
-    .form-success h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .form-success p { color: var(--text-secondary); }
+    .form-group label {
+      display: block; font-size: 0.88rem; font-weight: 600;
+      color: #e2e8f0; margin-bottom: 0.5rem;
+    }
+
+    /* Form Success */
+    .form-success {
+      display: none; text-align: center; padding: 3rem 1.5rem;
+    }
+    .form-success-icon {
+      width: 72px; height: 72px; border-radius: 50%; background: rgba(34, 197, 94, 0.15);
+      border: 2px solid rgba(34, 197, 94, 0.4); color: #22c55e;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+    }
+    .form-success h3 { font-size: 1.7rem; margin-bottom: 0.75rem; }
+    .form-success p { color: var(--text-secondary); max-width: 400px; margin: 0 auto 1.5rem; }
 
     /* ===================== FOOTER ===================== */
-    .footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border); background: var(--bg-primary); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .footer-brand p { color: var(--text-secondary); margin-top: 1rem; max-width: 300px; }
-    .footer-title { font-size: 1.1rem; margin-bottom: 1.5rem; }
-    .footer-links { display: flex; flex-direction: column; gap: 1rem; }
-    .footer-links a { color: var(--text-secondary); transition: color 0.3s; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem; }
+    .footer {
+      padding: 5rem 0 2.5rem; border-top: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 3.5rem; margin-bottom: 4rem;
+    }
+    .footer-brand img { height: 40px; margin-bottom: 1.25rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+    .footer-heading {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #fff; margin-bottom: 1.25rem;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--accent-light); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;
+    }
 
-    /* ===================== WHATSAPP BUTTON ===================== */
+    /* ===================== WHATSAPP FLOAT ===================== */
+    .whatsapp-widget {
+      position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
     .whatsapp-btn {
-      position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-      background: #25D366; color: #fff; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 10px 20px rgba(37,211,102,0.3); z-index: 1000;
-      transition: transform 0.3s, box-shadow 0.3s;
+      width: 62px; height: 62px; background: #25D366; color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      transition: all var(--transition); position: relative;
     }
-    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(37,211,102,0.4); }
+    .whatsapp-btn:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 16px 36px rgba(37, 211, 102, 0.55);
+    }
     .whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero-title { font-size: 3rem; }
-      .services-grid, .testimonials-grid, .cta-container, .footer-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
-      .process-grid::before { display: none; }
+    .whatsapp-tooltip {
+      background: rgba(18, 18, 24, 0.95); backdrop-filter: blur(10px);
+      border: 1px solid var(--border); color: #fff; padding: 0.55rem 1rem;
+      border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); pointer-events: none;
+      opacity: 0; transform: translateX(10px); transition: all 0.25s ease;
+      white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;
     }
-    @media (max-width: 768px) {
-      .hero-metrics { grid-template-columns: 1fr; gap: 1.5rem; }
-      .process-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding: 8rem 0 4rem; }
-      .hero-title { font-size: 2.5rem; }
-      .service-card, .form-card { padding: 2rem; }
+    .whatsapp-widget:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
+
+    /* Scroll Top Button */
+    #scroll-top {
+      position: fixed; bottom: 100px; right: 35px; width: 44px; height: 44px;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 50%;
+      color: var(--text-secondary); display: flex; align-items: center; justify-content: center;
+      z-index: 990; transition: all var(--transition); cursor: pointer;
+    }
+    #scroll-top:hover {
+      background: var(--accent-dim); border-color: var(--border-accent);
+      color: var(--accent-light); transform: translateY(-3px);
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .process-line { display: none; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .nav-cta-group .btn-primary { display: none; }
+      .nav-toggle-btn { display: flex; }
+      .services-grid, .cta-container, .testimonials-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-metrics { grid-template-columns: 1fr; gap: 1.25rem; }
+      .form-card, .service-card { padding: 2rem; }
+      .section { padding: 4.5rem 0; }
+    }
+
+    @media (max-width: 540px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { padding: 8.5rem 0 4rem; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100%; }
+      .whatsapp-tooltip { display: none; }
+      .whatsapp-widget { bottom: 20px; right: 20px; }
+      #scroll-top { bottom: 88px; right: 27px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Barra de progreso de scroll -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <header class="navbar" id="navbar">
     <div class="container navbar-inner">
-      <a href="/" class="nav-brand">
+      <a href="/" class="nav-brand" aria-label="RSD Solutions - Inicio">
         <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
       </a>
-      <div class="nav-links">
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#proceso" class="nav-link">Proceso</a>
-        <a href="#clientes" class="nav-link">Casos de Éxito</a>
-      </div>
-      <a href="#contacto" class="btn-primary">Agendar Consultoría</a>
-    </div>
-  </nav>
+      
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios" class="nav-link">Servicios & Pricing</a>
+        <a href="#proceso" class="nav-link">Metodología</a>
+        <a href="#casos" class="nav-link">Casos de Éxito</a>
+        <a href="/portafolio.html" class="nav-link" style="color: var(--accent-light);">Portafolio B2B ↗</a>
+      </nav>
 
-  <!-- HERO -->
+      <div class="nav-cta-group">
+        <a href="#contacto" class="btn-primary">Agendar Consultoría</a>
+        <button class="nav-toggle-btn" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div id="mobile-menu" aria-hidden="true">
+    <a href="#servicios" class="mobile-link">Servicios & Sistemas <span>→</span></a>
+    <a href="#proceso" class="mobile-link">Proceso de Desarrollo <span>→</span></a>
+    <a href="#casos" class="mobile-link">Casos de Éxito <span>→</span></a>
+    <a href="/portafolio.html" class="mobile-link" style="color: var(--accent-light);">Ver Portafolio Completo <span>↗</span></a>
+    <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20web%20o%20SaaS" 
+       target="_blank" rel="noopener noreferrer" class="btn-wa-direct" style="justify-content: center; margin-top: 0.5rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribir a WhatsApp (0999340807)
+    </a>
+    <a href="#contacto" class="btn-primary" style="justify-content: center;">Cotizar Proyecto Ahora</a>
+  </div>
+
+  <!-- HERO SECTION -->
   <section class="hero">
+    <div class="hero-glow-1" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
     <div class="container">
-      <div class="hero-content fade-in-section">
-        <div class="badge">Consultoría de Software B2B</div>
-        <h1 class="hero-title">Sistemas Web y SaaS a Medida para Escalar tu Negocio</h1>
-        <p class="hero-desc">Automatiza procesos y digitaliza tu operación con software corporativo de alta calidad. Desde aplicaciones robustas hasta plataformas SaaS complejas.</p>
+      <div class="hero-content reveal">
+        <div class="hero-badge">
+          <span class="dot-pulse"></span>
+          Consultoría & Ingeniería de Software B2B
+        </div>
+
+        <h1 class="hero-title">
+          Sistemas Web y Plataformas SaaS <span>Diseñados para Escalar</span>
+        </h1>
+
+        <p class="hero-desc">
+          Digitalizamos y automatizamos operaciones comerciales con software propio de alto rendimiento. Arquitectura escalable, bases de datos seguras y código 100% auditable desde <strong>$400</strong>.
+        </p>
+
         <div class="hero-actions">
-          <a href="#contacto" class="btn-primary">Cotizar Proyecto</a>
-          <a href="/portafolio.html" class="btn-secondary">Ver Portafolio</a>
+          <a href="#contacto" class="btn-primary btn-shimmer">
+            <span>Iniciar Consultoría Técnica</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="/portafolio.html" class="btn-secondary">
+            <span>Explorar Portafolio de Sistemas</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
         </div>
-        
+
+        <!-- Tech Stack Strip -->
+        <div class="tech-stack-strip">
+          <span class="tech-label">Stack Tecnológico</span>
+          <div class="tech-items">
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">Redis</span>
+            <span class="tech-badge">AWS / Cloud</span>
+          </div>
+        </div>
+
+        <!-- Hero Metrics -->
         <div class="hero-metrics">
-          <div class="metric-card">
-            <div class="metric-value">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              100% Código Auditable
+          <div class="metric-card glow-card">
+            <div class="metric-header">
+              <div class="metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <h3 class="metric-title">Código Propio Auditable</h3>
             </div>
-            <div class="metric-label">Propiedad intelectual a tu nombre</div>
+            <p class="metric-sub">El 100% de la propiedad intelectual, código fuente y base de datos pertenece a tu empresa. Sin ataduras.</p>
           </div>
-          <div class="metric-card">
-            <div class="metric-value">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-              Arquitectura Escalable
+
+          <div class="metric-card glow-card">
+            <div class="metric-header">
+              <div class="metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+              </div>
+              <h3 class="metric-title">Alta Disponibilidad</h3>
             </div>
-            <div class="metric-label">Listos para miles de usuarios</div>
+            <p class="metric-sub">Modelos de datos normalizados y microservicios listos para soportar miles de consultas y usuarios simultáneos.</p>
           </div>
-          <div class="metric-card">
-            <div class="metric-value">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              3 Meses de Soporte
+
+          <div class="metric-card glow-card">
+            <div class="metric-header">
+              <div class="metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <h3 class="metric-title">Soporte Técnico 3 Meses</h3>
             </div>
-            <div class="metric-label">Mantenimiento y estabilización</div>
+            <p class="metric-sub">Acompañamiento post-lanzamiento para estabilización de servidores, capacitación de personal y monitoreo activo.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS / PRICING -->
+  <!-- SERVICIOS / PRICING B2B -->
   <section id="servicios" class="section">
     <div class="container">
-      <h2 class="section-title">Soluciones de Software</h2>
-      <p class="section-subtitle">Desarrollamos tecnología a medida alineada a los objetivos de tu empresa.</p>
-      
+      <div class="reveal">
+        <div style="text-align: center;">
+          <span class="section-tag">Soluciones de Software</span>
+        </div>
+        <h2 class="section-title">Ingeniería a la Medida de tus Procesos</h2>
+        <p class="section-subtitle">Evita pagar licencias mensuales perpetuas por sistemas genéricos. Construye una herramienta propia y adaptada exactamente a tu flujo de negocio.</p>
+      </div>
+
       <div class="services-grid">
-        <!-- Tier 1 -->
-        <div class="service-card fade-in-section">
-          <div class="service-header">
-            <h3 class="service-title">Sistemas Web y Apps</h3>
-            <p class="service-desc">Ideal para negocios que buscan digitalizarse con herramientas propias.</p>
+        
+        <!-- Tier 1: Sistemas Web & Apps -->
+        <div class="service-card glow-card reveal delay-1">
+          <div>
+            <div class="service-header">
+              <span class="tech-badge" style="margin-bottom: 0.75rem;">Nivel B2B Esencial</span>
+              <h3 class="service-name">Sistemas Web & Apps a Medida</h3>
+              <p class="service-desc">Ideal para empresas que requieren digitalizar inventarios, cobranzas, reservas o flujos operativos internos.</p>
+            </div>
+
+            <div class="service-price-box">
+              <span class="service-price">Desde $400</span>
+              <span class="service-price-note">/ Proyecto llave en mano</span>
+            </div>
+
+            <div class="service-features-list">
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>Base de Datos Relacional Dedicada</strong>
+                  <span>Esquema seguro en PostgreSQL o MySQL con respaldos automáticos y propiedad total.</span>
+                </div>
+              </div>
+
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>Panel Administrativo & Métricas</strong>
+                  <span>Frontend moderno e intuitivo en React o Vue con tablas dinámicas y reportes en Excel/PDF.</span>
+                </div>
+              </div>
+
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>3 Meses de Mantenimiento Incluido</strong>
+                  <span>Garantía de código, corrección de bugs y monitoreo de estabilidad sin costos ocultos.</span>
+                </div>
+              </div>
+
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>Autenticación & Roles Básicos</strong>
+                  <span>Gestión de accesos seguros con contraseñas encriptadas y sesiones protegidas.</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="service-price">Desde $400</div>
-          
-          <div class="service-features">
-            <div class="feature-item">
-              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <span class="feature-text">Aplicación Web Funcional</span>
-                <span class="feature-subtext">Diseño UX/UI y Frontend moderno</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <span class="feature-text">Base de Datos Propia</span>
-                <span class="feature-subtext">Arquitectura relacional segura (PostgreSQL/MySQL)</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <span class="feature-text">Soporte Técnico Especializado</span>
-                <span class="feature-subtext">3 meses de soporte y estabilización post-lanzamiento</span>
-              </div>
-            </div>
-          </div>
-          <a href="#contacto" class="btn-primary" style="width: 100%;">Solicitar Cotización</a>
+
+          <a href="#contacto" class="btn-primary" style="width: 100%;">Solicitar Cotización Técnica</a>
         </div>
 
-        <!-- Tier 2 -->
-        <div class="service-card fade-in-section" style="border-color: var(--border-accent); background: linear-gradient(180deg, var(--bg-card) 0%, rgba(168,85,247,0.03) 100%);">
-          <div class="service-header">
-            <h3 class="service-title">Plataformas Complejas (SaaS / POS)</h3>
-            <p class="service-desc">Soluciones empresariales profundas y arquitecturas escalables.</p>
+        <!-- Tier 2: SaaS & POS Multi-tenant -->
+        <div class="service-card glow-card highlight reveal delay-2">
+          <div class="service-badge-popular">Arquitectura Empresarial</div>
+          <div>
+            <div class="service-header">
+              <span class="tech-badge" style="margin-bottom: 0.75rem; background: rgba(168,85,247,0.2); border-color: var(--accent);">Plataformas Escalables</span>
+              <h3 class="service-name">SaaS, POS & ERP Complejos</h3>
+              <p class="service-desc">Para plataformas con múltiples sucursales, facturación electrónica SRI, cobros recurrentes o miles de usuarios.</p>
+            </div>
+
+            <div class="service-price-box">
+              <span class="service-price">A Medida</span>
+              <span class="service-price-note">/ Según alcance arquitectónico</span>
+            </div>
+
+            <div class="service-features-list">
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>Arquitectura Multi-tenant & Microservicios</strong>
+                  <span>Aislamiento estricto de datos por cliente/empresa y alta escalabilidad en servidores cloud.</span>
+                </div>
+              </div>
+
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>Facturación Electrónica SRI & Pagos</strong>
+                  <span>Integración de firma electrónica, generación de comprobantes XML/PDF y pasarelas de pago.</span>
+                </div>
+              </div>
+
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>Control Jerárquico RBAC Avanzado</strong>
+                  <span>Matriz de roles y permisos granulares (SuperAdmin, Auditor, Operador, Cajero).</span>
+                </div>
+              </div>
+
+              <div class="feature-row">
+                <div class="feature-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                <div class="feature-info">
+                  <strong>WebSockets & Eventos en Tiempo Real</strong>
+                  <span>Sincronización instantánea de comandas, ventas, alertas de stock y métricas en vivo.</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="service-price">A Medida</div>
-          
-          <div class="service-features">
-            <div class="feature-item">
-              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <span class="feature-text">Arquitectura Multi-tenant</span>
-                <span class="feature-subtext">Sistemas para miles de usuarios concurrentes</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <span class="feature-text">Roles y Permisos Avanzados</span>
-                <span class="feature-subtext">Paneles de administración y seguridad empresarial</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <div>
-                <span class="feature-text">Integraciones y Facturación</span>
-                <span class="feature-subtext">APIs de pago, facturación electrónica y ERPs</span>
-              </div>
-            </div>
-          </div>
-          <a href="#contacto" class="btn-primary" style="width: 100%;">Agendar Reunión Técnica</a>
+
+          <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20agendar%20una%20reunion%20tecnica%20para%20un%20SaaS%20o%20sistema%20complejo" 
+             target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%;">
+            <span>Agendar Reunión con Arquitecto</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- COMO FUNCIONA (PROCESO) -->
+  <!-- METODOLOGÍA / PROCESO -->
   <section id="proceso" class="section process-section">
     <div class="container">
-      <h2 class="section-title">El Ciclo de Desarrollo</h2>
-      <p class="section-subtitle">Implementamos metodologías ágiles para asegurar que el software resuelva tus necesidades reales.</p>
-      
+      <div class="reveal">
+        <div style="text-align: center;">
+          <span class="section-tag">Metodología Ágil</span>
+        </div>
+        <h2 class="section-title">El Ciclo de Desarrollo de Software</h2>
+        <p class="section-subtitle">Un proceso estructurado para entregar software robusto sin desviaciones de tiempo ni presupuesto.</p>
+      </div>
+
       <div class="process-grid">
-        <div class="process-step fade-in-section">
-          <div class="step-number">01</div>
-          <h4 class="step-title">Auditoría de Procesos</h4>
-          <p class="step-desc">Analizamos la operativa de tu negocio para entender qué procesos pueden automatizarse con software.</p>
+        <div class="process-line"></div>
+
+        <div class="process-item glow-card reveal delay-1">
+          <div class="step-badge">01</div>
+          <h4 class="step-heading">Auditoría de Procesos</h4>
+          <p class="step-text">Entrevistamos a los responsables de área para mapear la lógica de negocio, cuellos de botella manuales y diagramar el flujo de datos.</p>
         </div>
-        <div class="process-step fade-in-section" style="transition-delay: 0.1s;">
-          <div class="step-number">02</div>
-          <h4 class="step-title">Diseño de Arquitectura</h4>
-          <p class="step-desc">Proyectamos la base de datos, los flujos de usuario (UI/UX) y creamos un prototipo funcional.</p>
+
+        <div class="process-item glow-card reveal delay-2">
+          <div class="step-badge">02</div>
+          <h4 class="step-heading">Diseño de Arquitectura</h4>
+          <p class="step-text">Definimos el modelo entidad-relación de la base de datos, los endpoints de la API, los esquemas de seguridad y los wireframes UI/UX interactivos.</p>
         </div>
-        <div class="process-step fade-in-section" style="transition-delay: 0.2s;">
-          <div class="step-number">03</div>
-          <h4 class="step-title">Desarrollo e Implementación</h4>
-          <p class="step-desc">Codificamos el frontend y backend bajo estándares limpios, integrando pasarelas de pago o facturación.</p>
+
+        <div class="process-item glow-card reveal delay-3">
+          <div class="step-badge">03</div>
+          <h4 class="step-heading">Desarrollo & Testing</h4>
+          <p class="step-text">Codificación limpia en sprints semanales con pruebas unitarias, integración de pasarelas y auditorías de seguridad en cada entrega.</p>
         </div>
-        <div class="process-step fade-in-section" style="transition-delay: 0.3s;">
-          <div class="step-number">04</div>
-          <h4 class="step-title">Soporte y Estabilización</h4>
-          <p class="step-desc">Desplegamos el sistema en servidores seguros y brindamos 3 meses de soporte técnico para el equipo.</p>
+
+        <div class="process-item glow-card reveal delay-4">
+          <div class="step-badge">04</div>
+          <h4 class="step-heading">Despliegue & Soporte</h4>
+          <p class="step-text">Puesta en producción en servidores cloud seguros (Docker/AWS/VPS), capacitación a tus usuarios y 3 meses de acompañamiento directo.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS / CASOS DE ÉXITO -->
-  <section id="clientes" class="section">
+  <!-- CASOS DE ÉXITO / CLIENTES -->
+  <section id="casos" class="section">
     <div class="container">
-      <h2 class="section-title">Confianza Corporativa</h2>
-      <p class="section-subtitle">Soluciones tecnológicas que impulsan empresas reales.</p>
-      
+      <div class="reveal">
+        <div style="text-align: center;">
+          <span class="section-tag">Prueba Social & Resultados</span>
+        </div>
+        <h2 class="section-title">Sistemas Reales en Operación</h2>
+        <p class="section-subtitle">Empresas que confiaron en RSD Solutions para construir sus herramientas tecnológicas centrales.</p>
+      </div>
+
       <div class="testimonials-grid">
-        <div class="testimonial-card fade-in-section">
-          <p class="testimonial-text">"Necesitábamos un sistema de gestión y POS (Punto de Venta) para nuestra cadena de restaurantes. RSD Solutions estructuró una plataforma a medida que controla inventario y facturación en tiempo real."</p>
-          <div class="testimonial-author">
-            <img src="/img/cliente1.jpg" alt="Cliente" class="author-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/></svg>'">
-            <div class="author-info">
-              <h4>Grupo Gastronómico</h4>
-              <p>Sistema POS Multi-sucursal</p>
+        
+        <div class="testimonial-card glow-card reveal delay-1">
+          <div>
+            <div class="testimonial-stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-quote">
+              "Buscábamos un sistema de comandas y POS en tiempo real para múltiples puntos de venta que no nos cobrara mensualidades abusivas por usuario. RSD Solutions construyó RestoGestión a la medida: inventario automatizado, recetas y facturación en un solo panel."
+            </p>
+          </div>
+          <div class="testimonial-author-box">
+            <div class="author-avatar">RG</div>
+            <div>
+              <div class="author-name">Gerencia de Operaciones</div>
+              <div class="author-role">RestoGestión · Cadena Gastronómica</div>
             </div>
           </div>
         </div>
-        <div class="testimonial-card fade-in-section" style="transition-delay: 0.1s;">
-          <p class="testimonial-text">"El desarrollo de nuestro CRM inmobiliario nos permitió gestionar propiedades y agentes desde una sola aplicación web. La arquitectura es robusta y el código nos pertenece 100%."</p>
-          <div class="testimonial-author">
-            <img src="/img/cliente2.jpg" alt="Cliente" class="author-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/></svg>'">
-            <div class="author-info">
-              <h4>Agencia Inmobiliaria</h4>
-              <p>Plataforma CRM Custom</p>
+
+        <div class="testimonial-card glow-card reveal delay-2">
+          <div>
+            <div class="testimonial-stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-quote">
+              "El CRM comercial que nos desarrollaron nos permitió conectar el seguimiento de leads con WhatsApp y métricas en vivo para nuestros ejecutivos. Pasamos de perder prospectos en hojas de cálculo a duplicar la tasa de cierre con flujos auditables."
+            </p>
+          </div>
+          <div class="testimonial-author-box">
+            <div class="author-avatar">DP</div>
+            <div>
+              <div class="author-name">Dirección Comercial</div>
+              <div class="author-role">Club Corporativo & B2B</div>
             </div>
           </div>
         </div>
+
+      </div>
+
+      <!-- Callout Portafolio -->
+      <div style="margin-top: 3.5rem; text-align: center;" class="reveal">
+        <a href="/portafolio.html" class="btn-secondary" style="border-color: var(--border-accent); padding: 1rem 2rem;">
+          <span>Explorar los 8 Sistemas y Demos en el Portafolio</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -487,56 +853,83 @@
   <!-- CTA / CONTACTO -->
   <section id="contacto" class="section cta-section">
     <div class="container cta-container">
-      <div class="cta-content fade-in-section">
-        <h2>Impulsa tu negocio con tecnología propia</h2>
-        <p>Hablemos sobre tus procesos manuales y cómo un software a medida puede escalar tu facturación.</p>
-        
-        <div class="cta-bullets">
-          <div class="cta-bullet">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Reunión de descubrimiento sin costo
+      
+      <div class="cta-info reveal">
+        <span class="section-tag">Hablemos de Ingeniería</span>
+        <h2>Impulsa tu Empresa con Tecnología Propia</h2>
+        <p>Agenda una sesión de descubrimiento sin costo. Analizaremos los requerimientos de tu negocio y te presentaremos una propuesta técnica y económica detallada.</p>
+
+        <div class="cta-perks">
+          <div class="cta-perk">
+            <svg class="cta-perk-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Sesión de auditoría y alcance técnico sin costo</span>
           </div>
-          <div class="cta-bullet">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Propuesta técnica detallada
+          <div class="cta-perk">
+            <svg class="cta-perk-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Propuesta con arquitectura de base de datos y entregables</span>
           </div>
-          <div class="cta-bullet">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Garantía de calidad de código
+          <div class="cta-perk">
+            <svg class="cta-perk-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Garantía de código auditable y 3 meses de soporte</span>
           </div>
+        </div>
+
+        <!-- Direct WhatsApp Card -->
+        <div class="direct-contact-card">
+          <div class="direct-contact-left">
+            <strong>¿Prefieres atención inmediata?</strong>
+            <span>Escribe directo a un ingeniero por WhatsApp: <strong>0999340807</strong></span>
+          </div>
+          <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20conversar%20sobre%20un%20proyecto%20de%20software" 
+             target="_blank" rel="noopener noreferrer" class="btn-wa-direct">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat WhatsApp
+          </a>
         </div>
       </div>
 
-      <div class="form-card fade-in-section">
-        <div class="contact-form">
-          <form id="contact-form">
-            <div class="form-group">
-              <label for="name">Nombre Completo</label>
-              <input type="text" id="name" name="name" placeholder="Ej. Juan Pérez" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Correo Corporativo</label>
-              <input type="email" id="email" name="email" placeholder="juan@empresa.com" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Teléfono / WhatsApp</label>
-              <input type="tel" id="phone" name="phone" placeholder="+593 99 999 9999" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Sobre el Proyecto</label>
-              <textarea id="message" name="message" rows="4" placeholder="Cuéntanos qué procesos te gustaría automatizar o sistematizar..." class="form-input" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary" style="width: 100%;">Solicitar Consultoría</button>
-          </form>
-          <div id="form-success" class="form-success">
-            <div class="form-success-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <h3>¡Solicitud recibida!</h3>
-            <p>Un ingeniero de nuestro equipo te contactará pronto para agendar la auditoría inicial.</p>
+      <!-- FORMULARIO DE CONTACTO (IDs y names estrictamente preservados) -->
+      <div class="form-card glow-card reveal delay-1">
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Nombre y Apellido *</label>
+            <input type="text" id="name" name="name" placeholder="Ej. Roberto Andrade" class="form-input" required>
           </div>
+
+          <div class="form-group">
+            <label for="email">Correo Corporativo *</label>
+            <input type="email" id="email" name="email" placeholder="roberto@tuempresa.com" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Teléfono / WhatsApp *</label>
+            <input type="tel" id="phone" name="phone" placeholder="0999340807 o +593 99 999 9999" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Detalle del Proyecto o Necesidad *</label>
+            <textarea id="message" name="message" rows="4" placeholder="Describe qué procesos deseas sistematizar (inventario, ventas, POS, plataforma SaaS, etc.)..." class="form-input" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-shimmer" style="width: 100%; padding: 1rem;">
+            <span>Enviar Solicitud de Consultoría</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </form>
+
+        <div id="form-success" class="form-success">
+          <div class="form-success-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h3>¡Solicitud Enviada con Éxito!</h3>
+          <p>Hemos recibido tus requerimientos. Un ingeniero de software de nuestro equipo analizará la factibilidad y te contactará en menos de 24 horas laborables.</p>
+          <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20acabo%20de%20enviar%20el%20formulario%20y%20quisiera%20adelantar%20detalles" 
+             target="_blank" rel="noopener noreferrer" class="btn-secondary" style="border-color: rgba(37,211,102,0.4); color: #25D366;">
+            Acelerar por WhatsApp directo ↗
+          </a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -545,56 +938,72 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions" style="height: 40px; filter: brightness(0) invert(1);">
-          <p>Consultoría tecnológica y desarrollo de sistemas empresariales. Construimos el código que escala tu negocio.</p>
-        </div>
-        <div>
-          <h5 class="footer-title">Servicios</h5>
-          <div class="footer-links">
-            <a href="#">Sistemas Web</a>
-            <a href="#">Aplicaciones SaaS</a>
-            <a href="#">Sistemas POS</a>
-            <a href="#">Integraciones API</a>
+          <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
+          <p>Consultora tecnológica e ingeniería de software especializada en plataformas SaaS, ERPs, sistemas POS y desarrollo web corporativo de alto rendimiento.</p>
+          <div style="margin-top: 1rem; color: #fff; font-size: 0.9rem; font-weight: 600;">
+            WhatsApp Oficial: <a href="https://wa.me/593999340807" target="_blank" style="color: #25D366;">0999340807 (+593 999 340 807)</a>
           </div>
         </div>
+
         <div>
-          <h5 class="footer-title">Empresa</h5>
+          <h5 class="footer-heading">Soluciones</h5>
           <div class="footer-links">
-            <a href="/portafolio.html">Casos de Éxito</a>
-            <a href="/terminos.html">Términos y Condiciones</a>
-            <a href="/privacidad.html">Privacidad</a>
+            <a href="#servicios">Sistemas Web a Medida</a>
+            <a href="#servicios">Plataformas SaaS Cloud</a>
+            <a href="#servicios">Sistemas POS & Retail</a>
+            <a href="#servicios">Bases de Datos Relacionales</a>
+            <a href="/portafolio.html">Ver Portafolio de Casos</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Navegación</h5>
+          <div class="footer-links">
+            <a href="#servicios">Servicios & Costos</a>
+            <a href="#proceso">Metodología</a>
+            <a href="#casos">Casos de Éxito</a>
+            <a href="/portafolio.html">Portafolio</a>
+            <a href="#contacto">Contacto & Cotización</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Legal & Contacto</h5>
+          <div class="footer-links">
+            <a href="/terminos.html">Términos de Servicio</a>
+            <a href="/privacidad.html">Política de Privacidad</a>
+            <a href="mailto:rsdsolutions.ec@gmail.com">rsdsolutions.ec@gmail.com</a>
+            <a href="https://wa.me/593999340807" target="_blank" rel="noopener noreferrer">Atención WhatsApp 24/7</a>
           </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 RSD Solutions. Todos los derechos reservados.</p>
-        <p>Quito, Ecuador</p>
+        <p>&copy; 2026 RSD Solutions. Todos los derechos reservados. Quito, Ecuador.</p>
+        <p>Desarrollo de Software Corporativo · WhatsApp: <a href="https://wa.me/593999340807" target="_blank" style="color:var(--accent-light);">+593 999 340 807</a></p>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp CTA -->
-  <a href="https://wa.me/593990000000" class="whatsapp-btn" target="_blank" aria-label="Chat WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+  <!-- WHATSAPP FLOAT WIDGET -->
+  <div class="whatsapp-widget">
+    <div class="whatsapp-tooltip">
+      <span class="dot-pulse"></span>
+      ¿Dudas sobre tu sistema? Escríbenos al 0999340807
+    </div>
+    <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20web%20o%20SaaS%20para%20mi%20empresa" 
+       class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Escribir al WhatsApp oficial de RSD Solutions (0999340807)">
+      <div class="wa-pulse-ring"></div>
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
 
-  <!-- Scripts -->
-  <script src="/src/script.js"></script>
-  <script>
-    // Intersection Observer for fade-in animations
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, { threshold: 0.1 });
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scroll-top" class="opacity-0 pointer-events-none" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
 
-      document.querySelectorAll('.fade-in-section').forEach((el) => {
-        observer.observe(el);
-      });
-    });
-  </script>
+  <!-- SCRIPTS -->
+  <script type="module" src="/src/script.js"></script>
 </body>
 </html>
