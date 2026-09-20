@@ -79,6 +79,7 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -282,7 +283,7 @@ body {
   border: 1px solid var(--input-border);
   color: var(--input-text);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px mínimo para evitar auto-zoom en iOS Safari */
   transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
   outline: none;
 }
@@ -349,3 +350,30 @@ body {
   display: inline-block;
   animation: dotPulse 2s infinite ease-in-out;
 }
+
+/* ================================================================
+   REGLAS GLOBALES DE RESPONSIVIDAD MÓVIL Y ACCESIBILIDAD
+   ================================================================ */
+
+@media (max-width: 640px) {
+  /* Evitar zoom automático en iOS en inputs y textareas */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Reducción sutil de tarjetas y bordes en pantallas compactas */
+  .glow-card {
+    border-radius: 16px;
+  }
+
+  /* Control de desborde seguro en textos y títulos */
+  h1, h2, h3, h4, h5, h6, p, span, a, button {
+    overflow-wrap: break-word;
+  }
+}
+
