@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,18 @@
   <meta property="og:image" content="/img/RSD-Logo.png">
   <meta property="og:type" content="website">
 
+  <!-- Script anti-flicker: Garantiza tema Claro por defecto sin parpadeos -->
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('rsd-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
   <link rel="icon" href="/img/RSD-Logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,27 +31,7 @@
   <link rel="stylesheet" href="/src/styles.css">
 
   <style>
-    /* ===================== VARIABLES ===================== */
-    :root {
-      --bg-primary: #09090c;
-      --bg-secondary: #0f0f14;
-      --bg-card: #15151c;
-      --bg-card-hover: #1b1b24;
-      --accent: #a855f7;
-      --accent-light: #c084fc;
-      --accent-hover: #9333ea;
-      --accent-dim: rgba(168, 85, 247, 0.12);
-      --accent-glow: rgba(168, 85, 247, 0.3);
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(168, 85, 247, 0.35);
-      --radius-card: 20px;
-      --radius-btn: 12px;
-      --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
+    /* ===================== VARIABLES & ESTILOS BASE ===================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
@@ -49,10 +41,11 @@
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
     }
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #fff;
+      color: var(--text-primary);
       font-weight: 700;
       line-height: 1.2;
     }
@@ -67,12 +60,15 @@
     /* ===================== NAVBAR ===================== */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; height: 78px;
-      background: rgba(9, 9, 12, 0.75); backdrop-filter: blur(18px);
+      background: var(--nav-bg); backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid transparent;
-      z-index: 1000; transition: all var(--transition);
+      z-index: 1000; transition: all var(--transition-fast);
     }
     .navbar.scrolled {
-      background: rgba(9, 9, 12, 0.92); border-bottom: 1px solid var(--border);
+      background: var(--nav-bg-scrolled); border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="dark"] .navbar.scrolled {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .navbar-inner {
@@ -83,46 +79,45 @@
     .nav-links { display: flex; gap: 2.2rem; align-items: center; }
     .nav-link {
       color: var(--text-secondary); font-weight: 500; font-size: 0.92rem;
-      transition: color var(--transition); position: relative;
+      transition: color var(--transition-fast); position: relative;
     }
-    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link:hover, .nav-link.active { color: var(--text-primary); }
     .nav-link.active::after {
       content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 2px;
       background: var(--accent); border-radius: 2px;
     }
-    .nav-cta-group { display: flex; align-items: center; gap: 1rem; }
+    .nav-cta-group { display: flex; align-items: center; gap: 0.85rem; }
 
     .btn-primary {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-      padding: 0.85rem 1.75rem; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      padding: 0.85rem 1.75rem; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
       color: #fff; font-weight: 700; font-size: 0.95rem; border-radius: var(--radius-btn);
-      box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.45);
-      transition: all var(--transition); border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 10px 25px -5px var(--accent-glow);
+      transition: all var(--transition-fast); border: 1px solid rgba(255,255,255,0.15);
     }
     .btn-primary:hover {
-      background: linear-gradient(135deg, #b366ff 0%, #9d3bf0 100%);
-      transform: translateY(-2px); box-shadow: 0 15px 35px -5px rgba(168, 85, 247, 0.6);
+      transform: translateY(-2px); box-shadow: 0 15px 35px -5px var(--accent-glow);
     }
     .btn-secondary {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-      padding: 0.85rem 1.75rem; background: rgba(255, 255, 255, 0.04);
-      color: #fff; font-weight: 600; font-size: 0.95rem; border-radius: var(--radius-btn);
-      border: 1px solid var(--border); transition: all var(--transition);
+      padding: 0.85rem 1.75rem; background: var(--bg-card);
+      color: var(--text-primary); font-weight: 600; font-size: 0.95rem; border-radius: var(--radius-btn);
+      border: 1px solid var(--border); box-shadow: var(--shadow-card); transition: all var(--transition-fast);
     }
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+      background: var(--accent-dim); border-color: var(--border-accent);
+      color: var(--accent); transform: translateY(-2px);
     }
 
     /* Hamburger & Mobile Drawer */
     .nav-toggle-btn {
       display: none; flex-direction: column; justify-content: center; gap: 6px;
       width: 42px; height: 42px; border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+      background: var(--accent-dim); border: 1px solid var(--border);
       align-items: center; cursor: pointer;
     }
     .nav-toggle-btn span {
-      display: block; width: 22px; height: 2px; background: #fff;
+      display: block; width: 22px; height: 2px; background: var(--text-primary);
       border-radius: 2px; transition: all 0.3s ease;
     }
     .nav-toggle-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -131,16 +126,19 @@
 
     #mobile-menu {
       display: none; position: fixed; top: 78px; left: 0; right: 0;
-      background: rgba(13, 13, 18, 0.98); backdrop-filter: blur(24px);
+      background: var(--bg-card); backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border); padding: 2rem 1.5rem;
       flex-direction: column; gap: 1.25rem; z-index: 999;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
       animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] #mobile-menu {
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
     }
     #mobile-menu.open { display: flex; }
     .mobile-link {
-      font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);
-      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.1rem; font-weight: 600; color: var(--text-primary);
+      padding: 0.6rem 0; border-bottom: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
     }
 
@@ -151,14 +149,14 @@
     .hero-glow {
       position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
       width: 700px; height: 450px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 70%);
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 70%);
       filter: blur(90px); pointer-events: none; z-index: 0;
     }
     .portfolio-hero-inner { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; }
     .section-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent-light);
+      text-transform: uppercase; color: var(--accent);
       padding: 0.35rem 0.85rem; border-radius: 100px;
       background: var(--accent-dim); border: 1px solid var(--border-accent);
       margin-bottom: 1.25rem;
@@ -167,10 +165,16 @@
       font-size: clamp(2.4rem, 4.8vw, 4rem); font-weight: 800;
       letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.25rem;
     }
-    .portfolio-hero h1 span {
+    
+    [data-theme="light"] .portfolio-hero h1 span {
+      background: linear-gradient(135deg, #0f172a 40%, #7e22ce 80%, #0284c7 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    [data-theme="dark"] .portfolio-hero h1 span {
       background: linear-gradient(135deg, #fff 40%, #c084fc 80%, #38bdf8 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+
     .portfolio-hero p {
       font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7;
       max-width: 680px; margin: 0 auto 2.5rem;
@@ -179,11 +183,12 @@
     /* Trust Stats Strip */
     .trust-strip {
       display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
-      padding: 1.25rem 2rem; background: rgba(255, 255, 255, 0.02);
+      padding: 1.25rem 2rem; background: var(--bg-card);
       border: 1px solid var(--border); border-radius: 100px;
+      box-shadow: var(--shadow-card);
       margin: 0 auto 3rem; max-width: 780px;
     }
-    .trust-stat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: #e2e8f0; font-weight: 600; }
+    .trust-stat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--text-primary); font-weight: 600; }
     .trust-stat-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
 
     /* ===================== FILTROS ===================== */
@@ -193,15 +198,15 @@
     .filter-btn {
       padding: 0.65rem 1.4rem; border-radius: 100px; border: 1px solid var(--border);
       font-size: 0.88rem; font-weight: 600; color: var(--text-secondary);
-      background: rgba(255, 255, 255, 0.02); transition: all var(--transition);
-      cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--bg-card); box-shadow: var(--shadow-card);
+      transition: all var(--transition-fast); cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;
     }
     .filter-btn:hover {
-      border-color: rgba(255, 255, 255, 0.25); color: #fff; background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-accent); color: var(--accent); transform: translateY(-2px);
     }
     .filter-btn.active {
       background: var(--accent-dim); border-color: var(--border-accent);
-      color: #fff; box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+      color: var(--accent); font-weight: 700; box-shadow: 0 0 15px var(--accent-glow);
     }
 
     /* ===================== PROJECTS GRID ===================== */
@@ -212,16 +217,16 @@
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius-card); overflow: hidden;
       display: flex; flex-direction: column; justify-content: space-between;
-      transition: all var(--transition); position: relative;
+      box-shadow: var(--shadow-card); transition: all var(--transition-fast); position: relative;
     }
     .project-card.is-hidden { display: none; }
     .project-card:hover {
       border-color: var(--border-accent); transform: translateY(-6px);
-      box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(168, 85, 247, 0.2);
+      box-shadow: var(--shadow-card-hover);
     }
     .project-thumb-box {
       position: relative; width: 100%; height: 210px; overflow: hidden;
-      background: #111116; border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary); border-bottom: 1px solid var(--border);
     }
     .project-thumb {
       width: 100%; height: 100%; object-fit: cover; object-position: top center;
@@ -241,16 +246,16 @@
     .project-body { padding: 1.75rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .project-category {
       font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; color: var(--accent-light); margin-bottom: 0.4rem;
+      letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.4rem;
     }
-    .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.65rem; line-height: 1.3; }
+    .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.65rem; line-height: 1.3; color: var(--text-primary); }
     .project-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
     
     /* Metrics Pill */
     .project-metric-pill {
-      background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
+      background: var(--accent-dim); border: 1px solid var(--border-accent);
       border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.78rem;
-      color: #e9d5ff; font-weight: 600; margin-bottom: 1.25rem;
+      color: var(--accent); font-weight: 600; margin-bottom: 1.25rem;
       display: flex; align-items: center; gap: 0.45rem;
     }
 
@@ -261,18 +266,18 @@
     }
     .btn-card-link {
       display: inline-flex; align-items: center; gap: 0.45rem;
-      font-size: 0.85rem; font-weight: 700; color: #fff;
-      transition: color var(--transition), gap var(--transition);
+      font-size: 0.85rem; font-weight: 700; color: var(--text-primary);
+      transition: color var(--transition-fast), gap var(--transition-fast);
     }
-    .btn-card-link:hover { color: var(--accent-light); gap: 0.65rem; }
+    .btn-card-link:hover { color: var(--accent); gap: 0.65rem; }
     .btn-spec-trigger {
       display: inline-flex; align-items: center; gap: 0.35rem;
       font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
-      padding: 0.35rem 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border); transition: all var(--transition);
+      padding: 0.35rem 0.75rem; border-radius: 6px; background: var(--bg-secondary);
+      border: 1px solid var(--border); transition: all var(--transition-fast);
     }
     .btn-spec-trigger:hover {
-      color: #fff; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);
+      color: var(--accent); border-color: var(--border-accent);
     }
 
     /* ===================== MODAL DE ARQUITECTURA TÉCNICA ===================== */
@@ -283,54 +288,60 @@
     }
     #portfolio-modal.hidden { display: none; }
     .modal-backdrop {
-      position: absolute; inset: 0; background: rgba(5, 5, 8, 0.85);
+      position: absolute; inset: 0; background: rgba(5, 5, 8, 0.75);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     }
     .modal-content {
       position: relative; z-index: 1; width: 100%; max-width: 680px;
       background: var(--bg-card); border: 1px solid var(--border-accent);
-      border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      border-radius: 24px; padding: 2.5rem; box-shadow: var(--shadow-card);
       max-height: 90vh; overflow-y: auto;
     }
     .modal-close-btn {
       position: absolute; top: 1.5rem; right: 1.5rem;
       width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border);
-      color: #fff; display: flex; align-items: center; justify-content: center;
-      transition: all var(--transition);
+      background: var(--accent-dim); border: 1px solid var(--border);
+      color: var(--text-primary); display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition-fast);
     }
-    .modal-close-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.05); }
+    .modal-close-btn:hover { background: var(--border-accent); transform: scale(1.05); }
     
     .modal-badge {
       display: inline-block; font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-light);
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);
       margin-bottom: 0.5rem;
     }
-    .modal-title { font-size: 1.7rem; margin-bottom: 1rem; line-height: 1.25; }
+    .modal-title { font-size: 1.7rem; margin-bottom: 1rem; line-height: 1.25; color: var(--text-primary); }
     .modal-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.75rem; }
     
     .modal-spec-grid {
       display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem;
     }
     .modal-spec-box {
-      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
+      background: var(--bg-secondary); border: 1px solid var(--border);
       border-radius: 12px; padding: 1.25rem;
     }
     .modal-spec-box h5 {
       font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: var(--accent-light); margin-bottom: 0.4rem;
+      letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.4rem;
     }
-    .modal-spec-box p { font-size: 0.9rem; color: #fff; }
+    .modal-spec-box p { font-size: 0.9rem; color: var(--text-primary); }
 
     /* ===================== CTA FINAL ===================== */
     .cta-box-portafolio {
-      background: linear-gradient(135deg, #14141d 0%, #1c152a 100%);
       border: 1px solid var(--border-accent); border-radius: 28px;
       padding: 4.5rem 2rem; text-align: center; position: relative; overflow: hidden;
-      margin-top: 5rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      margin-top: 5rem; box-shadow: var(--shadow-card);
     }
+    [data-theme="light"] .cta-box-portafolio {
+      background: linear-gradient(135deg, #ffffff 0%, #f7f3ff 100%);
+    }
+    [data-theme="dark"] .cta-box-portafolio {
+      background: linear-gradient(135deg, #14141d 0%, #1c152a 100%);
+    }
+
     .cta-box-portafolio h2 {
-      font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1rem;
+      font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1rem; color: var(--text-primary);
     }
     .cta-box-portafolio p {
       font-size: 1.1rem; color: var(--text-secondary); max-width: 620px;
@@ -350,11 +361,11 @@
     .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
     .footer-heading {
       font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #fff; margin-bottom: 1.25rem;
+      text-transform: uppercase; color: var(--text-primary); margin-bottom: 1.25rem;
     }
     .footer-links { display: flex; flex-direction: column; gap: 0.85rem; }
-    .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: color var(--transition); }
-    .footer-links a:hover { color: var(--accent-light); }
+    .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: color var(--transition-fast); }
+    .footer-links a:hover { color: var(--accent); }
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center;
       padding-top: 2rem; border-top: 1px solid var(--border);
@@ -370,7 +381,7 @@
       width: 62px; height: 62px; background: #25D366; color: #fff;
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-      transition: all var(--transition); position: relative;
+      transition: all var(--transition-fast); position: relative;
     }
     .whatsapp-btn:hover { transform: scale(1.08) translateY(-2px); }
     .whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
@@ -379,11 +390,11 @@
       position: fixed; bottom: 100px; right: 35px; width: 44px; height: 44px;
       background: var(--bg-card); border: 1px solid var(--border); border-radius: 50%;
       color: var(--text-secondary); display: flex; align-items: center; justify-content: center;
-      z-index: 990; transition: all var(--transition); cursor: pointer;
+      box-shadow: var(--shadow-card); z-index: 990; transition: all var(--transition-fast); cursor: pointer;
     }
     #scroll-top:hover {
       background: var(--accent-dim); border-color: var(--border-accent);
-      color: var(--accent-light); transform: translateY(-3px);
+      color: var(--accent); transform: translateY(-3px);
     }
 
     /* ===================== RESPONSIVE ===================== */
@@ -415,7 +426,9 @@
   <header class="navbar" id="navbar">
     <div class="container navbar-inner">
       <a href="/" class="nav-brand" aria-label="RSD Solutions - Inicio">
-        <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
+        <!-- Logos adaptativos según tema -->
+        <img src="/img/Logo-RSD-SOLUTIONS-negro.png" class="logo-light" alt="RSD Solutions">
+        <img src="/img/Logo-RSD-SOLUTIONS-fondo-blanco.png" class="logo-dark" alt="RSD Solutions">
       </a>
       
       <nav class="nav-links" aria-label="Navegación principal">
@@ -426,7 +439,26 @@
       </nav>
 
       <div class="nav-cta-group">
+        <!-- Selector de Tema Claro / Oscuro -->
+        <button class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
         <a href="/#contacto" class="btn-primary">Cotizar Sistema</a>
+
         <button class="nav-toggle-btn" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -436,10 +468,17 @@
 
   <!-- MOBILE MENU DRAWER -->
   <div id="mobile-menu" aria-hidden="true">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);">
+      <span style="font-weight: 600; font-size: 0.9rem; color: var(--text-secondary);">Modo visual:</span>
+      <button class="theme-toggle-btn" aria-label="Cambiar tema">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
     <a href="/" class="mobile-link">Inicio <span>→</span></a>
     <a href="/#servicios" class="mobile-link">Servicios & Precios <span>→</span></a>
     <a href="/#proceso" class="mobile-link">Metodología Ágil <span>→</span></a>
-    <a href="/portafolio.html" class="mobile-link" style="color: var(--accent-light);">Portafolio B2B <span>✓</span></a>
+    <a href="/portafolio.html" class="mobile-link" style="color: var(--accent); font-weight: 700;">Portafolio B2B <span>✓</span></a>
     <a href="https://wa.me/593999340807?text=Hola%20RSD%20Solutions%2C%20quisiera%20cotizar%20un%20sistema%20web%20o%20SaaS" 
        target="_blank" rel="noopener noreferrer" class="btn-secondary" style="border-color: #25D366; color: #25D366; justify-content: center;">
       WhatsApp Oficial: 0999340807
@@ -776,7 +815,7 @@
 
       <!-- CTA FINAL PORTAFOLIO -->
       <div class="cta-box-portafolio reveal">
-        <span class="section-tag" style="background: rgba(168,85,247,0.25);">Proyectos a Medida</span>
+        <span class="section-tag">Proyectos a Medida</span>
         <h2>¿Tu Empresa Necesita un Software Específico?</h2>
         <p>Diseñamos la arquitectura de base de datos, los flujos operativos y el código completo con propiedad intelectual 100% para tu empresa. Proyectos desde $400 con 3 meses de soporte técnico garantizado.</p>
         
@@ -841,9 +880,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/img/Logo-RSD-SOLUTIONS-negro.png" alt="RSD Solutions">
+          <img src="/img/Logo-RSD-SOLUTIONS-negro.png" class="logo-light" alt="RSD Solutions">
+          <img src="/img/Logo-RSD-SOLUTIONS-fondo-blanco.png" class="logo-dark" alt="RSD Solutions">
           <p>Consultora tecnológica e ingeniería de software especializada en plataformas SaaS, ERPs, sistemas POS y desarrollo web corporativo de alto rendimiento.</p>
-          <div style="margin-top: 1rem; color: #fff; font-size: 0.9rem; font-weight: 600;">
+          <div style="margin-top: 1rem; color: var(--text-primary); font-size: 0.9rem; font-weight: 600;">
             WhatsApp Oficial: <a href="https://wa.me/593999340807" target="_blank" style="color: #25D366;">0999340807 (+593 999 340 807)</a>
           </div>
         </div>
@@ -872,7 +912,7 @@
 
       <div class="footer-bottom">
         <p>&copy; 2026 RSD Solutions. Todos los derechos reservados. Quito, Ecuador.</p>
-        <p>WhatsApp: <a href="https://wa.me/593999340807" target="_blank" style="color:var(--accent-light);">+593 999 340 807 (0999340807)</a></p>
+        <p>WhatsApp: <a href="https://wa.me/593999340807" target="_blank" style="color:var(--accent);">+593 999 340 807 (0999340807)</a></p>
       </div>
     </div>
   </footer>

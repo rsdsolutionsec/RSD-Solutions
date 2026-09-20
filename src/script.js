@@ -1,10 +1,47 @@
 /**
  * RSD Solutions — Scripts Principales
- * UI/UX B2B, Navegación Inteligente, Micro-interacciones y Conexión de Formulario
+ * UI/UX B2B, Selector de Tema (Claro/Oscuro), Navegación Inteligente y Formulario
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
+
+    // ==========================================
+    // 0. CONTROLADOR DE TEMA (CLARO / OSCURO)
+    // ==========================================
+    const applyTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        try {
+            localStorage.setItem('rsd-theme', theme);
+        } catch (e) {
+            // Manejo de restricciones de almacenamiento local
+        }
+        
+        const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+        const isDark = theme === 'dark';
+        themeBtns.forEach(btn => {
+            btn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+            btn.setAttribute('title', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+        });
+    };
+
+    // Leer tema actual (por defecto 'light')
+    let savedTheme = 'light';
+    try {
+        savedTheme = localStorage.getItem('rsd-theme') || 'light';
+    } catch (e) {
+        savedTheme = 'light';
+    }
+    applyTheme(savedTheme);
+
+    // Event listeners para todos los botones de toggle de tema (desktop y móvil)
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(nextTheme);
+        });
+    });
 
     // ==========================================
     // 1. BARRA DE PROGRESO DE SCROLL
@@ -244,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 modal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
-                // Animación de entrada
                 const modalContent = modal.querySelector('.modal-content');
                 if (modalContent) {
                     void modalContent.offsetWidth;
